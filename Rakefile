@@ -42,7 +42,7 @@ task :javascripts do
       out.write(source_code)
     end
   end
-  File.open("#{target_dir}/jquery-ui.js", "w") do |out|
+  File.open("#{target_dir}/jquery.ui.all.js", "w") do |out|
     Dir.glob("jquery-ui/ui/*.js").sort.each do |path|
       out.write("//= require #{File.basename(path).sub(/\.js\z/, '')}\n")
     end
@@ -80,7 +80,6 @@ task :stylesheets do
       out.write(source_code)
     end
   end
-  FileUtils.cp("#{target_dir}/jquery.ui.all.css.erb", "#{target_dir}/jquery-ui.css.erb")
 end
 
 desc "Generate the image assets"
