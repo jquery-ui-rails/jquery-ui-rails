@@ -17,7 +17,9 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "execjs", "~> 1.0"
 
-  s.files        = Dir.glob("vendor/**/*") + `git ls-files`.split("\n").reject { |f| f == 'jquery-ui' }
+  s.files        = `git ls-files`.split("\n") + \
+                   Dir.glob("vendor/**/*") + \
+                   Dir.glob('jquery-ui/*LICENSE.txt') + ['jquery-ui/version.txt']
   s.executables  = `git ls-files`.split("\n").select { |f| f =~ /^bin/ }
   s.require_path = 'lib'
 end
