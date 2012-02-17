@@ -44,7 +44,7 @@ task :javascripts do
   end
   File.open("#{target_dir}/jquery-ui.js", "w") do |out|
     Dir.glob("jquery-ui/ui/*.js").sort.each do |path|
-      out.write("//= require #{File.basename path}\n")
+      out.write("//= require #{File.basename(path).sub(/\.js\z/, '')}\n")
     end
   end
 end
