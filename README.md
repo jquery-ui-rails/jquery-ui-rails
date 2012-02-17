@@ -176,6 +176,16 @@ pulled in as dependencies.
 
 ## Hacking and Contributing
 
+### Bug Reports
+
+For bugs in jQuery UI itself, head to the [jQuery UI Development
+Center](http://jqueryui.com/development).
+
+For bugs in this gem distribution, use the GitHub issue tracker. In particular,
+the asset dependencies between files are set up by this gem, not by the jQuery
+upstream. If you find that a JavaScript or CSS file does not pull in its
+dependencies correctly, please open an issue!
+
 ### Setup and Rebuilding the Asset Files
 
 ```bash
