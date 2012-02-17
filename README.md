@@ -174,7 +174,7 @@ pulled in as dependencies.
  */
 ```
 
-## Hacking and Contributing
+## Contributing
 
 ### Bug Reports
 
@@ -186,7 +186,7 @@ the asset dependencies between files are set up by this gem, not by the jQuery
 upstream. If you find that a JavaScript or CSS file does not pull in its
 dependencies correctly, please open an issue!
 
-### Setup and Rebuilding the Asset Files
+### Setup
 
 ```bash
 git clone git://github.com/joliss/jquery-ui-rails.git
@@ -196,18 +196,19 @@ bundle install
 bundle exec rake
 ```
 
-Pull requests are more than welcome!
+Most of the code lives in `Rakefile`. Pull requests are more than welcome!
 
 ### Hacking jQuery UI
 
-You can easily hack jQuery UI through this gem.
+The jquery-ui-rails repository has a git submodule containing the official
+[jquery-ui repo](https://github.com/jquery/jquery-ui). This way it's easy to
+hack the jQuery UI code:
 
 ```bash
 cd jquery-ui
-git checkout master # or 1-8-stable
+git checkout master  # or 1-8-stable
 ... hack-hack-hack ...
-cd ..
-bundle exec rake # rebuild assets based on your changes
+bundle exec rake  # rebuild assets based on your changes
 ```
 
 Assuming your app's Gemfile points at your jquery-ui-rails checkout (`gem
@@ -215,8 +216,9 @@ Assuming your app's Gemfile points at your jquery-ui-rails checkout (`gem
 now is refresh your browser, and your changes to jQuery UI are live in your
 Rails application.
 
-The [jquery-ui](https://github.com/jquery/jquery-ui) project accepts pull
-request as well. See also their
+You can send pull requests to the
+[jquery-ui](https://github.com/jquery/jquery-ui) GitHub project straight out of
+your submodule. See also their
 [http://wiki.jqueryui.com/w/page/35263114/Getting-Involved](Getting Involved)
 guide.
 
