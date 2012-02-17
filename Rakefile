@@ -16,6 +16,12 @@ def get_js_dependencies(basename)
   end
 end
 
+desc "Remove the vendor directory"
+task :clean do
+  FileUtils.rm_rf 'vendor'
+  # We could do rm(Dir.glob('vendor/**/*.*') - `git ls-files vendor`.split("\n"))
+end
+
 desc "Generate the JavaScript assets"
 task :javascripts do
   target_dir = "vendor/assets/javascripts"
@@ -71,7 +77,7 @@ task :images do
   FileUtils.cp(Dir.glob("jquery-ui/themes/base/images/*.png"), target_dir)
 end
 
-desc "Generate everything (default)"
-task :all => [:javascripts, :stylesheets, :images]
+desc "Clean and then generate everything (default)"
+task :all => [:clean, :javascripts, :stylesheets, :images]
 
 task :default => :all
