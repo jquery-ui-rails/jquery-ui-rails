@@ -10,9 +10,19 @@ def get_js_dependencies(basename)
     # Depend on main module for i18n files
     [basename.sub(LANGUAGE_REGEX, '')]
   else
-    DEPENDENCY_HASH[basename.sub(/\Ajquery\./, '')]
+    dependencies = DEPENDENCY_HASH[basename.sub(/\Ajquery\./, '')]
+    if dependencies.nil?
+      puts "Warning: No dependencies found for #{basename}"
+      dependencies = []
+    end
+    dependencies = dependencies
       .reject { |dep| dep == 'theme' } # 'theme' pseudo-dependency handled by CSS
       .map { |dep| "jquery.#{dep}" }
+    # Make sure we do not package assets with broken dependencies
+    dependencies.each do |dep|
+      fail "#{basename}: missing #{dep}" unless File.exist? "jquery-ui/ui/#{dep}"
+    end
+    dependencies
   end
 end
 
@@ -28,16 +38,13 @@ task :javascripts do
   FileUtils.mkdir_p target_dir
   Dir.glob("jquery-ui/ui/**/*.js").each do |path|
     basename = File.basename(path)
-    dependencies = get_js_dependencies(basename)
-    fail "Missing dependency info for #{basename}" if dependencies.nil?
+    dep_modules = get_js_dependencies(basename).map { |dep| dep.sub(/\.js\z/, '') }
+    dep_modules << 'jquery' if basename == 'jquery.ui.core.js'
     File.open("#{target_dir}/#{basename}", "w") do |out|
-      # puts "#{basename} => #{dependencies.inspect}"
-      out.write("//= require jquery\n")
-      dependencies.each do |dep|
-        fail "#{basename}: missing #{dep}" unless File.exist? "jquery-ui/ui/#{dep}"
-        out.write("//= require #{dep.sub /\.js\z/, ''}\n")
+      dep_modules.each do |mod|
+        out.write("//= require #{mod}\n")
       end
-      out.write("\n") unless dependencies.empty?
+      out.write("\n") unless dep_modules.empty?
       source_code = File.read(path).gsub('@VERSION', VERSION)
       out.write(source_code)
     end
@@ -58,14 +65,18 @@ task :stylesheets do
     source_code = File.read(path)
       .gsub('@VERSION', VERSION)
     extra_dependencies = []
-    # Does the matching JS file require the theme?
+    extra_dependencies << 'jquery.ui.core' unless basename =~ /\.(all|base|core)\./
+    # Is "theme" listed among the dependencies for the matching JS file?
     unless basename =~ /\.(all|base|core|theme)\./
       dependencies = DEPENDENCY_HASH[basename.sub(/\Ajquery\./, '').sub(/\.css/, '.js')]
-      fail "No matching JavaScript found in dependencies for #{basename}" unless dependencies
-      extra_dependencies << 'jquery.ui.theme' if dependencies.include? 'theme'
+      if dependencies.nil?
+	puts "Warning: No matching JavaScript dependencies found for #{basename}"
+      else
+	extra_dependencies << 'jquery.ui.theme' if dependencies.include? 'theme'
+      end
     end
-    extra_dependencies << 'jquery.ui.core' unless basename =~ /\.(all|base|core)\./
-    extra_dependencies.each do |dep|
+    extra_dependencies.reverse.each do |dep|
+      # Add after first comment block
       source_code = source_code.sub(/\A((.*?\*\/\n)?)/m, "\\1/*\n *= require #{dep}\n */\n")
     end
     source_code = source_code
