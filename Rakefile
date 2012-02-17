@@ -55,7 +55,7 @@ task :stylesheets do
   FileUtils.mkdir_p target_dir
   Dir.glob("jquery-ui/themes/base/*.css").each do |path|
     basename = File.basename(path)
-    File.open("#{target_dir}/#{basename}", "w") do |out|
+    File.open("#{target_dir}/#{basename}.erb", "w") do |out|
       source_code = File.read(path)
         .gsub('@VERSION', VERSION)
         .gsub(/^@import (.*)$/) { |s|
