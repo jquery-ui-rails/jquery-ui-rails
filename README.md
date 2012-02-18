@@ -233,10 +233,3 @@ rails server
 ```
 
 Now point your browser at [http://localhost:3000/](http://localhost:3000/).
-
-## License
-
-jQuery UI is dual-licensed under the MIT License (jquery-ui/MIT-LICENSE.txt)
-and the GPL version 2 (jquery-ui/GPL-LICENSE.txt). This gem is dual-licensed
-under the MIT License (MIT-LICENSE.txt) and the GPL version 2 (GPL-LICENSE.txt)
-as well.

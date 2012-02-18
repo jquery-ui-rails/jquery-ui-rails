@@ -1,0 +1,3 @@
+jQuery UI as well as this gem are dual-licensed under the MIT license (see
+jquery-ui/MIT-LICENSE.txt) and the GPL version 2 (see
+jquery-ui/GPL-LICENSE.txt).
