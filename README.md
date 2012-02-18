@@ -44,9 +44,8 @@ $(function() {
 
 The jQuery UI code weighs 51KB (minified + gzipped) and takes a while to
 execute, so for production apps it's recommended to only include the modules
-that your application actually uses. Dependencies between JavaScript modules
-and between CSS modules are automatically resolved for you. Simply pick one or
-more modules from the asset list below.
+that your application actually uses. Dependencies are automatically resolved.
+Simply pick one or more modules from the asset list below.
 
 For example, if you only need the datepicker module, add this to your
 application.js:
@@ -183,7 +182,7 @@ Center](http://jqueryui.com/development).
 
 For bugs in this gem distribution, use the GitHub issue tracker. In particular,
 the asset dependencies between files are set up by this gem, not by the jQuery
-upstream. If you find that a JavaScript or CSS file does not pull in its
+UI upstream. If you find that a JavaScript or CSS file does not pull in its
 dependencies correctly, please open an issue!
 
 ### Setup
@@ -196,7 +195,7 @@ bundle install
 bundle exec rake
 ```
 
-Most of the code lives in `Rakefile`. Pull requests are more than welcome!
+Most of the code lives in the `Rakefile`. Pull requests are more than welcome!
 
 ### Hacking jQuery UI
 
@@ -219,7 +218,7 @@ Rails application.
 You can send pull requests to the
 [jquery-ui](https://github.com/jquery/jquery-ui) GitHub project straight out of
 your submodule. See also their
-[http://wiki.jqueryui.com/w/page/35263114/Getting-Involved](Getting Involved)
+[Getting Involved](http://wiki.jqueryui.com/w/page/35263114/Getting-Involved)
 guide.
 
 ### Testing

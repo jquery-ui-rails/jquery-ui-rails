@@ -29,7 +29,6 @@ end
 desc "Remove the vendor directory"
 task :clean do
   FileUtils.rm_rf 'vendor'
-  # We could do rm(Dir.glob('vendor/**/*.*') - `git ls-files vendor`.split("\n"))
 end
 
 desc "Generate the JavaScript assets"
@@ -70,9 +69,9 @@ task :stylesheets do
     unless basename =~ /\.(all|base|core|theme)\./
       dependencies = DEPENDENCY_HASH[basename.sub(/\Ajquery\./, '').sub(/\.css/, '.js')]
       if dependencies.nil?
-	puts "Warning: No matching JavaScript dependencies found for #{basename}"
+        puts "Warning: No matching JavaScript dependencies found for #{basename}"
       else
-	extra_dependencies << 'jquery.ui.theme' if dependencies.include? 'theme'
+        extra_dependencies << 'jquery.ui.theme' if dependencies.include? 'theme'
       end
     end
     extra_dependencies.reverse.each do |dep|
