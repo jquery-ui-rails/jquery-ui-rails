@@ -233,3 +233,11 @@ rails server
 ```
 
 Now point your browser at [http://localhost:3000/](http://localhost:3000/).
+
+### Limitations
+
+Only the base theme (Smoothness) is included. Once it becomes possible to
+[generate all theme
+files](https://forum.jquery.com/topic/downloading-bundling-all-themes#14737000003080244)
+from the jQuery UI sources, we can package all the other themes in the
+[ThemeRoller](http://jqueryui.com/themeroller/) gallery.
