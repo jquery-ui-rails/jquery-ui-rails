@@ -10,9 +10,11 @@ interface](http://jqueryui.com/download) again.
 
 In your Gemfile, add:
 
-    group :assets do
-      gem 'jquery-ui-rails'
-    end
+```ruby
+group :assets do
+  gem 'jquery-ui-rails'
+end
+```
 
 ## Require Everything
 
@@ -236,8 +238,14 @@ Now point your browser at [http://localhost:3000/](http://localhost:3000/).
 
 ### Limitations
 
-Only the base theme (Smoothness) is included. Once it becomes possible to
-[generate all theme
-files](https://forum.jquery.com/topic/downloading-bundling-all-themes#14737000003080244)
-from the jQuery UI sources, we can package all the other themes in the
-[ThemeRoller](http://jqueryui.com/themeroller/) gallery.
+* Only the base theme (Smoothness) is included. Once it becomes possible to
+  [generate all theme
+  files](https://forum.jquery.com/topic/downloading-bundling-all-themes#14737000003080244)
+  from the jQuery UI sources, we can package all the other themes in the
+  [ThemeRoller](http://jqueryui.com/themeroller/) gallery.
+
+* The `jquery.ui.all.js` file is named `jquery-ui.js` in the official
+  distribution. We should follow their naming. But jquery-rails provides a
+  `jquery-ui.js` asset as well, so until that is removed from the jquery-rails
+  gem (see issue [#46](https://github.com/rails/jquery-rails/issues/46)), we
+  cannot distribute `jquery-ui.js` without risking conflicts.
