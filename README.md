@@ -66,8 +66,6 @@ In your application.css, require the corresponding CSS module:
 
 ## JavaScript Assets
 
-Pick and choose from the following modules:
-
 ### UI Core
 
 ```javascript
