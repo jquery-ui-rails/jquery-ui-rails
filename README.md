@@ -234,7 +234,7 @@ rails server
 
 Now point your browser at [http://localhost:3000/](http://localhost:3000/).
 
-### Limitations
+## Limitations
 
 *   Only the base theme (Smoothness) is included. Once it becomes possible to
     [generate all theme
