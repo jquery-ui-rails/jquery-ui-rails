@@ -249,3 +249,7 @@ Now point your browser at [http://localhost:3000/](http://localhost:3000/).
   `jquery-ui.js` asset as well, so until that is removed from the jquery-rails
   gem (see issue [#46](https://github.com/rails/jquery-rails/issues/46)), we
   cannot distribute `jquery-ui.js` without risking conflicts.
+
+  To reduce confusion, as long as there is no `jquery-ui.js`, we also do not
+  distribute the official `jquery-ui-i18n.js` and `jquery-ui.css`. The latter
+  is available as `jquery.ui.all.css` however.
