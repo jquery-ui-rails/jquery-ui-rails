@@ -111,7 +111,7 @@ application.css as well.
 
 Datepicker has optional i18n modules for non-US locales, named
 `jquery.ui.datepicker-xx[-YY]`
-([list](https://github.com/jquery/jquery-ui/tree/1.8.16/ui/i18n)), for example:
+([list](https://github.com/jquery/jquery-ui/tree/1.8.17/ui/i18n)), for example:
 
 ```javascript
 //= require jquery.ui.datepicker-pt-BR
