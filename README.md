@@ -242,6 +242,10 @@ Now point your browser at [http://localhost:3000/](http://localhost:3000/).
     from the jQuery UI sources, we can package all the other themes in the
     [ThemeRoller](http://jqueryui.com/themeroller/) gallery.
 
+    Perhaps we can also add helper tasks to help developers generate assets for
+    their own custom themes or for third-party themes (like
+    [Selene](http://gravityonmars.github.com/Selene/)).
+
     If you still want a different theme right now, you could probably download
     a custom theme and require the theme CSS *after* requiring any other jQuery
     UI CSS files you need, making sure to serve up the theme images correctly.
