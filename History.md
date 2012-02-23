@@ -1,7 +1,11 @@
-# Version 0.2.0
+# 0.2.1
 
-* Upgrade to jQuery UI 1.8.17.
+* Upgrade to jQuery UI 1.8.18
 
-# Version 0.1.0
+# 0.2.0
 
-* Initial release packaging jQuery UI 1.8.16.
+* Upgrade to jQuery UI 1.8.17
+
+# 0.1.0
+
+* Initial release packaging jQuery UI 1.8.16
