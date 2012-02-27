@@ -26,6 +26,13 @@ def get_js_dependencies(basename)
   end
 end
 
+def protect_copyright_notice(source_code)
+  # YUI does not minify comments starting with "/*!"
+  # The i18n files start with non-copyright comments, so we require a newline
+  # to avoid protecting those
+  source_code.gsub!(/\A\s*\/\*\r?\n/, "/*!\n")
+end
+
 desc "Remove the vendor directory"
 task :clean do
   FileUtils.rm_rf 'vendor'
@@ -44,7 +51,9 @@ task :javascripts do
         out.write("//= require #{mod}\n")
       end
       out.write("\n") unless dep_modules.empty?
-      source_code = File.read(path).gsub('@VERSION', VERSION)
+      source_code = File.read(path)
+      source_code.gsub!('@VERSION', VERSION)
+      protect_copyright_notice(source_code)
       out.write(source_code)
     end
   end
@@ -62,7 +71,8 @@ task :stylesheets do
   Dir.glob("jquery-ui/themes/base/*.css").each do |path|
     basename = File.basename(path)
     source_code = File.read(path)
-      .gsub('@VERSION', VERSION)
+    source_code.gsub!('@VERSION', VERSION)
+    protect_copyright_notice(source_code)
     extra_dependencies = []
     extra_dependencies << 'jquery.ui.core' unless basename =~ /\.(all|base|core)\./
     # Is "theme" listed among the dependencies for the matching JS file?
@@ -78,14 +88,16 @@ task :stylesheets do
       # Add after first comment block
       source_code = source_code.sub(/\A((.*?\*\/\n)?)/m, "\\1/*\n *= require #{dep}\n */\n")
     end
-    source_code = source_code
-      .gsub(/^@import (.*)$/) { |s|
-        m = s.match(/^@import (url\()?"(?<module>[-_.a-zA-Z]+)\.css"\)?;/) \
-          or fail "Cannot parse import: #{s}"
-        "/*\n *= require #{m['module']}\n */"
-      }
-      .gsub(/^( \*= require .*)\n \*\/(\n+)\/\*\n(?= \*= require )/, '\1\2') # be cute: collapse requires
-      .gsub(/url\(images\/([-_.a-zA-Z0-9]+)\)/, 'url(<%= image_path("jquery-ui/\1") %>)')
+    # Use "require" instead of @import
+    source_code.gsub!(/^@import (.*)$/) { |s|
+      m = s.match(/^@import (url\()?"(?<module>[-_.a-zA-Z]+)\.css"\)?;/) \
+        or fail "Cannot parse import: #{s}"
+      "/*\n *= require #{m['module']}\n */"
+    }
+    # Be cute: collapse multiple require comment blocks into one
+    source_code.gsub!(/^( \*= require .*)\n \*\/(\n+)\/\*\n(?= \*= require )/, '\1\2')
+    # Replace hard-coded image URLs with asset path helpers
+    source_code.gsub!(/url\(images\/([-_.a-zA-Z0-9]+)\)/, 'url(<%= image_path("jquery-ui/\1") %>)')
     File.open("#{target_dir}/#{basename}.erb", "w") do |out|
       out.write(source_code)
     end
