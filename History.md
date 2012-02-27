@@ -1,3 +1,7 @@
+# 0.2.2
+
+* Protect copyright notices against minification with `/*! ... */`
+
 # 0.2.1
 
 * Upgrade to jQuery UI 1.8.18
