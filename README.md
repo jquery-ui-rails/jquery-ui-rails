@@ -199,9 +199,11 @@ Most of the code lives in the `Rakefile`. Pull requests are more than welcome!
 
 ### Hacking jQuery UI
 
-The jquery-ui-rails repository has a git submodule containing the official
-[jquery-ui repo](https://github.com/jquery/jquery-ui). This way it's easy to
-hack the jQuery UI code:
+The jquery-ui-rails repository is
+[contributor-friendly](http://www.solitr.com/blog/2012/04/contributor-friendly-gems/)
+and has a git submodule containing the official [jquery-ui
+repo](https://github.com/jquery/jquery-ui). This way it's easy to hack the
+jQuery UI code:
 
 ```bash
 cd jquery-ui
