@@ -2,8 +2,15 @@ require 'rubygems'
 require 'execjs'
 
 DEPENDENCY_HASH = ExecJS.eval(File.read('dependencies.js'))
-VERSION = File.read("jquery-ui/version.txt").strip
 LANGUAGE_REGEX = /-[-a-zA-Z]+(?=\.js\z)/
+
+def version
+  File.read("jquery-ui/version.txt").strip
+end
+
+task :submodule do
+  sh 'git submodule update --init' unless File.exist?('jquery-ui/README.md')
+end
 
 def get_js_dependencies(basename)
   if basename.match LANGUAGE_REGEX
@@ -39,7 +46,7 @@ task :clean do
 end
 
 desc "Generate the JavaScript assets"
-task :javascripts do
+task :javascripts => :submodule do
   target_dir = "vendor/assets/javascripts"
   FileUtils.mkdir_p target_dir
   Dir.glob("jquery-ui/ui/**/*.js").each do |path|
@@ -52,7 +59,7 @@ task :javascripts do
       end
       out.write("\n") unless dep_modules.empty?
       source_code = File.read(path)
-      source_code.gsub!('@VERSION', VERSION)
+      source_code.gsub!('@VERSION', version)
       protect_copyright_notice(source_code)
       out.write(source_code)
     end
@@ -65,13 +72,13 @@ task :javascripts do
 end
 
 desc "Generate the CSS assets"
-task :stylesheets do
+task :stylesheets => :submodule do
   target_dir = "vendor/assets/stylesheets"
   FileUtils.mkdir_p target_dir
   Dir.glob("jquery-ui/themes/base/*.css").each do |path|
     basename = File.basename(path)
     source_code = File.read(path)
-    source_code.gsub!('@VERSION', VERSION)
+    source_code.gsub!('@VERSION', version)
     protect_copyright_notice(source_code)
     extra_dependencies = []
     extra_dependencies << 'jquery.ui.core' unless basename =~ /\.(all|base|core)\./
@@ -105,7 +112,7 @@ task :stylesheets do
 end
 
 desc "Generate the image assets"
-task :images do
+task :images => :submodule do
   target_dir = "vendor/assets/images/jquery-ui"
   FileUtils.mkdir_p target_dir
   FileUtils.cp(Dir.glob("jquery-ui/themes/base/images/*.png"), target_dir)
