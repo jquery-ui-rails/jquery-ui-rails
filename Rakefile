@@ -42,13 +42,14 @@ end
 
 desc "Remove the vendor directory"
 task :clean do
-  FileUtils.rm_rf 'vendor'
+  rm_rf 'vendor'
 end
 
 desc "Generate the JavaScript assets"
 task :javascripts => :submodule do
   target_dir = "vendor/assets/javascripts"
-  FileUtils.mkdir_p target_dir
+  mkdir_p target_dir
+  Rake.rake_output_message 'Generating javascripts'
   Dir.glob("jquery-ui/ui/**/*.js").each do |path|
     basename = File.basename(path)
     dep_modules = get_js_dependencies(basename).map { |dep| dep.sub(/\.js\z/, '') }
@@ -74,7 +75,8 @@ end
 desc "Generate the CSS assets"
 task :stylesheets => :submodule do
   target_dir = "vendor/assets/stylesheets"
-  FileUtils.mkdir_p target_dir
+  mkdir_p target_dir
+  Rake.rake_output_message 'Generating stylesheets'
   Dir.glob("jquery-ui/themes/base/*.css").each do |path|
     basename = File.basename(path)
     source_code = File.read(path)
@@ -114,7 +116,8 @@ end
 desc "Generate the image assets"
 task :images => :submodule do
   target_dir = "vendor/assets/images/jquery-ui"
-  FileUtils.mkdir_p target_dir
+  mkdir_p target_dir
+  Rake.rake_output_message 'Copying images'
   FileUtils.cp(Dir.glob("jquery-ui/themes/base/images/*.png"), target_dir)
 end
 
