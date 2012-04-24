@@ -189,12 +189,15 @@ dependencies correctly, please open an issue!
 
 ### Setup
 
+The `jquery-ui-rails` gem should work in Ruby 1.8.7 apps. To run the rake
+tasks, you need Ruby 1.9 however.
+
 ```bash
 git clone git://github.com/joliss/jquery-ui-rails.git
 cd jquery-ui-rails
 git submodule update --init
 bundle install
-bundle exec rake
+bundle exec rake # rebuild assets
 ```
 
 Most of the code lives in the `Rakefile`. Pull requests are more than welcome!
