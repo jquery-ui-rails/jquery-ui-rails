@@ -1,7 +1,7 @@
 require 'rubygems'
-require 'execjs'
+require 'json'
 
-DEPENDENCY_HASH = ExecJS.eval(File.read('dependencies.js'))
+DEPENDENCY_HASH = JSON.load(File.read('dependencies.js'))
 LANGUAGE_REGEX = /-[-a-zA-Z]+(?=\.js\z)/
 
 def version

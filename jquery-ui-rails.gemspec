@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.add_dependency "railties", ">= 3.1.0"
   s.add_dependency "jquery-rails"
 
-  s.add_development_dependency "execjs", "~> 1.0"
+  s.add_development_dependency "json", "~> 1.7"
 
   s.files        = `git ls-files`.split("\n").reject { |f| f =~ /^testapp|^jquery-ui/ } + \
                    Dir.glob("vendor/**/*") + \
