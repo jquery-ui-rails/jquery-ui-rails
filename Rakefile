@@ -5,7 +5,7 @@ DEPENDENCY_HASH = JSON.load(File.read('dependencies.js'))
 LANGUAGE_REGEX = /-[-a-zA-Z]+(?=\.js\z)/
 
 def version
-  File.read("jquery-ui/version.txt").strip
+  JSON.load(File.read('jquery-ui/package.json'))['version']
 end
 
 task :submodule do

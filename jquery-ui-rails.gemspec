@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.files        = `git ls-files`.split("\n").reject { |f| f =~ /^testapp|^jquery-ui/ } + \
                    Dir.glob("vendor/**/*") + \
-                   Dir.glob('jquery-ui/*LICENSE.txt') + ['jquery-ui/version.txt']
+                   Dir.glob('jquery-ui/*LICENSE.txt') + ['jquery-ui/package.json']
   s.executables  = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   s.require_path = 'lib'
 end

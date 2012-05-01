@@ -1,3 +1,7 @@
+# 0.4.0
+
+* Upgrade to jQuery UI 1.8.20
+
 # 0.3.0
 
 * Upgrade to jQuery UI 1.8.19
