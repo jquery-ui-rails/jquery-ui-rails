@@ -1,5 +1,5 @@
-require 'rubygems'
 require 'json'
+require 'bundler/gem_tasks'
 
 DEPENDENCY_HASH = JSON.load(File.read('dependencies.js'))
 LANGUAGE_REGEX = /-[-a-zA-Z]+(?=\.js\z)/
@@ -122,6 +122,8 @@ task :images => :submodule do
 end
 
 desc "Clean and then generate everything (default)"
-task :all => [:clean, :javascripts, :stylesheets, :images]
+task :assets => [:clean, :javascripts, :stylesheets, :images]
 
-task :default => :all
+task :build => :assets
+
+task :default => :assets
