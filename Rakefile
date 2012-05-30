@@ -33,6 +33,10 @@ def get_js_dependencies(basename)
   end
 end
 
+def remove_js_extension(path)
+  path.chomp(".js")
+end
+
 def protect_copyright_notice(source_code)
   # YUI does not minify comments starting with "/*!"
   # The i18n files start with non-copyright comments, so we require a newline
@@ -52,7 +56,7 @@ task :javascripts => :submodule do
   Rake.rake_output_message 'Generating javascripts'
   Dir.glob("jquery-ui/ui/**/*.js").each do |path|
     basename = File.basename(path)
-    dep_modules = get_js_dependencies(basename).map { |dep| dep.sub(/\.js\z/, '') }
+    dep_modules = get_js_dependencies(basename).map(&method(:remove_js_extension))
     dep_modules << 'jquery' if basename == 'jquery.ui.core.js'
     File.open("#{target_dir}/#{basename}", "w") do |out|
       dep_modules.each do |mod|
@@ -65,9 +69,16 @@ task :javascripts => :submodule do
       out.write(source_code)
     end
   end
+  File.open("#{target_dir}/jquery.effects.all.js", "w") do |out|
+    Dir.glob("jquery-ui/ui/jquery.effects.*.js").sort.each do |path|
+      asset_name = remove_js_extension(File.basename(path))
+      out.write("//= require #{asset_name}\n")
+    end
+  end
   File.open("#{target_dir}/jquery.ui.all.js", "w") do |out|
     Dir.glob("jquery-ui/ui/*.js").sort.each do |path|
-      out.write("//= require #{File.basename(path).sub(/\.js\z/, '')}\n")
+      asset_name = remove_js_extension(File.basename(path))
+      out.write("//= require #{asset_name}\n")
     end
   end
 end
