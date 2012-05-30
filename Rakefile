@@ -65,6 +65,11 @@ task :javascripts => :submodule do
       out.write(source_code)
     end
   end
+  File.open("#{target_dir}/jquery.effects.all.js", "w") do |out|
+    Dir.glob("jquery-ui/ui/jquery.effects.*.js").sort.each do |path|
+      out.write("//= require #{File.basename(path).sub(/\.js\z/, '')}\n")
+    end
+  end
   File.open("#{target_dir}/jquery.ui.all.js", "w") do |out|
     Dir.glob("jquery-ui/ui/*.js").sort.each do |path|
       out.write("//= require #{File.basename(path).sub(/\.js\z/, '')}\n")
