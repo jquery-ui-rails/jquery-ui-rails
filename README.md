@@ -120,6 +120,7 @@ Datepicker has optional i18n modules for non-US locales, named
 ### Effects
 
 ```javascript
+//= require jquery.effects.all
 //= require jquery.effects.core
 //= require jquery.effects.blind
 //= require jquery.effects.bounce
