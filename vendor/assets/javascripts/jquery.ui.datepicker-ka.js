@@ -3,7 +3,7 @@
 /* Georgian (UTF-8) initialisation for the jQuery UI date picker plugin. */
 /* Written by Lado Lomidze (lado.lomidze@gmail.com). */
 jQuery(function($){
-	$.datepicker.regional['ge'] = {
+	$.datepicker.regional['ka'] = {
 		closeText: 'დახურვა',
 		prevText: '&#x3c; წინა',
 		nextText: 'შემდეგი &#x3e;',
@@ -19,5 +19,5 @@ jQuery(function($){
 		isRTL: false,
 		showMonthAfterYear: false,
 		yearSuffix: ''};
-	$.datepicker.setDefaults($.datepicker.regional['ge']);
+	$.datepicker.setDefaults($.datepicker.regional['ka']);
 });

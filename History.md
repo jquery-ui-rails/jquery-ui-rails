@@ -1,5 +1,7 @@
 # master
 
+* Upgrade to jQuery UI 1.8.21
+
 # 0.4.1
 
 * Add jquery.effects.all

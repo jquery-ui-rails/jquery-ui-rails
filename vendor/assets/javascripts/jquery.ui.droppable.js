@@ -4,7 +4,7 @@
 //= require jquery.ui.draggable
 
 /*!
- * jQuery UI Droppable 1.8.20
+ * jQuery UI Droppable 1.8.21
  *
  * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
@@ -152,7 +152,7 @@ $.widget("ui.droppable", {
 });
 
 $.extend($.ui.droppable, {
-	version: "1.8.20"
+	version: "1.8.21"
 });
 
 $.ui.intersect = function(draggable, droppable, toleranceMode) {

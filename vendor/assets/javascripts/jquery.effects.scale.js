@@ -1,7 +1,7 @@
 //= require jquery.effects.core
 
 /*!
- * jQuery UI Effects Scale 1.8.20
+ * jQuery UI Effects Scale 1.8.21
  *
  * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
