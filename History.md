@@ -1,5 +1,10 @@
 # master
 
+# 1.0.0
+
+* No change. Bumping version to indicate that jquery-ui-rails is considered
+  stable, and that we are following semver.
+
 # 0.5.0
 
 * Upgrade to jQuery UI 1.8.21
