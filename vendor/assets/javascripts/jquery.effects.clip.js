@@ -1,7 +1,7 @@
 //= require jquery.effects.core
 
 /*!
- * jQuery UI Effects Clip 1.8.21
+ * jQuery UI Effects Clip 1.8.22
  *
  * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.

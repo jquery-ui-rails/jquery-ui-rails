@@ -1,5 +1,7 @@
 # master
 
+* Upgrade to jQuery UI 1.8.22
+
 # 1.0.0
 
 * No change. Bumping version to indicate that jquery-ui-rails is considered
