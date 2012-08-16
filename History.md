@@ -1,5 +1,7 @@
 # master
 
+# 1.1.1
+
 * Upgrade to jQuery UI 1.8.23
 
 # 1.1.0
