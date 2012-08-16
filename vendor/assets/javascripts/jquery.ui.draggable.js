@@ -3,7 +3,7 @@
 //= require jquery.ui.mouse
 
 /*!
- * jQuery UI Draggable 1.8.22
+ * jQuery UI Draggable 1.8.23
  *
  * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
@@ -517,7 +517,7 @@ $.widget("ui.draggable", $.ui.mouse, {
 });
 
 $.extend($.ui.draggable, {
-	version: "1.8.22"
+	version: "1.8.23"
 });
 
 $.ui.plugin.add("draggable", "connectToSortable", {

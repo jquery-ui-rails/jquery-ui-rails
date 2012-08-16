@@ -2,7 +2,7 @@
 //= require jquery.ui.widget
 
 /*!
- * jQuery UI Progressbar 1.8.22
+ * jQuery UI Progressbar 1.8.23
  *
  * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
@@ -106,7 +106,7 @@ $.widget( "ui.progressbar", {
 });
 
 $.extend( $.ui.progressbar, {
-	version: "1.8.22"
+	version: "1.8.23"
 });
 
 })( jQuery );
