@@ -1,5 +1,3 @@
-//= require jquery.ui.datepicker
-
 /* Bosnian i18n for the jQuery UI date picker plugin. */
 /* Written by Kenan Konjo. */
 jQuery(function($){

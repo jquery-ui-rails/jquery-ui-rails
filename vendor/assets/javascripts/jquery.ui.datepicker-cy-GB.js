@@ -1,5 +1,3 @@
-//= require jquery.ui.datepicker
-
 /* Welsh/UK initialisation for the jQuery UI date picker plugin. */
 /* Written by William Griffiths. */
 jQuery(function($){

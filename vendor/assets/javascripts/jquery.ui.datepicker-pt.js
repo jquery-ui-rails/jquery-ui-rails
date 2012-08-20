@@ -1,5 +1,3 @@
-//= require jquery.ui.datepicker
-
 /* Portuguese initialisation for the jQuery UI date picker plugin. */
 jQuery(function($){
 	$.datepicker.regional['pt'] = {

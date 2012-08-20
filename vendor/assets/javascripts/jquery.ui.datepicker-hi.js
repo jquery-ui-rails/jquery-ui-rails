@@ -1,5 +1,3 @@
-//= require jquery.ui.datepicker
-
 /* Hindi initialisation for the jQuery UI date picker plugin. */
 /* Written by Michael Dawart. */
 jQuery(function($){

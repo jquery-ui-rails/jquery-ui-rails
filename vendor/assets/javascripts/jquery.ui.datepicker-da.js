@@ -1,5 +1,3 @@
-//= require jquery.ui.datepicker
-
 /* Danish initialisation for the jQuery UI date picker plugin. */
 /* Written by Jan Christensen ( deletestuff@gmail.com). */
 jQuery(function($){

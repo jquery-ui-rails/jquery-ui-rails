@@ -14,8 +14,10 @@ end
 
 def get_js_dependencies(basename)
   if basename.match LANGUAGE_REGEX
-    # Depend on main module for i18n files
-    [basename.sub(LANGUAGE_REGEX, '')]
+    # This is an i18n file. We used to depend on the main module for i18n
+    # files, but this slows down asset precompilation.
+    # https://github.com/joliss/jquery-ui-rails/issues/9
+    []
   else
     dependencies = DEPENDENCY_HASH[basename.sub(/\Ajquery\./, '')]
     if dependencies.nil?

@@ -1,5 +1,3 @@
-//= require jquery.ui.datepicker
-
 /* Inicialització en català per a l'extenció 'calendar' per jQuery. */
 /* Writers: (joan.leon@gmail.com). */
 jQuery(function($){

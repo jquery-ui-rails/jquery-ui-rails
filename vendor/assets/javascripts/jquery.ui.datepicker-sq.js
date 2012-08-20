@@ -1,5 +1,3 @@
-//= require jquery.ui.datepicker
-
 /* Albanian initialisation for the jQuery UI date picker plugin. */
 /* Written by Flakron Bytyqi (flakron@gmail.com). */
 jQuery(function($){

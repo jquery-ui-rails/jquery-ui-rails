@@ -1,5 +1,3 @@
-//= require jquery.ui.datepicker
-
 /* Icelandic initialisation for the jQuery UI date picker plugin. */
 /* Written by Haukur H. Thorsson (haukur@eskill.is). */
 jQuery(function($){

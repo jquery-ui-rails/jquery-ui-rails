@@ -1,5 +1,3 @@
-//= require jquery.ui.datepicker
-
 /* Chinese initialisation for the jQuery UI date picker plugin. */
 /* Written by Cloudream (cloudream@gmail.com). */
 jQuery(function($){

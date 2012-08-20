@@ -1,5 +1,3 @@
-//= require jquery.ui.datepicker
-
 /* Euskarako oinarria 'UI date picker' jquery-ko extentsioarentzat */
 /* Karrikas-ek itzulia (karrikas@karrikas.com) */
 jQuery(function($){

@@ -1,5 +1,3 @@
-//= require jquery.ui.datepicker
-
 /* Hungarian initialisation for the jQuery UI date picker plugin. */
 /* Written by Istvan Karaszi (jquery@spam.raszi.hu). */
 jQuery(function($){
