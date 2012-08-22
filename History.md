@@ -1,5 +1,9 @@
 # master
 
+* Do not require the main datepicker module from datepicker i18n modules.
+  Fixes Heroku precompilation timeouts. If you are using a datepicker i18n
+  module, be sure to also require jquery.ui.datepicker. (#9)
+
 # 1.1.1
 
 * Upgrade to jQuery UI 1.8.23

@@ -109,13 +109,20 @@ their matching CSS files in your application.css as well.
 For all of these, remember to `require` their matching CSS files in your
 application.css as well.
 
+#### I18n
+
 Datepicker has optional i18n modules for non-US locales, named
 `jquery.ui.datepicker-xx[-YY]`
 ([list](https://github.com/jquery/jquery-ui/tree/1.8.20/ui/i18n)), for example:
 
 ```javascript
+//= require jquery.ui.datepicker
 //= require jquery.ui.datepicker-pt-BR
 ```
+
+Note that you still need to include the main datepicker module. It is not
+required automatically [for performance
+reasons](https://github.com/joliss/jquery-ui-rails/issues/9#issuecomment-6524987).
 
 ### Effects
 
