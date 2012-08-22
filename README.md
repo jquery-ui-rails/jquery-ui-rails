@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/joliss/jquery-ui-rails.png?branch=master)](http://travis-ci.org/joliss/jquery-ui-rails) [![Dependency Status](https://gemnasium.com/joliss/jquery-ui-rails.png)](https://gemnasium.com/joliss/jquery-ui-rails)
 
-This gem packages the jQuery UI 1.8.20 assets (JavaScripts, stylesheets, and
+This gem packages the jQuery UI 1.8.23 assets (JavaScripts, stylesheets, and
 images) for the Rails 3.1+ [asset
 pipeline](http://guides.rubyonrails.org/asset_pipeline.html), so you never have
 to download a custom package through the [web
@@ -113,7 +113,8 @@ application.css as well.
 
 Datepicker has optional i18n modules for non-US locales, named
 `jquery.ui.datepicker-xx[-YY]`
-([list](https://github.com/jquery/jquery-ui/tree/1.8.20/ui/i18n)), for example:
+([list](https://github.com/joliss/jquery-ui-rails/tree/master/vendor/assets/javascripts)),
+for example:
 
 ```javascript
 //= require jquery.ui.datepicker
