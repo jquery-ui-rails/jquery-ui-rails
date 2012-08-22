@@ -1,4 +1,4 @@
-# master
+# 2.0.0
 
 * Do not require the main datepicker module from datepicker i18n modules.
   Fixes Heroku precompilation timeouts. If you are using a datepicker i18n
