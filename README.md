@@ -13,9 +13,7 @@ interface](http://jqueryui.com/download) again.
 In your Gemfile, add:
 
 ```ruby
-group :assets do
-  gem 'jquery-ui-rails'
-end
+gem 'jquery-ui-rails'
 ```
 
 ## Require Everything
