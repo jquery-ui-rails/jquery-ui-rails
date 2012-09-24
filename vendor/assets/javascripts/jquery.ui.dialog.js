@@ -1,6 +1,8 @@
 //= require jquery.ui.core
 //= require jquery.ui.widget
 //= require jquery.ui.position
+//= require jquery.ui.draggable
+//= require jquery.ui.resizable
 
 /*!
  * jQuery UI Dialog 1.8.23

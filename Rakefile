@@ -2,6 +2,9 @@ require 'json'
 require 'bundler/gem_tasks'
 
 DEPENDENCY_HASH = JSON.load(File.read('dependencies.js'))
+# Fix dependencies. https://github.com/joliss/jquery-ui-rails/issues/1#issuecomment-8512917
+DEPENDENCY_HASH['ui.dialog.js'].concat ['ui.draggable.js', 'ui.resizable.js']
+
 LANGUAGE_REGEX = /-[-a-zA-Z]+(?=\.js\z)/
 
 def version

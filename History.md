@@ -1,3 +1,7 @@
+# master
+
+* Add draggable and resizable to the dependencies of dialog (#1)
+
 # 2.0.0
 
 * Do not require the main datepicker module from datepicker i18n modules.
