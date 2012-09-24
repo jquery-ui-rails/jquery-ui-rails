@@ -1,5 +1,7 @@
 # master
 
+# 2.0.1
+
 * Add draggable and resizable to the dependencies of dialog (#1)
 
 # 2.0.0
