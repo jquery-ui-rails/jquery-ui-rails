@@ -1,5 +1,7 @@
 # master
 
+* Upgrade to jQuery UI 1.8.24
+
 # 2.0.1
 
 * Add draggable and resizable to the dependencies of dialog (#1)

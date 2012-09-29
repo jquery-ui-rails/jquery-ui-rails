@@ -2,7 +2,7 @@
 //= require jquery.ui.widget
 
 /*!
- * jQuery UI Mouse 1.8.23
+ * jQuery UI Mouse 1.8.24
  *
  * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.

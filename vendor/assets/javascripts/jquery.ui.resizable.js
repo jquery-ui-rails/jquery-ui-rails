@@ -3,7 +3,7 @@
 //= require jquery.ui.mouse
 
 /*!
- * jQuery UI Resizable 1.8.23
+ * jQuery UI Resizable 1.8.24
  *
  * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
@@ -544,7 +544,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 });
 
 $.extend($.ui.resizable, {
-	version: "1.8.23"
+	version: "1.8.24"
 });
 
 /*

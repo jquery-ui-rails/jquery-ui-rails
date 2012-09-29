@@ -3,7 +3,7 @@
 //= require jquery.ui.mouse
 
 /*!
- * jQuery UI Selectable 1.8.23
+ * jQuery UI Selectable 1.8.24
  *
  * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
@@ -265,7 +265,7 @@ $.widget("ui.selectable", $.ui.mouse, {
 });
 
 $.extend($.ui.selectable, {
-	version: "1.8.23"
+	version: "1.8.24"
 });
 
 })(jQuery);
