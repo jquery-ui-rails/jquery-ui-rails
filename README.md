@@ -184,6 +184,14 @@ pulled in as dependencies.
  */
 ```
 
+## Loading from Public CDN
+
+To load jQuery UI JavaScript from Public CDN like [Google Hosted Libraries](https://developers.google.com/speed/libraries), use `Jquery::Ui::Rails::JQUERY_UI_VERSION` to get the version number in this gem:
+
+```erb
+<%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jqueryui/#{Jquery::Ui::Rails::JQUERY_UI_VERSION}/jquery-ui.min.js" %>
+```
+
 ## Contributing
 
 ### Bug Reports
