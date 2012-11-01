@@ -1,5 +1,3 @@
-//= require jquery
-
 /*!
  * jQuery UI 1.8.24
  *
