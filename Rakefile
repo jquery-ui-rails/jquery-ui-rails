@@ -155,7 +155,7 @@ task :stylesheets => :submodule do
       if dependencies.nil?
         puts "Warning: No matching JavaScript dependencies found for #{basename}"
       else
-        extra_dependencies << 'jquery.ui.theme' if dependencies.include? 'theme'
+        extra_dependencies << 'jquery.ui.theme'
       end
     end
     extra_dependencies.reverse.each do |dep|
