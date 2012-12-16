@@ -1,9 +1,58 @@
 require 'json'
 require 'bundler/gem_tasks'
 
-DEPENDENCY_HASH = JSON.load(File.read('dependencies.js'))
-# Fix dependencies. https://github.com/joliss/jquery-ui-rails/issues/1#issuecomment-8512917
-DEPENDENCY_HASH['ui.dialog.js'].concat ['ui.draggable.js', 'ui.resizable.js']
+# returns the source filename for a given JSON build file
+# (e.g., "ui.core.jquery.json" returns "jquery.ui.core.js")
+def source_file_for_build_file(build_file)
+  "jquery.#{build_file.sub('.jquery.json', '')}.js"
+end
+
+# returns the source filename for a named file in the 'dependencies'
+# array of a JSON build file
+# (e.g., if the JSON build file contains
+#
+#    "dependencies": {
+#      "jquery": ">=1.6",
+#      "ui.core": "1.9.2",
+#      "ui.widget": "1.9.2"
+#    },
+#
+# then "ui.widget" returns "jquery.ui.widget.js")
+#
+# The only exception is "jquery", which doesn't follow the
+# same naming conventions so its a special case.
+def source_file_for_dependency_entry(dep_entry)
+  # if the dependent file is jquery.js itself, return its filename
+  return "jquery.js" if dep_entry == 'jquery'
+
+  # otherwise, tack 'jquery.' on the front
+  "jquery.#{dep_entry}.js"
+end
+
+# return a Hash of dependency info, whose keys are jquery-ui
+# source files and values are Arrays containing the source files
+# they depend on
+def map_dependencies
+  dependencies = {}
+  Dir.glob("jquery-ui/*.jquery.json").each do |build_file|
+    build_info = JSON.parse(File.read build_file)
+    source_file_name = source_file_for_build_file(File.basename(build_file))
+
+    deps = build_info['dependencies'].keys
+
+    # jquery.ui.core.js (and only it) should depend on jquery.js itself,
+    # so we remove 'jquery' from the list of dependencies for all files except
+    # jquery.ui.core.js
+    deps.reject! {|d| d == "jquery" } unless source_file_name == 'jquery.ui.core.js'
+
+    deps.map! {|d| source_file_for_dependency_entry d }
+
+    dependencies[source_file_name] = deps
+  end
+  dependencies
+end
+
+DEPENDENCY_HASH = map_dependencies
 
 LANGUAGE_REGEX = /-[-a-zA-Z]+(?=\.js\z)/
 
@@ -22,17 +71,18 @@ def get_js_dependencies(basename)
     # https://github.com/joliss/jquery-ui-rails/issues/9
     []
   else
-    dependencies = DEPENDENCY_HASH[basename.sub(/\Ajquery\./, '')]
+    dependencies = DEPENDENCY_HASH[basename]
     if dependencies.nil?
       puts "Warning: No dependencies found for #{basename}"
       dependencies = []
     end
     dependencies = dependencies
       .reject { |dep| dep == 'theme' } # 'theme' pseudo-dependency handled by CSS
-      .map { |dep| "jquery.#{dep}" }
     # Make sure we do not package assets with broken dependencies
     dependencies.each do |dep|
-      fail "#{basename}: missing #{dep}" unless File.exist? "jquery-ui/ui/#{dep}"
+      unless dep == "jquery.js" || File.exist?("jquery-ui/ui/#{dep}")
+        fail "#{basename}: missing #{dep}"
+      end
     end
     dependencies
   end
@@ -62,7 +112,6 @@ task :javascripts => :submodule do
   Dir.glob("jquery-ui/ui/**/*.js").each do |path|
     basename = File.basename(path)
     dep_modules = get_js_dependencies(basename).map(&method(:remove_js_extension))
-    dep_modules << 'jquery' if basename == 'jquery.ui.core.js'
     File.open("#{target_dir}/#{basename}", "w") do |out|
       dep_modules.each do |mod|
         out.write("//= require #{mod}\n")
@@ -74,8 +123,8 @@ task :javascripts => :submodule do
       out.write(source_code)
     end
   end
-  File.open("#{target_dir}/jquery.effects.all.js", "w") do |out|
-    Dir.glob("jquery-ui/ui/jquery.effects.*.js").sort.each do |path|
+  File.open("#{target_dir}/jquery.ui.effect.all.js", "w") do |out|
+    Dir.glob("jquery-ui/ui/jquery.ui.effect*.js").sort.each do |path|
       asset_name = remove_js_extension(File.basename(path))
       out.write("//= require #{asset_name}\n")
     end
@@ -102,7 +151,7 @@ task :stylesheets => :submodule do
     extra_dependencies << 'jquery.ui.core' unless basename =~ /\.(all|base|core)\./
     # Is "theme" listed among the dependencies for the matching JS file?
     unless basename =~ /\.(all|base|core|theme)\./
-      dependencies = DEPENDENCY_HASH[basename.sub(/\Ajquery\./, '').sub(/\.css/, '.js')]
+      dependencies = DEPENDENCY_HASH[basename.sub(/\.css/, '.js')]
       if dependencies.nil?
         puts "Warning: No matching JavaScript dependencies found for #{basename}"
       else
