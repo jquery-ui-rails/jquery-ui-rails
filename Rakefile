@@ -54,8 +54,6 @@ end
 
 DEPENDENCY_HASH = map_dependencies
 
-LANGUAGE_REGEX = /-[-a-zA-Z]+(?=\.js\z)/
-
 def version
   JSON.load(File.read('jquery-ui/package.json'))['version']
 end
@@ -65,27 +63,18 @@ task :submodule do
 end
 
 def get_js_dependencies(basename)
-  if basename.match LANGUAGE_REGEX
-    # This is an i18n file. We used to depend on the main module for i18n
-    # files, but this slows down asset precompilation.
-    # https://github.com/joliss/jquery-ui-rails/issues/9
-    []
-  else
-    dependencies = DEPENDENCY_HASH[basename]
-    if dependencies.nil?
-      puts "Warning: No dependencies found for #{basename}"
-      dependencies = []
-    end
-    dependencies = dependencies
-      .reject { |dep| dep == 'theme' } # 'theme' pseudo-dependency handled by CSS
-    # Make sure we do not package assets with broken dependencies
-    dependencies.each do |dep|
-      unless dep == "jquery.js" || File.exist?("jquery-ui/ui/#{dep}")
-        fail "#{basename}: missing #{dep}"
-      end
-    end
-    dependencies
+  dependencies = DEPENDENCY_HASH[basename]
+  if dependencies.nil?
+    puts "Warning: No dependencies found for #{basename}"
+    dependencies = []
   end
+  # Make sure we do not package assets with broken dependencies
+  dependencies.each do |dep|
+    unless dep == "jquery.js" || File.exist?("jquery-ui/ui/#{dep}")
+      fail "#{basename}: missing #{dep}"
+    end
+  end
+  dependencies
 end
 
 def remove_js_extension(path)
@@ -109,7 +98,7 @@ task :javascripts => :submodule do
   target_dir = "vendor/assets/javascripts"
   mkdir_p target_dir
   Rake.rake_output_message 'Generating javascripts'
-  Dir.glob("jquery-ui/ui/**/*.js").each do |path|
+  Dir.glob("jquery-ui/ui/*.js").each do |path|
     basename = File.basename(path)
     dep_modules = get_js_dependencies(basename).map(&method(:remove_js_extension))
     File.open("#{target_dir}/#{basename}", "w") do |out|
@@ -123,6 +112,19 @@ task :javascripts => :submodule do
       out.write(source_code)
     end
   end
+
+  # process the i18n files separately for performance, since they will not have dependencies
+  # https://github.com/joliss/jquery-ui-rails/issues/9
+  Dir.glob("jquery-ui/ui/i18n/*.js").each do |path|
+    basename = File.basename(path)
+    File.open("#{target_dir}/#{basename}", "w") do |out|
+      source_code = File.read(path)
+      source_code.gsub!('@VERSION', version)
+      protect_copyright_notice(source_code)
+      out.write(source_code)
+    end
+  end
+
   File.open("#{target_dir}/jquery.ui.effect.all.js", "w") do |out|
     Dir.glob("jquery-ui/ui/jquery.ui.effect*.js").sort.each do |path|
       asset_name = remove_js_extension(File.basename(path))

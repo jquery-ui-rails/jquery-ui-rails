@@ -1,3 +1,5 @@
+//= require jquery.ui.effect
+
 /*!
  * jQuery UI Effects Fold 1.9.2
  * http://jqueryui.com
