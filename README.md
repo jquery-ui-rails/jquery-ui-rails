@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/joliss/jquery-ui-rails.png?branch=master)](http://travis-ci.org/joliss/jquery-ui-rails) [![Dependency Status](https://gemnasium.com/joliss/jquery-ui-rails.png)](https://gemnasium.com/joliss/jquery-ui-rails)
 
-This gem packages the jQuery UI 1.8.23 assets (JavaScripts, stylesheets, and
+This gem packages the jQuery UI 1.9.2 assets (JavaScripts, stylesheets, and
 images) for the Rails 3.1+ [asset
 pipeline](http://guides.rubyonrails.org/asset_pipeline.html), so you never have
 to download a custom package through the [web
@@ -126,21 +126,21 @@ reasons](https://github.com/joliss/jquery-ui-rails/issues/9#issuecomment-6524987
 ### Effects
 
 ```javascript
-//= require jquery.effects.all
-//= require jquery.effects.core
-//= require jquery.effects.blind
-//= require jquery.effects.bounce
-//= require jquery.effects.clip
-//= require jquery.effects.drop
-//= require jquery.effects.explode
-//= require jquery.effects.fade
-//= require jquery.effects.fold
-//= require jquery.effects.highlight
-//= require jquery.effects.pulsate
-//= require jquery.effects.scale
-//= require jquery.effects.shake
-//= require jquery.effects.slide
-//= require jquery.effects.transfer
+//= require jquery.ui.effect.all
+//= require jquery.ui.effect
+//= require jquery.ui.effect-blind
+//= require jquery.ui.effect-bounce
+//= require jquery.ui.effect-clip
+//= require jquery.ui.effect-drop
+//= require jquery.ui.effect-explode
+//= require jquery.ui.effect-fade
+//= require jquery.ui.effect-fold
+//= require jquery.ui.effect-highlight
+//= require jquery.ui.effect-pulsate
+//= require jquery.ui.effect-scale
+//= require jquery.ui.effect-shake
+//= require jquery.ui.effect-slide
+//= require jquery.ui.effect-transfer
 ```
 
 ## Stylesheet Assets
