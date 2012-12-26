@@ -1,6 +1,6 @@
 # master
 
-# 2.1.0
+# 3.0.0
 
 * Upgrade to jQuery UI 1.9.2
 * Switched from storing the map of file dependencies locally to leveraging
