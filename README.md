@@ -189,10 +189,7 @@ pulled in as dependencies.
 For bugs in jQuery UI itself, head to the [jQuery UI Development
 Center](http://jqueryui.com/development).
 
-For bugs in this gem distribution, use the GitHub issue tracker. In particular,
-the asset dependencies between files are set up by this gem, not by the jQuery
-UI upstream. If you find that a JavaScript or CSS file does not pull in its
-dependencies correctly, please open an issue!
+For bugs in this gem distribution, use the GitHub issue tracker.
 
 ### Setup
 
