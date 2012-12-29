@@ -97,11 +97,14 @@ their matching CSS files in your application.css as well.
 //= require jquery.ui.accordion
 //= require jquery.ui.autocomplete
 //= require jquery.ui.button
-//= require jquery.ui.dialog
-//= require jquery.ui.slider
-//= require jquery.ui.tabs
 //= require jquery.ui.datepicker
+//= require jquery.ui.dialog
+//= require jquery.ui.menu
 //= require jquery.ui.progressbar
+//= require jquery.ui.slider
+//= require jquery.ui.spinner
+//= require jquery.ui.tabs
+//= require jquery.ui.tooltip
 ```
 
 For all of these, remember to `require` their matching CSS files in your
@@ -174,11 +177,14 @@ pulled in as dependencies.
  *= require jquery.ui.accordion
  *= require jquery.ui.autocomplete
  *= require jquery.ui.button
- *= require jquery.ui.dialog
- *= require jquery.ui.slider
- *= require jquery.ui.tabs
  *= require jquery.ui.datepicker
+ *= require jquery.ui.dialog
+ *= require jquery.ui.menu
  *= require jquery.ui.progressbar
+ *= require jquery.ui.slider
+ *= require jquery.ui.spinner
+ *= require jquery.ui.tabs
+ *= require jquery.ui.tooltip
  */
 ```
 
