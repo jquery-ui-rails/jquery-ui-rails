@@ -1,5 +1,9 @@
 # master
 
+# 3.0.1
+
+* Fix stylesheet dependencies
+
 # 3.0.0
 
 * Upgrade to jQuery UI 1.9.2
