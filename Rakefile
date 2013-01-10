@@ -144,19 +144,26 @@ task :stylesheets => :submodule do
   target_dir = "vendor/assets/stylesheets"
   mkdir_p target_dir
   Rake.rake_output_message 'Generating stylesheets'
-  Dir.glob("jquery-ui/themes/base/*.css").each do |path|
+
+  css_dir = "jquery-ui/themes/base"
+  Dir.glob("#{css_dir}/*.css").each do |path|
     basename = File.basename(path)
     source_code = File.read(path)
     source_code.gsub!('@VERSION', version)
     protect_copyright_notice(source_code)
     extra_dependencies = []
-    extra_dependencies << 'jquery.ui.core' unless basename =~ /\.(all|base|core)\./
     # Is "theme" listed among the dependencies for the matching JS file?
-    unless basename =~ /\.(all|base|core|theme)\./
+    unless basename =~ /\.(all|base|core)\./
       dependencies = DEPENDENCY_HASH[basename.sub(/\.css/, '.js')]
       if dependencies.nil?
         puts "Warning: No matching JavaScript dependencies found for #{basename}"
+        extra_dependencies << 'jquery.ui.core'
       else
+        dependencies.each do |dependency|
+          dependency = dependency.sub(/\.js$/, '')
+          dependent_stylesheet = "#{dependency}.css"
+          extra_dependencies << dependency if File.exists?("#{css_dir}/#{dependent_stylesheet}")
+        end
         extra_dependencies << 'jquery.ui.theme'
       end
     end
