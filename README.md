@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/joliss/jquery-ui-rails.png?branch=master)](http://travis-ci.org/joliss/jquery-ui-rails) [![Dependency Status](https://gemnasium.com/joliss/jquery-ui-rails.png)](https://gemnasium.com/joliss/jquery-ui-rails)
 
-This gem packages the jQuery UI 1.9.2 assets (JavaScripts, stylesheets, and
+This gem packages the jQuery UI 1.10.0 assets (JavaScripts, stylesheets, and
 images) for the Rails 3.1+ [asset
 pipeline](http://guides.rubyonrails.org/asset_pipeline.html), so you never have
 to download a custom package through the [web
