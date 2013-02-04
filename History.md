@@ -1,5 +1,7 @@
 # master
 
+# 4.0.0
+
 * Upgrade to jQuery UI 1.10.0
 
 * No more automatic `//= require jquery`
