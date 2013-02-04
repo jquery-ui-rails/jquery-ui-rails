@@ -2,6 +2,12 @@
 
 * Upgrade to jQuery UI 1.10.0
 
+* No more automatic `//= require jquery`
+  ([#30](https://github.com/joliss/jquery-ui-rails/pull/30), original
+  discussion at [#17](https://github.com/joliss/jquery-ui-rails/pull/17)).
+  This means that you have to add `//= require jquery` to your application.js
+  file before you require any of the jQuery UI JavaScript modules.
+
 # 3.0.1
 
 * Fix stylesheet dependencies
