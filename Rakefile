@@ -40,10 +40,9 @@ def map_dependencies
 
     deps = build_info['dependencies'].keys
 
-    # jquery.ui.core.js (and only it) should depend on jquery.js itself,
-    # so we remove 'jquery' from the list of dependencies for all files except
-    # jquery.ui.core.js
-    deps.reject! {|d| d == "jquery" } unless source_file_name == 'jquery.ui.core.js'
+    # None of jquery.ui files should depend on jquery.js,
+    # so we remove 'jquery' from the list of dependencies for all files
+    deps.reject! {|d| d == "jquery" }
 
     deps.map! {|d| source_file_for_dependency_entry d }
 
@@ -70,7 +69,7 @@ def get_js_dependencies(basename)
   end
   # Make sure we do not package assets with broken dependencies
   dependencies.each do |dep|
-    unless dep == "jquery.js" || File.exist?("jquery-ui/ui/#{dep}")
+    unless File.exist?("jquery-ui/ui/#{dep}")
       fail "#{basename}: missing #{dep}"
     end
   end
