@@ -191,7 +191,7 @@ task :images => :submodule do
   target_dir = "vendor/assets/images/jquery-ui"
   mkdir_p target_dir
   Rake.rake_output_message 'Copying images'
-  FileUtils.cp(Dir.glob("jquery-ui/themes/base/images/*.png"), target_dir)
+  FileUtils.cp(Dir.glob("jquery-ui/themes/base/images/*"), target_dir)
 end
 
 desc "Clean and then generate everything (default)"
