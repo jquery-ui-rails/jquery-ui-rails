@@ -179,7 +179,7 @@ task :stylesheets => :submodule do
     # Be cute: collapse multiple require comment blocks into one
     source_code.gsub!(/^( \*= require .*)\n \*\/(\n+)\/\*\n(?= \*= require )/, '\1\2')
     # Replace hard-coded image URLs with asset path helpers
-    source_code.gsub!(/url\(images\/([-_.a-zA-Z0-9]+)\)/, 'url(<%= image_path("jquery-ui/\1") %>)')
+    source_code.gsub!(/url\("?images\/([-_.a-zA-Z0-9]+)"?\)/, 'url(<%= image_path("jquery-ui/\1") %>)')
     File.open("#{target_dir}/#{basename}.erb", "w") do |out|
       out.write(source_code)
     end
