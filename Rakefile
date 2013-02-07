@@ -179,7 +179,7 @@ task :stylesheets => :submodule do
     # Be cute: collapse multiple require comment blocks into one
     source_code.gsub!(/^( \*= require .*)\n \*\/(\n+)\/\*\n(?= \*= require )/, '\1\2')
     # Replace hard-coded image URLs with asset path helpers
-    source_code.gsub!(/url\(images\/([-_.a-zA-Z0-9]+)\)/, 'url(<%= image_path("jquery-ui/\1") %>)')
+    source_code.gsub!(/url\("?images\/([-_.a-zA-Z0-9]+)"?\)/, 'url(<%= image_path("jquery-ui/\1") %>)')
     File.open("#{target_dir}/#{basename}.erb", "w") do |out|
       out.write(source_code)
     end
@@ -191,7 +191,7 @@ task :images => :submodule do
   target_dir = "vendor/assets/images/jquery-ui"
   mkdir_p target_dir
   Rake.rake_output_message 'Copying images'
-  FileUtils.cp(Dir.glob("jquery-ui/themes/base/images/*.png"), target_dir)
+  FileUtils.cp(Dir.glob("jquery-ui/themes/base/images/*"), target_dir)
 end
 
 desc "Clean and then generate everything (default)"
