@@ -1,5 +1,7 @@
 # master
 
+* Add missing animated-overlay.gif asset and fix image path.
+
 # 4.0.0
 
 * Upgrade to jQuery UI 1.10.0
