@@ -194,8 +194,50 @@ task :images => :submodule do
   FileUtils.cp(Dir.glob("jquery-ui/themes/base/images/*"), target_dir)
 end
 
+desc "Convert stylesheets to SCSS"
+task :scss do
+  base_dir = 'vendor/assets/stylesheets'
+  scss_dir = "#{base_dir}/scss"
+  variables_hash = {}
+
+  # create scss directory, if necessary
+  Dir.mkdir(scss_dir)  unless File.directory?(scss_dir)
+
+  # convert css files to scss
+  Dir.glob("#{base_dir}/*.erb").each do |source_file|
+    stylesheet_string = File.read(source_file)
+
+    # extract vars
+    regex = /(url\(<%= image_path\([\S]+\) %>\)|[\S]+)\/\*{([a-z]+)}\*\//i
+    vars = stylesheet_string.scan regex
+
+    # write variables to gobal hash
+    vars.each do |var|
+      value = var[0]
+      name = var[1]
+      variables_hash[name] ||= value
+    end
+
+    # write destination file
+    destination_file_name = File.basename(source_file).gsub(".css.erb", ".css.scss.erb")
+    destination_file = File.open "#{scss_dir}/#{destination_file_name}", 'w'
+    if destination_file_name == 'jquery.ui.core.css.scss.erb'
+      destination_file << "@import 'jquery.ui.variables.css.scss.erb';\n"
+    end
+    destination_file << stylesheet_string.gsub(regex) { |m| "$#{$2}" }
+    destination_file.close
+  end
+
+  # write _jquery.ui.variables.css.scss.erb
+  variables_stylesheet = File.open "#{scss_dir}/_jquery.ui.variables.css.scss.erb", 'w'
+  variables_hash.each do |name, value|
+    variables_stylesheet << "$#{name}: #{value} !default;\n"
+  end
+  variables_stylesheet.close
+end
+
 desc "Clean and then generate everything (default)"
-task :assets => [:clean, :javascripts, :stylesheets, :images]
+task :assets => [:clean, :javascripts, :stylesheets, :scss, :images]
 
 task :build => :assets
 
