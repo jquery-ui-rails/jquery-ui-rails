@@ -207,6 +207,9 @@ task :scss do
   Dir.glob("#{base_dir}/*.erb").each do |source_file|
     stylesheet_string = File.read(source_file)
 
+    # replace image_path ERB with image-url Sass
+    stylesheet_string.gsub!(/<%= image_path\((\S+)\) %>/) { "image-path(#{$1})" }
+
     # extract vars
     regex = /(url\(<%= image_path\([\S]+\) %>\)|[\S]+)\/\*{([a-z]+)}\*\//i
     vars = stylesheet_string.scan regex
@@ -219,17 +222,17 @@ task :scss do
     end
 
     # write destination file
-    destination_file_name = File.basename(source_file).gsub(".css.erb", ".css.scss.erb")
+    destination_file_name = File.basename(source_file).gsub(".css.erb", ".css.scss")
     destination_file = File.open "#{scss_dir}/#{destination_file_name}", 'w'
-    if destination_file_name == 'jquery.ui.core.css.scss.erb'
-      destination_file << "@import 'jquery.ui.variables.css.scss.erb';\n"
+    if destination_file_name == 'jquery.ui.core.css.scss'
+      destination_file << "@import 'jquery.ui.variables';\n"
     end
-    destination_file << stylesheet_string.gsub(regex) { |m| "$#{$2}" }
+    destination_file << stylesheet_string.gsub(regex) { "$#{$2}" }
     destination_file.close
   end
 
-  # write _jquery.ui.variables.css.scss.erb
-  variables_stylesheet = File.open "#{scss_dir}/_jquery.ui.variables.css.scss.erb", 'w'
+  # write _jquery.ui.variables.css.scss
+  variables_stylesheet = File.open "#{scss_dir}/_jquery.ui.variables.css.scss", 'w'
   variables_hash.each do |name, value|
     variables_stylesheet << "$#{name}: #{value} !default;\n"
   end
