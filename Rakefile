@@ -210,6 +210,9 @@ task :scss do
     # replace image_path ERB with image-url Sass
     stylesheet_string.gsub!(/<%= image_path\((\S+)\) %>/) { "image-path(#{$1})" }
 
+    # remove sprockets require directives, because they don't work well with Sass variables
+    stylesheet_string.gsub! /^\s*\*=\s*require.+$/, ""
+
     # extract vars
     regex = /(url\(<%= image_path\([\S]+\) %>\)|[\S]+)\/\*{([a-z]+)}\*\//i
     vars = stylesheet_string.scan regex
