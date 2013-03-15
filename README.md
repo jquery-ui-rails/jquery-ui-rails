@@ -114,7 +114,7 @@ application.css as well.
 
 Datepicker has optional i18n modules for non-US locales, named
 `jquery.ui.datepicker-xx[-YY]`
-([list](https://github.com/joliss/jquery-ui-rails/tree/master/vendor/assets/javascripts)),
+([list](https://github.com/joliss/jquery-ui-rails/tree/master/app/assets/javascripts)),
 for example:
 
 ```javascript
