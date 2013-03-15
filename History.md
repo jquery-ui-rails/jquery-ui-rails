@@ -1,5 +1,7 @@
 # master
 
+# 4.0.2
+
 * Rails 4 compatibility.
 
 # 4.0.1
