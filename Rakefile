@@ -87,14 +87,14 @@ def protect_copyright_notice(source_code)
   source_code.gsub!(/\A\s*\/\*\r?\n/, "/*!\n")
 end
 
-desc "Remove the vendor directory"
+desc "Remove the app directory"
 task :clean do
-  rm_rf 'vendor'
+  rm_rf 'app'
 end
 
 desc "Generate the JavaScript assets"
 task :javascripts => :submodule do
-  target_dir = "vendor/assets/javascripts"
+  target_dir = "app/assets/javascripts"
   mkdir_p target_dir
   Rake.rake_output_message 'Generating javascripts'
   Dir.glob("jquery-ui/ui/*.js").each do |path|
@@ -140,7 +140,7 @@ end
 
 desc "Generate the CSS assets"
 task :stylesheets => :submodule do
-  target_dir = "vendor/assets/stylesheets"
+  target_dir = "app/assets/stylesheets"
   mkdir_p target_dir
   Rake.rake_output_message 'Generating stylesheets'
 
@@ -188,7 +188,7 @@ end
 
 desc "Generate the image assets"
 task :images => :submodule do
-  target_dir = "vendor/assets/images/jquery-ui"
+  target_dir = "app/assets/images/jquery-ui"
   mkdir_p target_dir
   Rake.rake_output_message 'Copying images'
   FileUtils.cp(Dir.glob("jquery-ui/themes/base/images/*"), target_dir)
