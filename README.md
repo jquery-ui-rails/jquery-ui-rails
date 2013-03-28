@@ -8,6 +8,10 @@ pipeline](http://guides.rubyonrails.org/asset_pipeline.html), so you never have
 to download a custom package through the [web
 interface](http://jqueryui.com/download) again.
 
+Also check out the
+[jquery-ui-sass-rails](https://github.com/jhilden/jquery-ui-sass-rails) gem,
+which allows you to override theme variables with Sass.
+
 ## Usage
 
 In your Gemfile, add:
