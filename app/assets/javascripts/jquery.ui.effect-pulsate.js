@@ -1,7 +1,7 @@
 //= require jquery.ui.effect
 
 /*!
- * jQuery UI Effects Pulsate 1.10.0
+ * jQuery UI Effects Pulsate 1.10.3
  * http://jqueryui.com
  *
  * Copyright 2013 jQuery Foundation and other contributors

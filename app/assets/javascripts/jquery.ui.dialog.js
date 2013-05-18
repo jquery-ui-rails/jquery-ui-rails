@@ -6,7 +6,7 @@
 //= require jquery.ui.resizable
 
 /*!
- * jQuery UI Dialog 1.10.0
+ * jQuery UI Dialog 1.10.3
  * http://jqueryui.com
  *
  * Copyright 2013 jQuery Foundation and other contributors
@@ -43,7 +43,7 @@ var sizeRelatedOptions = {
 	};
 
 $.widget( "ui.dialog", {
-	version: "1.10.0",
+	version: "1.10.3",
 	options: {
 		appendTo: "body",
 		autoOpen: true,
@@ -214,6 +214,7 @@ $.widget( "ui.dialog", {
 	},
 
 	open: function() {
+		var that = this;
 		if ( this._isOpen ) {
 			if ( this._moveToTop() ) {
 				this._focusTabbable();
@@ -221,19 +222,19 @@ $.widget( "ui.dialog", {
 			return;
 		}
 
+		this._isOpen = true;
 		this.opener = $( this.document[0].activeElement );
 
 		this._size();
 		this._position();
 		this._createOverlay();
 		this._moveToTop( null, true );
-		this._show( this.uiDialog, this.options.show );
+		this._show( this.uiDialog, this.options.show, function() {
+			that._focusTabbable();
+			that._trigger("focus");
+		});
 
-		this._focusTabbable();
-
-		this._isOpen = true;
 		this._trigger("open");
-		this._trigger("focus");
 	},
 
 	_focusTabbable: function() {
@@ -402,7 +403,7 @@ $.widget( "ui.dialog", {
 		this.uiDialogButtonPane.remove();
 		this.uiButtonSet.empty();
 
-		if ( $.isEmptyObject( buttons ) ) {
+		if ( $.isEmptyObject( buttons ) || ($.isArray( buttons ) && !buttons.length) ) {
 			this.uiDialog.removeClass("ui-dialog-buttons");
 			return;
 		}
@@ -450,6 +451,7 @@ $.widget( "ui.dialog", {
 			containment: "document",
 			start: function( event, ui ) {
 				$( this ).addClass("ui-dialog-dragging");
+				that._blockFrames();
 				that._trigger( "dragStart", event, filteredUi( ui ) );
 			},
 			drag: function( event, ui ) {
@@ -461,6 +463,7 @@ $.widget( "ui.dialog", {
 					ui.position.top - that.document.scrollTop()
 				];
 				$( this ).removeClass("ui-dialog-dragging");
+				that._unblockFrames();
 				that._trigger( "dragStop", event, filteredUi( ui ) );
 			}
 		});
@@ -497,6 +500,7 @@ $.widget( "ui.dialog", {
 			handles: resizeHandles,
 			start: function( event, ui ) {
 				$( this ).addClass("ui-dialog-resizing");
+				that._blockFrames();
 				that._trigger( "resizeStart", event, filteredUi( ui ) );
 			},
 			resize: function( event, ui ) {
@@ -506,6 +510,7 @@ $.widget( "ui.dialog", {
 				options.height = $( this ).height();
 				options.width = $( this ).width();
 				$( this ).removeClass("ui-dialog-resizing");
+				that._unblockFrames();
 				that._trigger( "resizeStop", event, filteredUi( ui ) );
 			}
 		})
@@ -672,11 +677,45 @@ $.widget( "ui.dialog", {
 		}
 	},
 
+	_blockFrames: function() {
+		this.iframeBlocks = this.document.find( "iframe" ).map(function() {
+			var iframe = $( this );
+
+			return $( "<div>" )
+				.css({
+					position: "absolute",
+					width: iframe.outerWidth(),
+					height: iframe.outerHeight()
+				})
+				.appendTo( iframe.parent() )
+				.offset( iframe.offset() )[0];
+		});
+	},
+
+	_unblockFrames: function() {
+		if ( this.iframeBlocks ) {
+			this.iframeBlocks.remove();
+			delete this.iframeBlocks;
+		}
+	},
+
+	_allowInteraction: function( event ) {
+		if ( $( event.target ).closest(".ui-dialog").length ) {
+			return true;
+		}
+
+		// TODO: Remove hack when datepicker implements
+		// the .ui-front logic (#8989)
+		return !!$( event.target ).closest(".ui-datepicker").length;
+	},
+
 	_createOverlay: function() {
 		if ( !this.options.modal ) {
 			return;
 		}
 
+		var that = this,
+			widgetFullName = this.widgetFullName;
 		if ( !$.ui.dialog.overlayInstances ) {
 			// Prevent use of anchors and inputs.
 			// We use a delay in case the overlay is created from an
@@ -684,13 +723,11 @@ $.widget( "ui.dialog", {
 			this._delay(function() {
 				// Handle .dialog().dialog("close") (#4065)
 				if ( $.ui.dialog.overlayInstances ) {
-					this._on( this.document, {
-						focusin: function( event ) {
-							if ( !$( event.target ).closest(".ui-dialog").length ) {
-								event.preventDefault();
-								$(".ui-dialog:visible:last .ui-dialog-content")
-									.data("ui-dialog")._focusTabbable();
-							}
+					this.document.bind( "focusin.dialog", function( event ) {
+						if ( !that._allowInteraction( event ) ) {
+							event.preventDefault();
+							$(".ui-dialog:visible:last .ui-dialog-content")
+								.data( widgetFullName )._focusTabbable();
 						}
 					});
 				}
@@ -699,7 +736,7 @@ $.widget( "ui.dialog", {
 
 		this.overlay = $("<div>")
 			.addClass("ui-widget-overlay ui-front")
-			.appendTo( this.document[0].body );
+			.appendTo( this._appendTo() );
 		this._on( this.overlay, {
 			mousedown: "_keepFocus"
 		});
@@ -711,11 +748,15 @@ $.widget( "ui.dialog", {
 			return;
 		}
 
-		$.ui.dialog.overlayInstances--;
-		if ( !$.ui.dialog.overlayInstances ) {
-			this._off( this.document, "focusin" );
+		if ( this.overlay ) {
+			$.ui.dialog.overlayInstances--;
+
+			if ( !$.ui.dialog.overlayInstances ) {
+				this.document.unbind( "focusin.dialog" );
+			}
+			this.overlay.remove();
+			this.overlay = null;
 		}
-		this.overlay.remove();
 	}
 });
 

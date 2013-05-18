@@ -3,7 +3,7 @@
 //= require jquery.ui.mouse
 
 /*!
- * jQuery UI Resizable 1.10.0
+ * jQuery UI Resizable 1.10.3
  * http://jqueryui.com
  *
  * Copyright 2013 jQuery Foundation and other contributors
@@ -28,7 +28,7 @@ function isNumber(value) {
 }
 
 $.widget("ui.resizable", $.ui.mouse, {
-	version: "1.10.0",
+	version: "1.10.3",
 	widgetEventPrefix: "resize",
 	options: {
 		alsoResize: false,

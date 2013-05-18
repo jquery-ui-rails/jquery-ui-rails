@@ -1,5 +1,7 @@
 # master
 
+* Upgrade to jQuery UI 1.10.3
+
 # 4.0.2
 
 * Rails 4 compatibility

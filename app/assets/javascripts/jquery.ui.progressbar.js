@@ -2,7 +2,7 @@
 //= require jquery.ui.widget
 
 /*!
- * jQuery UI Progressbar 1.10.0
+ * jQuery UI Progressbar 1.10.3
  * http://jqueryui.com
  *
  * Copyright 2013 jQuery Foundation and other contributors
@@ -18,7 +18,7 @@
 (function( $, undefined ) {
 
 $.widget( "ui.progressbar", {
-	version: "1.10.0",
+	version: "1.10.3",
 	options: {
 		max: 100,
 		value: 0,
