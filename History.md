@@ -1,5 +1,7 @@
 # master
 
+* Include license in gemspec
+
 # 4.0.3
 
 * Upgrade to jQuery UI 1.10.3
