@@ -1,5 +1,7 @@
 # master
 
+# 4.0.4
+
 * Include license in gemspec
 
 # 4.0.3
