@@ -15,10 +15,9 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
-
-  gem 'jquery-ui-rails', :path => '..'
 end
 
+gem 'jquery-ui-rails', :path => '..'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
