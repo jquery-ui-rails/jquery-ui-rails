@@ -14,7 +14,6 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">= 1.3.6"
 
   s.add_dependency "railties", ">= 3.1.0"
-  s.add_dependency "jquery-rails"
 
   s.add_development_dependency "json", "~> 1.7"
 

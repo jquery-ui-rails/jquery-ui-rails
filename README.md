@@ -12,6 +12,10 @@ Also check out the
 [jquery-ui-sass-rails](https://github.com/jhilden/jquery-ui-sass-rails) gem,
 which allows you to override theme variables with Sass.
 
+*Note: As of version 4.0.5, jquery-ui-rails has dropped its unused dependency
+on the `jquery-rails` gem. If you get an error "couldn't find file 'jquery'",
+you may need to explicitly add `gem 'jquery-rails'` to your Gemfile.*
+
 ## Usage
 
 In your Gemfile, add:
