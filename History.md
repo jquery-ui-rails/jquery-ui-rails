@@ -1,5 +1,7 @@
 # master
 
+# 4.0.5
+
 * Remove unused dependency on the `jquery-rails` gem. If you get an error
   "couldn't find file 'jquery'", you may need to explicitly add `gem
   'jquery-rails'` to your Gemfile.
