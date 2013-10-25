@@ -94,9 +94,11 @@ end
 
 desc "Generate the JavaScript assets"
 task :javascripts => :submodule do
+  Rake.rake_output_message 'Generating javascripts'
+
   target_dir = "app/assets/javascripts"
   mkdir_p target_dir
-  Rake.rake_output_message 'Generating javascripts'
+
   Dir.glob("jquery-ui/ui/*.js").each do |path|
     basename = File.basename(path)
     dep_modules = get_js_dependencies(basename).map(&method(:remove_js_extension))
@@ -140,9 +142,10 @@ end
 
 desc "Generate the CSS assets"
 task :stylesheets => :submodule do
+  Rake.rake_output_message 'Generating stylesheets'
+
   target_dir = "app/assets/stylesheets"
   mkdir_p target_dir
-  Rake.rake_output_message 'Generating stylesheets'
 
   css_dir = "jquery-ui/themes/base"
   Dir.glob("#{css_dir}/*.css").each do |path|
@@ -188,9 +191,11 @@ end
 
 desc "Generate the image assets"
 task :images => :submodule do
+  Rake.rake_output_message 'Copying images'
+
   target_dir = "app/assets/images/jquery-ui"
   mkdir_p target_dir
-  Rake.rake_output_message 'Copying images'
+
   FileUtils.cp(Dir.glob("jquery-ui/themes/base/images/*"), target_dir)
 end
 
