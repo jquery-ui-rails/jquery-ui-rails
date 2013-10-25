@@ -1,5 +1,7 @@
 # master
 
+# 4.1.0
+
 * Add Jquery::Ui::Rails::JQUERY_UI_VERSION constant
 
 # 4.0.5
