@@ -1,5 +1,7 @@
 # master
 
+* Add Jquery::Ui::Rails::JQUERY_UI_VERSION constant
+
 # 4.0.5
 
 * Remove unused dependency on the `jquery-rails` gem. If you get an error

@@ -194,8 +194,22 @@ task :images => :submodule do
   FileUtils.cp(Dir.glob("jquery-ui/themes/base/images/*"), target_dir)
 end
 
+desc "Update Jquery::Ui::Rails::JQUERY_UI_VERSION"
+task :version => :submodule do
+  Rake.rake_output_message "Setting Jquery::Ui::Rails::JQUERY_UI_VERSION = \"#{version}\""
+
+  versionRb = 'lib/jquery/ui/rails/version.rb'
+  versionRbSource = File.read(versionRb)
+  versionDefinition = "JQUERY_UI_VERSION = \"#{version}\""
+  versionRbSource.sub! /JQUERY_UI_VERSION = "[^"]*"/, versionDefinition \
+    or fail "Could not find JQUERY_UI_VERSION in #{versionRb}"
+  File.open(versionRb, 'w') do |out|
+    out.write(versionRbSource)
+  end
+end
+
 desc "Clean and then generate everything (default)"
-task :assets => [:clean, :javascripts, :stylesheets, :images]
+task :assets => [:clean, :javascripts, :stylesheets, :images, :version]
 
 task :build => :assets
 
