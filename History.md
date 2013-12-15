@@ -1,5 +1,8 @@
 # master
 
+* Declare image dependencies using `//= depend_on_asset`, to stop the
+  Sprockets cache from going stale.
+
 # 4.1.0
 
 * Add Jquery::Ui::Rails::JQUERY_UI_VERSION constant
