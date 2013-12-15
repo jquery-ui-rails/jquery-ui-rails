@@ -1,5 +1,7 @@
 # master
 
+# 4.1.1
+
 * Declare image dependencies using `//= depend_on_asset`, to stop the
   Sprockets cache from going stale.
 
