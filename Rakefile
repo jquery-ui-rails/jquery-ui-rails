@@ -88,6 +88,13 @@ def protect_copyright_notice(source_code)
   source_code.gsub!(/\A\s*\/\*\r?\n/, "/*!\n")
 end
 
+def build_image_dependencies(source_code)
+  image_dependencies = Set.new source_code.scan(/url\("?images\/([-_.a-zA-Z0-9]+)"?\)/).map(&:first)
+  code = image_dependencies.inject("") do |acc, img|
+    acc += " *= depend_on_asset \"jquery-ui/#{img}\"\n"
+  end
+end
+
 desc "Remove the app directory"
 task :clean do
   rm_rf 'app'
@@ -141,13 +148,6 @@ task :javascripts => :submodule do
   end
 end
 
-def build_image_dependencies(source_code)
-  image_dependencies = Set.new source_code.scan(/url\("?images\/([-_.a-zA-Z0-9]+)"?\)/).map(&:first)
-  code = image_dependencies.inject("") do |acc, img|
-    acc += " *= depend_on_asset \"jquery-ui/#{img}\"\n"
-  end
-end
-
 desc "Generate the CSS assets"
 task :stylesheets => :submodule do
   Rake.rake_output_message 'Generating stylesheets'
@@ -162,7 +162,6 @@ task :stylesheets => :submodule do
     source_code.gsub!('@VERSION', version)
     protect_copyright_notice(source_code)
     extra_dependencies = []
-
     # Is "theme" listed among the dependencies for the matching JS file?
     unless basename =~ /\.(all|base|core)\./
       dependencies = DEPENDENCY_HASH[basename.sub(/\.css/, '.js')]
@@ -181,7 +180,6 @@ task :stylesheets => :submodule do
     extra_dependencies.reverse.each do |dep|
       # Add after first comment block
       source_code = source_code.sub(/\A((.*?\*\/\n)?)/m, "\\1/*\n *= require #{dep}\n */\n")
-
     end
     # Use "require" instead of @import
     source_code.gsub!(/^@import (.*)$/) { |s|
@@ -191,18 +189,13 @@ task :stylesheets => :submodule do
     }
     # Be cute: collapse multiple require comment blocks into one
     source_code.gsub!(/^( \*= require .*)\n \*\/(\n+)\/\*\n(?= \*= require )/, '\1\2')
-
-
     source_code.gsub!(/\A(\/\*!.+?\*\/\s)/m, "\\1\n/*\n#{build_image_dependencies(source_code)} */\n\n") unless build_image_dependencies(source_code).empty?
-
     # Replace hard-coded image URLs with asset path helpers
     source_code.gsub!(/url\("?images\/([-_.a-zA-Z0-9]+)"?\)/, 'url(<%= image_path("jquery-ui/\1") %>)')
-
     File.open("#{target_dir}/#{basename}.erb", "w") do |out|
       out.write(source_code)
     end
   end
-
 end
 
 desc "Generate the image assets"
