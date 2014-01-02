@@ -1,6 +1,8 @@
 # jquery-ui-rails
 
-[![Build Status](https://secure.travis-ci.org/joliss/jquery-ui-rails.png?branch=master)](http://travis-ci.org/joliss/jquery-ui-rails) [![Dependency Status](https://gemnasium.com/joliss/jquery-ui-rails.png)](https://gemnasium.com/joliss/jquery-ui-rails)
+[![Build Status](https://secure.travis-ci.org/joliss/jquery-ui-rails.png?branch=master)](http://travis-ci.org/joliss/jquery-ui-rails)
+[![Dependency Status](https://gemnasium.com/joliss/jquery-ui-rails.png)](https://gemnasium.com/joliss/jquery-ui-rails)
+[![Analytics](https://ga-beacon.appspot.com/UA-46802684-1/jquery-ui-rails/README.md?pixel)](https://github.com/igrigorik/ga-beacon)
 
 This gem packages the jQuery UI 1.10.0 assets (JavaScripts, stylesheets, and
 images) for the Rails 3.1+ [asset
