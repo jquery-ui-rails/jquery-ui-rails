@@ -4,7 +4,7 @@
 [![Dependency Status](https://gemnasium.com/joliss/jquery-ui-rails.png)](https://gemnasium.com/joliss/jquery-ui-rails)
 [![Analytics](https://ga-beacon.appspot.com/UA-46802684-1/jquery-ui-rails/README.md?pixel)](https://github.com/igrigorik/ga-beacon)
 
-This gem packages the jQuery UI 1.10.0 assets (JavaScripts, stylesheets, and
+This gem packages the jQuery UI assets (JavaScripts, stylesheets, and
 images) for the Rails 3.1+ [asset
 pipeline](http://guides.rubyonrails.org/asset_pipeline.html), so you never have
 to download a custom package through the [web
