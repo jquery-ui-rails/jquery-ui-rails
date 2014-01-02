@@ -1,4 +1,4 @@
-# Bundled Versions
+# Bundled Versions [![Analytics](https://ga-beacon.appspot.com/UA-46802684-1/jquery-ui-rails/VERSIONS.md?pixel)](https://github.com/igrigorik/ga-beacon)
 
 | Gem    | jQuery UI |
 |--------|-----------|
