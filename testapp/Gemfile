@@ -19,6 +19,7 @@ end
 
 gem 'jquery-ui-rails', :path => '..'
 gem 'jquery-rails'
+gem 'sprockets_better_errors', git: 'git://github.com/schneems/sprockets_better_errors'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

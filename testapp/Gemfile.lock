@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/schneems/sprockets_better_errors
+  revision: 0c4d99fb1102cffbb0aa565a2baf236e90e819a3
+  specs:
+    sprockets_better_errors (0.0.4)
+      sprockets-rails (>= 1.0.0)
+
 PATH
   remote: ..
   specs:
@@ -95,5 +102,6 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails!
   rails (~> 4.0.2)
+  sprockets_better_errors!
   sqlite3
   uglifier (>= 1.0.3)
