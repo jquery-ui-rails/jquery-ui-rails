@@ -1,5 +1,9 @@
 # master
 
+# 4.1.2
+
+* Re-release 4.1.0 as 4.1.2; last version compatible with Rails 3.1
+
 # 4.1.1
 
 * Declare image dependencies using `//= depend_on_asset`, to stop the
