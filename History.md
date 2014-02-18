@@ -1,5 +1,7 @@
 # master
 
+* Bump Rails dependency to `>=3.2.16`
+
 # 4.1.2
 
 * Re-release 4.1.0 as 4.1.2; last version compatible with Rails 3.1
