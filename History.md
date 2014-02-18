@@ -1,6 +1,9 @@
 # master
 
+# 4.2.0
+
 * Bump Rails dependency to `>=3.2.16`
+* Re-release 4.1.1 as 4.2.0
 
 # 4.1.2
 
