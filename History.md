@@ -1,5 +1,7 @@
 # master
 
+* Update to jQuery UI 1.10.4
+
 # 4.2.0
 
 * Bump Rails dependency to `>=3.2.16`

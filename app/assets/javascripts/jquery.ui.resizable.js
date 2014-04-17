@@ -3,10 +3,10 @@
 //= require jquery.ui.mouse
 
 /*!
- * jQuery UI Resizable 1.10.3
+ * jQuery UI Resizable 1.10.4
  * http://jqueryui.com
  *
- * Copyright 2013 jQuery Foundation and other contributors
+ * Copyright 2014 jQuery Foundation and other contributors
  * Released under the MIT license.
  * http://jquery.org/license
  *
@@ -28,7 +28,7 @@ function isNumber(value) {
 }
 
 $.widget("ui.resizable", $.ui.mouse, {
-	version: "1.10.3",
+	version: "1.10.4",
 	widgetEventPrefix: "resize",
 	options: {
 		alsoResize: false,
@@ -297,7 +297,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 		//Store needed variables
 		this.offset = this.helper.offset();
 		this.position = { left: curleft, top: curtop };
-		this.size = this._helper ? { width: el.outerWidth(), height: el.outerHeight() } : { width: el.width(), height: el.height() };
+		this.size = this._helper ? { width: this.helper.width(), height: this.helper.height() } : { width: el.width(), height: el.height() };
 		this.originalSize = this._helper ? { width: el.outerWidth(), height: el.outerHeight() } : { width: el.width(), height: el.height() };
 		this.originalPosition = { left: curleft, top: curtop };
 		this.sizeDiff = { width: el.outerWidth() - el.width(), height: el.outerHeight() - el.height() };
@@ -778,8 +778,8 @@ $.ui.plugin.add("resizable", "containment", {
 		isParent = that.containerElement.get(0) === that.element.parent().get(0);
 		isOffsetRelative = /relative|absolute/.test(that.containerElement.css("position"));
 
-		if(isParent && isOffsetRelative) {
-			woset -= that.parentData.left;
+		if ( isParent && isOffsetRelative ) {
+			woset -= Math.abs( that.parentData.left );
 		}
 
 		if (woset + that.size.width >= that.parentData.width) {
@@ -960,10 +960,20 @@ $.ui.plugin.add("resizable", "grid", {
 			that.size.height = newHeight;
 			that.position.left = op.left - ox;
 		} else {
-			that.size.width = newWidth;
-			that.size.height = newHeight;
-			that.position.top = op.top - oy;
-			that.position.left = op.left - ox;
+			if ( newHeight - gridY > 0 ) {
+				that.size.height = newHeight;
+				that.position.top = op.top - oy;
+			} else {
+				that.size.height = gridY;
+				that.position.top = op.top + os.height - gridY;
+			}
+			if ( newWidth - gridX > 0 ) {
+				that.size.width = newWidth;
+				that.position.left = op.left - ox;
+			} else {
+				that.size.width = gridX;
+				that.position.left = op.left + os.width - gridX;
+			}
 		}
 	}
 
