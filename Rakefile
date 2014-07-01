@@ -3,9 +3,9 @@ require 'json'
 require 'bundler/gem_tasks'
 
 # returns the source filename for a given JSON build file
-# (e.g., "ui.core.jquery.json" returns "jquery.ui.core.js")
+# (e.g., "ui.core.jquery.json" returns "core.js")
 def source_file_for_build_file(build_file)
-  "jquery.#{build_file.sub('.jquery.json', '')}.js"
+  "#{build_file.sub('ui.', '').sub('.jquery.json', '')}.js"
 end
 
 # returns the source filename for a named file in the 'dependencies'
@@ -27,7 +27,7 @@ def source_file_for_dependency_entry(dep_entry)
   return "jquery.js" if dep_entry == 'jquery'
 
   # otherwise, tack 'jquery.' on the front
-  "jquery.#{dep_entry}.js"
+  "#{dep_entry.sub 'ui.', ''}.js"
 end
 
 # return a Hash of dependency info, whose keys are jquery-ui
@@ -52,7 +52,9 @@ def map_dependencies
   dependencies
 end
 
-DEPENDENCY_HASH = map_dependencies
+def dependency_hash
+  @dependency_hash ||= map_dependencies
+end
 
 def version
   JSON.load(File.read('jquery-ui/package.json'))['version']
@@ -63,7 +65,7 @@ task :submodule do
 end
 
 def get_js_dependencies(basename)
-  dependencies = DEPENDENCY_HASH[basename]
+  dependencies = dependency_hash[basename]
   if dependencies.nil?
     puts "Warning: No dependencies found for #{basename}"
     dependencies = []
@@ -105,14 +107,15 @@ task :javascripts => :submodule do
   Rake.rake_output_message 'Generating javascripts'
 
   target_dir = "app/assets/javascripts"
-  mkdir_p target_dir
+  target_ui_dir = "#{target_dir}/jquery-ui"
+  mkdir_p target_ui_dir
 
   Dir.glob("jquery-ui/ui/*.js").each do |path|
     basename = File.basename(path)
     dep_modules = get_js_dependencies(basename).map(&method(:remove_js_extension))
-    File.open("#{target_dir}/#{basename}", "w") do |out|
+    File.open("#{target_ui_dir}/#{basename}", "w") do |out|
       dep_modules.each do |mod|
-        out.write("//= require #{mod}\n")
+        out.write("//= require jquery-ui/#{mod}\n")
       end
       out.write("\n") unless dep_modules.empty?
       source_code = File.read(path)
@@ -126,7 +129,7 @@ task :javascripts => :submodule do
   # https://github.com/joliss/jquery-ui-rails/issues/9
   Dir.glob("jquery-ui/ui/i18n/*.js").each do |path|
     basename = File.basename(path)
-    File.open("#{target_dir}/#{basename}", "w") do |out|
+    File.open("#{target_ui_dir}/#{basename}", "w") do |out|
       source_code = File.read(path)
       source_code.gsub!('@VERSION', version)
       protect_copyright_notice(source_code)
@@ -134,16 +137,16 @@ task :javascripts => :submodule do
     end
   end
 
-  File.open("#{target_dir}/jquery.ui.effect.all.js", "w") do |out|
-    Dir.glob("jquery-ui/ui/jquery.ui.effect*.js").sort.each do |path|
+  File.open("#{target_ui_dir}/effect.all.js", "w") do |out|
+    Dir.glob("jquery-ui/ui/effect*.js").sort.each do |path|
       asset_name = remove_js_extension(File.basename(path))
-      out.write("//= require #{asset_name}\n")
+      out.write("//= require jquery-ui/#{asset_name}\n")
     end
   end
-  File.open("#{target_dir}/jquery.ui.all.js", "w") do |out|
+  File.open("#{target_dir}/jquery-ui.js", "w") do |out|
     Dir.glob("jquery-ui/ui/*.js").sort.each do |path|
       asset_name = remove_js_extension(File.basename(path))
-      out.write("//= require #{asset_name}\n")
+      out.write("//= require jquery-ui/#{asset_name}\n")
     end
   end
 end
@@ -153,7 +156,12 @@ task :stylesheets => :submodule do
   Rake.rake_output_message 'Generating stylesheets'
 
   target_dir = "app/assets/stylesheets"
-  mkdir_p target_dir
+  target_ui_dir = "#{target_dir}/jquery-ui"
+  mkdir_p target_ui_dir
+
+  File.open("#{target_dir}/jquery-ui.css", "w") do |out|
+    out.write("//= require jquery-ui/all\n")
+  end
 
   css_dir = "jquery-ui/themes/base"
   Dir.glob("#{css_dir}/*.css").each do |path|
@@ -164,35 +172,31 @@ task :stylesheets => :submodule do
     extra_dependencies = []
     # Is "theme" listed among the dependencies for the matching JS file?
     unless basename =~ /\.(all|base|core)\./
-      dependencies = DEPENDENCY_HASH[basename.sub(/\.css/, '.js')]
-      if dependencies.nil?
-        puts "Warning: No matching JavaScript dependencies found for #{basename}"
-        extra_dependencies << 'jquery.ui.core'
-      else
+      if dependencies = dependency_hash[basename.sub(/\.css/, '.js')]
         dependencies.each do |dependency|
           dependency = dependency.sub(/\.js$/, '')
           dependent_stylesheet = "#{dependency}.css"
           extra_dependencies << dependency if File.exists?("#{css_dir}/#{dependent_stylesheet}")
         end
-        extra_dependencies << 'jquery.ui.theme'
+        extra_dependencies << 'theme'
       end
     end
     extra_dependencies.reverse.each do |dep|
       # Add after first comment block
-      source_code = source_code.sub(/\A((.*?\*\/\n)?)/m, "\\1/*\n *= require #{dep}\n */\n")
+      source_code = source_code.sub(/\A((.*?\*\/\n)?)/m, "\\1/*\n *= require jquery-ui/#{dep}\n */\n")
     end
     # Use "require" instead of @import
     source_code.gsub!(/^@import (.*)$/) { |s|
       m = s.match(/^@import (url\()?"(?<module>[-_.a-zA-Z]+)\.css"\)?;/) \
         or fail "Cannot parse import: #{s}"
-      "/*\n *= require #{m['module']}\n */"
+      "/*\n *= require jquery-ui/#{m['module']}\n */"
     }
     # Be cute: collapse multiple require comment blocks into one
     source_code.gsub!(/^( \*= require .*)\n \*\/(\n+)\/\*\n(?= \*= require )/, '\1\2')
     source_code.gsub!(/\A(\/\*!.+?\*\/\s)/m, "\\1\n/*\n#{build_image_dependencies(source_code)} */\n\n") unless build_image_dependencies(source_code).empty?
     # Replace hard-coded image URLs with asset path helpers
     source_code.gsub!(/url\("?images\/([-_.a-zA-Z0-9]+)"?\)/, 'url(<%= image_path("jquery-ui/\1") %>)')
-    File.open("#{target_dir}/#{basename}.erb", "w") do |out|
+    File.open("#{target_ui_dir}/#{basename}.erb", "w") do |out|
       out.write(source_code)
     end
   end
