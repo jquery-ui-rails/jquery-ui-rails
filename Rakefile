@@ -5,7 +5,7 @@ require 'bundler/gem_tasks'
 # returns the source filename for a given JSON build file
 # (e.g., "ui.core.jquery.json" returns "jquery.ui.core.js")
 def source_file_for_build_file(build_file)
-  "jquery.#{build_file.sub('.jquery.json', '')}.js"
+  "#{/ui\.(.*)\.jquery\.json/.match(build_file)}.js"
 end
 
 # returns the source filename for a named file in the 'dependencies'
@@ -167,14 +167,14 @@ task :stylesheets => :submodule do
       dependencies = DEPENDENCY_HASH[basename.sub(/\.css/, '.js')]
       if dependencies.nil?
         puts "Warning: No matching JavaScript dependencies found for #{basename}"
-        extra_dependencies << 'jquery.ui.core'
+        extra_dependencies << 'core'
       else
         dependencies.each do |dependency|
           dependency = dependency.sub(/\.js$/, '')
           dependent_stylesheet = "#{dependency}.css"
           extra_dependencies << dependency if File.exists?("#{css_dir}/#{dependent_stylesheet}")
         end
-        extra_dependencies << 'jquery.ui.theme'
+        extra_dependencies << 'theme'
       end
     end
     extra_dependencies.reverse.each do |dep|
