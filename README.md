@@ -100,8 +100,8 @@ other JavaScript modules as needed.
 //= require jquery-ui/sortable
 ```
 
-For `jquery-ui/resizable` and `jquery-ui/selectable`, remember to `require`
-their matching CSS files in your application.css as well.
+For all but `jquery-ui/droppable`, remember to `require` their matching CSS
+files in your application.css as well.
 
 ### Widgets
 
@@ -113,6 +113,7 @@ their matching CSS files in your application.css as well.
 //= require jquery-ui/dialog
 //= require jquery-ui/menu
 //= require jquery-ui/progressbar
+//= require jquery-ui/selectmenu
 //= require jquery-ui/slider
 //= require jquery-ui/spinner
 //= require jquery-ui/tabs
@@ -151,9 +152,11 @@ reasons](https://github.com/joliss/jquery-ui-rails/issues/9#issuecomment-6524987
 //= require jquery-ui/effect-fade
 //= require jquery-ui/effect-fold
 //= require jquery-ui/effect-highlight
+//= require jquery-ui/effect-puff
 //= require jquery-ui/effect-pulsate
 //= require jquery-ui/effect-scale
 //= require jquery-ui/effect-shake
+//= require jquery-ui/effect-size
 //= require jquery-ui/effect-slide
 //= require jquery-ui/effect-transfer
 ```
@@ -177,8 +180,10 @@ pulled in as dependencies.
 
 ```css
 /*
+ *= require jquery-ui/draggable
  *= require jquery-ui/resizable
  *= require jquery-ui/selectable
+ *= require jquery-ui/sortable
  */
 ```
 
@@ -193,6 +198,7 @@ pulled in as dependencies.
  *= require jquery-ui/dialog
  *= require jquery-ui/menu
  *= require jquery-ui/progressbar
+ *= require jquery-ui/selectmenu
  *= require jquery-ui/slider
  *= require jquery-ui/spinner
  *= require jquery-ui/tabs
