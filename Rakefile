@@ -18,15 +18,13 @@ end
 #      "ui.widget": "1.9.2"
 #    },
 #
-# then "ui.widget" returns "jquery.ui.widget.js")
+# then "ui.widget" returns "widget.js")
 #
 # The only exception is "jquery", which doesn't follow the
-# same naming conventions so its a special case.
+# same naming conventions so it's a special case.
 def source_file_for_dependency_entry(dep_entry)
-  # if the dependent file is jquery.js itself, return its filename
   return "jquery.js" if dep_entry == 'jquery'
 
-  # otherwise, tack 'jquery.' on the front
   "#{dep_entry.sub 'ui.', ''}.js"
 end
 
