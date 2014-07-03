@@ -1,7 +1,7 @@
 # master
 
 * Update to jQuery UI 1.11.0
-* Replace jquery.ui.`*`.js/css to jquery-ui/`*`.js/css
+* Rename `jquery.ui.*.{js,css}` to `jquery-ui/*.{js,css}`
 * Add jquery-ui.js and jquery-ui.css assets
 
 # 4.2.1
