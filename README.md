@@ -33,14 +33,14 @@ gem 'jquery-ui-rails'
 To require all jQuery UI modules, add the following to your application.js:
 
 ```javascript
-//= require jquery.ui.all
+//= require jquery-ui
 ```
 
 Also add the jQuery UI CSS to your application.css:
 
 ```css
 /*
- *= require jquery.ui.all
+ *= require jquery-ui
  */
 ```
 
@@ -65,14 +65,14 @@ For example, if you only need the datepicker module, add this to your
 application.js:
 
 ```javascript
-//= require jquery.ui.datepicker
+//= require jquery-ui/datepicker
 ```
 
 In your application.css, require the corresponding CSS module:
 
 ```css
 /*
- *= require jquery.ui.datepicker
+ *= require jquery-ui/datepicker
  */
 ```
 
@@ -81,10 +81,10 @@ In your application.css, require the corresponding CSS module:
 ### UI Core
 
 ```javascript
-//= require jquery.ui.core
-//= require jquery.ui.widget
-//= require jquery.ui.mouse
-//= require jquery.ui.position
+//= require jquery-ui/core
+//= require jquery-ui/widget
+//= require jquery-ui/mouse
+//= require jquery-ui/position
 ```
 
 You usually do not need to require these directly, as they are pulled in by the
@@ -93,30 +93,30 @@ other JavaScript modules as needed.
 ### Interactions
 
 ```javascript
-//= require jquery.ui.draggable
-//= require jquery.ui.droppable
-//= require jquery.ui.resizable
-//= require jquery.ui.selectable
-//= require jquery.ui.sortable
+//= require jquery-ui/draggable
+//= require jquery-ui/droppable
+//= require jquery-ui/resizable
+//= require jquery-ui/selectable
+//= require jquery-ui/sortable
 ```
 
-For `jquery.ui.resizable` and `jquery.ui.selectable`, remember to `require`
+For `jquery-ui/resizable` and `jquery-ui/selectable`, remember to `require`
 their matching CSS files in your application.css as well.
 
 ### Widgets
 
 ```javascript
-//= require jquery.ui.accordion
-//= require jquery.ui.autocomplete
-//= require jquery.ui.button
-//= require jquery.ui.datepicker
-//= require jquery.ui.dialog
-//= require jquery.ui.menu
-//= require jquery.ui.progressbar
-//= require jquery.ui.slider
-//= require jquery.ui.spinner
-//= require jquery.ui.tabs
-//= require jquery.ui.tooltip
+//= require jquery-ui/accordion
+//= require jquery-ui/autocomplete
+//= require jquery-ui/button
+//= require jquery-ui/datepicker
+//= require jquery-ui/dialog
+//= require jquery-ui/menu
+//= require jquery-ui/progressbar
+//= require jquery-ui/slider
+//= require jquery-ui/spinner
+//= require jquery-ui/tabs
+//= require jquery-ui/tooltip
 ```
 
 For all of these, remember to `require` their matching CSS files in your
@@ -125,13 +125,13 @@ application.css as well.
 #### I18n
 
 Datepicker has optional i18n modules for non-US locales, named
-`jquery.ui.datepicker-xx[-YY]`
+`jquery-ui/datepicker-xx[-YY]`
 ([list](https://github.com/joliss/jquery-ui-rails/tree/master/app/assets/javascripts)),
 for example:
 
 ```javascript
-//= require jquery.ui.datepicker
-//= require jquery.ui.datepicker-pt-BR
+//= require jquery-ui/datepicker
+//= require jquery-ui/datepicker-pt-BR
 ```
 
 Note that you still need to include the main datepicker module. It is not
@@ -141,21 +141,21 @@ reasons](https://github.com/joliss/jquery-ui-rails/issues/9#issuecomment-6524987
 ### Effects
 
 ```javascript
-//= require jquery.ui.effect.all
-//= require jquery.ui.effect
-//= require jquery.ui.effect-blind
-//= require jquery.ui.effect-bounce
-//= require jquery.ui.effect-clip
-//= require jquery.ui.effect-drop
-//= require jquery.ui.effect-explode
-//= require jquery.ui.effect-fade
-//= require jquery.ui.effect-fold
-//= require jquery.ui.effect-highlight
-//= require jquery.ui.effect-pulsate
-//= require jquery.ui.effect-scale
-//= require jquery.ui.effect-shake
-//= require jquery.ui.effect-slide
-//= require jquery.ui.effect-transfer
+//= require jquery-ui/effect.all
+//= require jquery-ui/effect
+//= require jquery-ui/effect-blind
+//= require jquery-ui/effect-bounce
+//= require jquery-ui/effect-clip
+//= require jquery-ui/effect-drop
+//= require jquery-ui/effect-explode
+//= require jquery-ui/effect-fade
+//= require jquery-ui/effect-fold
+//= require jquery-ui/effect-highlight
+//= require jquery-ui/effect-pulsate
+//= require jquery-ui/effect-scale
+//= require jquery-ui/effect-shake
+//= require jquery-ui/effect-slide
+//= require jquery-ui/effect-transfer
 ```
 
 ## Stylesheet Assets
@@ -164,8 +164,8 @@ reasons](https://github.com/joliss/jquery-ui-rails/issues/9#issuecomment-6524987
 
 ```css
 /*
- *= require jquery.ui.core
- *= require jquery.ui.theme
+ *= require jquery-ui/core
+ *= require jquery-ui/theme
  */
 ```
 
@@ -177,8 +177,8 @@ pulled in as dependencies.
 
 ```css
 /*
- *= require jquery.ui.resizable
- *= require jquery.ui.selectable
+ *= require jquery-ui/resizable
+ *= require jquery-ui/selectable
  */
 ```
 
@@ -186,17 +186,17 @@ pulled in as dependencies.
 
 ```css
 /*
- *= require jquery.ui.accordion
- *= require jquery.ui.autocomplete
- *= require jquery.ui.button
- *= require jquery.ui.datepicker
- *= require jquery.ui.dialog
- *= require jquery.ui.menu
- *= require jquery.ui.progressbar
- *= require jquery.ui.slider
- *= require jquery.ui.spinner
- *= require jquery.ui.tabs
- *= require jquery.ui.tooltip
+ *= require jquery-ui/accordion
+ *= require jquery-ui/autocomplete
+ *= require jquery-ui/button
+ *= require jquery-ui/datepicker
+ *= require jquery-ui/dialog
+ *= require jquery-ui/menu
+ *= require jquery-ui/progressbar
+ *= require jquery-ui/slider
+ *= require jquery-ui/spinner
+ *= require jquery-ui/tabs
+ *= require jquery-ui/tooltip
  */
 ```
 
@@ -281,14 +281,3 @@ Now point your browser at [http://localhost:3000/](http://localhost:3000/).
     (This is arguably cumbersome, not officially supported by this gem, and
     adds 1 KB overhead as both the base theme and the custom theme are served
     up.)
-
-*   The `jquery.ui.all.js` file is named `jquery-ui.js` in the official
-    distribution. We should follow their naming. But jquery-rails provides a
-    `jquery-ui.js` asset as well, so until that is removed from the
-    jquery-rails gem (see issue
-    [#46](https://github.com/rails/jquery-rails/issues/46)), we cannot
-    distribute `jquery-ui.js` without risking conflicts.
-
-    To reduce confusion, as long as there is no `jquery-ui.js`, we also do not
-    distribute the official `jquery-ui-i18n.js` and `jquery-ui.css`. The latter
-    is available as `jquery.ui.all.css` however.
