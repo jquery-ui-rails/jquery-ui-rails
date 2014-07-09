@@ -45,6 +45,10 @@ Also add the jQuery UI CSS to your application.css:
  */
 ```
 
+Warning: If you are using a version below 5.0, you will have to use a different naming
+for the files to require, see https://github.com/joliss/jquery-ui-rails/blob/v4.2.1/README.md
+for more information.
+
 All images required by jQuery UI are automatically served through the asset
 pipeline, so you are good to go! For example, this code will add a
 [datepicker](http://jqueryui.com/demos/datepicker/):
