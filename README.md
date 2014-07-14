@@ -35,6 +35,9 @@ To require all jQuery UI modules, add the following to your application.js:
 
 ```javascript
 //= require jquery-ui
+
+*** For Rails 4 Users ***
+//= require jquery.ui.all
 ```
 
 Also add the jQuery UI CSS to your application.css:
@@ -43,6 +46,11 @@ Also add the jQuery UI CSS to your application.css:
 /*
  *= require jquery-ui
  */
+
+*** For Rails 4 Users ***
+/*
+//= require jquery.ui.all
+*/
 ```
 
 Warning: If you are using a version below 5.0, you will have to use a different naming
