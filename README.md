@@ -34,14 +34,14 @@ gem 'jquery-ui-rails'
 To require all jQuery UI modules, add the following to your application.js:
 
 ```javascript
-//= require jquery-ui
+//= require jquery.ui.all
 ```
 
 Also add the jQuery UI CSS to your application.css:
 
 ```css
 /*
- *= require jquery-ui
+ *= require jquery.ui.all
  */
 ```
 
