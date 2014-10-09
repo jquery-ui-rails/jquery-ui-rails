@@ -3,7 +3,7 @@
 //= require jquery-ui/mouse
 
 /*!
- * jQuery UI Sortable 1.11.0
+ * jQuery UI Sortable 1.11.1
  * http://jqueryui.com
  *
  * Copyright 2014 jQuery Foundation and other contributors
@@ -30,7 +30,7 @@
 }(function( $ ) {
 
 return $.widget("ui.sortable", $.ui.mouse, {
-	version: "1.11.0",
+	version: "1.11.1",
 	widgetEventPrefix: "sort",
 	ready: false,
 	options: {
