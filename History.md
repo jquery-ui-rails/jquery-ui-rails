@@ -1,5 +1,7 @@
 # master
 
+# 5.0.1
+
 * Update to jQuery UI 1.11.1
 
 # 5.0.0
