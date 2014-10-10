@@ -3,7 +3,7 @@
 //= require jquery-ui/position
 
 /*!
- * jQuery UI Menu 1.11.0
+ * jQuery UI Menu 1.11.1
  * http://jqueryui.com
  *
  * Copyright 2014 jQuery Foundation and other contributors
@@ -30,7 +30,7 @@
 }(function( $ ) {
 
 return $.widget( "ui.menu", {
-	version: "1.11.0",
+	version: "1.11.1",
 	defaultElement: "<ul>",
 	delay: 300,
 	options: {

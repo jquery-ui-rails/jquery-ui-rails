@@ -1,7 +1,7 @@
 //= require jquery-ui/effect
 
 /*!
- * jQuery UI Effects Highlight 1.11.0
+ * jQuery UI Effects Highlight 1.11.1
  * http://jqueryui.com
  *
  * Copyright 2014 jQuery Foundation and other contributors
