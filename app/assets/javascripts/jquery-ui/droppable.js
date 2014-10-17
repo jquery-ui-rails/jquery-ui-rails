@@ -4,7 +4,7 @@
 //= require jquery-ui/draggable
 
 /*!
- * jQuery UI Droppable 1.11.1
+ * jQuery UI Droppable 1.11.2
  * http://jqueryui.com
  *
  * Copyright 2014 jQuery Foundation and other contributors
@@ -32,7 +32,7 @@
 }(function( $ ) {
 
 $.widget( "ui.droppable", {
-	version: "1.11.1",
+	version: "1.11.2",
 	widgetEventPrefix: "drop",
 	options: {
 		accept: "*",
@@ -240,8 +240,8 @@ $.ui.intersect = (function() {
 			return false;
 		}
 
-		var x1 = ( draggable.positionAbs || draggable.position.absolute ).left,
-			y1 = ( draggable.positionAbs || draggable.position.absolute ).top,
+		var x1 = ( draggable.positionAbs || draggable.position.absolute ).left + draggable.margins.left,
+			y1 = ( draggable.positionAbs || draggable.position.absolute ).top + draggable.margins.top,
 			x2 = x1 + draggable.helperProportions.width,
 			y2 = y1 + draggable.helperProportions.height,
 			l = droppable.offset.left,

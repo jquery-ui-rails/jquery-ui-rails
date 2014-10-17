@@ -2,7 +2,7 @@
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Accordion 1.11.1
+ * jQuery UI Accordion 1.11.2
  * http://jqueryui.com
  *
  * Copyright 2014 jQuery Foundation and other contributors
@@ -28,7 +28,7 @@
 }(function( $ ) {
 
 return $.widget( "ui.accordion", {
-	version: "1.11.1",
+	version: "1.11.2",
 	options: {
 		active: 0,
 		animate: {},
@@ -262,13 +262,22 @@ return $.widget( "ui.accordion", {
 	},
 
 	_processPanels: function() {
+		var prevHeaders = this.headers,
+			prevPanels = this.panels;
+
 		this.headers = this.element.find( this.options.header )
 			.addClass( "ui-accordion-header ui-state-default ui-corner-all" );
 
-		this.headers.next()
+		this.panels = this.headers.next()
 			.addClass( "ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" )
 			.filter( ":not(.ui-accordion-content-active)" )
 			.hide();
+
+		// Avoid memory leaks (#10056)
+		if ( prevPanels ) {
+			this._off( prevHeaders.not( this.headers ) );
+			this._off( prevPanels.not( this.panels ) );
+		}
 	},
 
 	_refresh: function() {
