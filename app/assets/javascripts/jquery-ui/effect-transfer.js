@@ -1,7 +1,7 @@
 //= require jquery-ui/effect
 
 /*!
- * jQuery UI Effects Transfer 1.11.1
+ * jQuery UI Effects Transfer 1.11.2
  * http://jqueryui.com
  *
  * Copyright 2014 jQuery Foundation and other contributors
