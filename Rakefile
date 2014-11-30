@@ -193,8 +193,10 @@ task :stylesheets => :submodule do
     source_code.gsub!(/^( \*= require .*)\n \*\/(\n+)\/\*\n(?= \*= require )/, '\1\2')
     source_code.gsub!(/\A(\/\*!.+?\*\/\s)/m, "\\1\n/*\n#{build_image_dependencies(source_code)} */\n\n") unless build_image_dependencies(source_code).empty?
     # Replace hard-coded image URLs with asset path helpers
-    source_code.gsub!(/url\("?images\/([-_.a-zA-Z0-9]+)"?\)/, 'url(<%= image_path("jquery-ui/\1") %>)')
-    File.open("#{target_ui_dir}/#{basename}.erb", "w") do |out|
+    image_re = /url\("?images\/([-_.a-zA-Z0-9]+)"?\)/
+    extname = source_code =~ image_re ? ".erb" : ""
+    source_code.gsub!(image_re, 'url(<%= image_path("jquery-ui/\1") %>)')
+    File.open("#{target_ui_dir}/#{basename}#{extname}", "w") do |out|
       out.write(source_code)
     end
   end
