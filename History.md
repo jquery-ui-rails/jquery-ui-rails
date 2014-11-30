@@ -1,5 +1,7 @@
 # master
 
+* Speed up: Only use .erb extension if `<%= %>` tags are used
+
 # 5.0.2
 
 * Update to jQuery UI 1.11.2
