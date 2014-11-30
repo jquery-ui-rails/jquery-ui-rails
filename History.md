@@ -1,5 +1,7 @@
 # master
 
+# 5.0.3
+
 * Speed up: Only use .erb extension if `<%= %>` tags are used
 
 # 5.0.2
