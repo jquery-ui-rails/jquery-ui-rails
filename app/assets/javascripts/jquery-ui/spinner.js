@@ -3,7 +3,7 @@
 //= require jquery-ui/button
 
 /*!
- * jQuery UI Spinner 1.11.3
+ * jQuery UI Spinner 1.11.4
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -41,7 +41,7 @@ function spinner_modifier( fn ) {
 }
 
 return $.widget( "ui.spinner", {
-	version: "1.11.3",
+	version: "1.11.4",
 	defaultElement: "<input>",
 	widgetEventPrefix: "spin",
 	options: {

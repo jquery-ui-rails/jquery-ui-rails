@@ -2,7 +2,7 @@
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Button 1.11.3
+ * jQuery UI Button 1.11.4
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -55,7 +55,7 @@ var lastActive,
 	};
 
 $.widget( "ui.button", {
-	version: "1.11.3",
+	version: "1.11.4",
 	defaultElement: "<button>",
 	options: {
 		disabled: null,
@@ -351,7 +351,7 @@ $.widget( "ui.button", {
 });
 
 $.widget( "ui.buttonset", {
-	version: "1.11.3",
+	version: "1.11.4",
 	options: {
 		items: "button, input[type=button], input[type=submit], input[type=reset], input[type=checkbox], input[type=radio], a, :data(ui-button)"
 	},

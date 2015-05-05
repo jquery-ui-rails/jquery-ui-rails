@@ -4,7 +4,7 @@
 //= require jquery-ui/draggable
 
 /*!
- * jQuery UI Droppable 1.11.3
+ * jQuery UI Droppable 1.11.4
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -32,7 +32,7 @@
 }(function( $ ) {
 
 $.widget( "ui.droppable", {
-	version: "1.11.3",
+	version: "1.11.4",
 	widgetEventPrefix: "drop",
 	options: {
 		accept: "*",
