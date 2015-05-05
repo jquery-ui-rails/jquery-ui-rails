@@ -3,10 +3,10 @@
 //= require jquery-ui/mouse
 
 /*!
- * jQuery UI Selectable 1.11.2
+ * jQuery UI Selectable 1.11.3
  * http://jqueryui.com
  *
- * Copyright 2014 jQuery Foundation and other contributors
+ * Copyright jQuery Foundation and other contributors
  * Released under the MIT license.
  * http://jquery.org/license
  *
@@ -30,7 +30,7 @@
 }(function( $ ) {
 
 return $.widget("ui.selectable", $.ui.mouse, {
-	version: "1.11.2",
+	version: "1.11.3",
 	options: {
 		appendTo: "body",
 		autoRefresh: true,

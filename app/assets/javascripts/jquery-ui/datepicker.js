@@ -1,10 +1,10 @@
 //= require jquery-ui/core
 
 /*!
- * jQuery UI Datepicker 1.11.2
+ * jQuery UI Datepicker 1.11.3
  * http://jqueryui.com
  *
- * Copyright 2014 jQuery Foundation and other contributors
+ * Copyright jQuery Foundation and other contributors
  * Released under the MIT license.
  * http://jquery.org/license
  *
@@ -25,7 +25,7 @@
 	}
 }(function( $ ) {
 
-$.extend($.ui, { datepicker: { version: "1.11.2" } });
+$.extend($.ui, { datepicker: { version: "1.11.3" } });
 
 var datepicker_instActive;
 
@@ -390,6 +390,10 @@ $.extend(Datepicker.prototype, {
 				unbind("keyup", this._doKeyUp);
 		} else if (nodeName === "div" || nodeName === "span") {
 			$target.removeClass(this.markerClassName).empty();
+		}
+
+		if ( datepicker_instActive === inst ) {
+			datepicker_instActive = null;
 		}
 	},
 
@@ -2075,7 +2079,7 @@ $.fn.datepicker = function(options){
 $.datepicker = new Datepicker(); // singleton instance
 $.datepicker.initialized = false;
 $.datepicker.uuid = new Date().getTime();
-$.datepicker.version = "1.11.2";
+$.datepicker.version = "1.11.3";
 
 return $.datepicker;
 

@@ -4,10 +4,10 @@
 //= require jquery-ui/position
 
 /*!
- * jQuery UI Autocomplete 1.11.2
+ * jQuery UI Autocomplete 1.11.3
  * http://jqueryui.com
  *
- * Copyright 2014 jQuery Foundation and other contributors
+ * Copyright jQuery Foundation and other contributors
  * Released under the MIT license.
  * http://jquery.org/license
  *
@@ -32,7 +32,7 @@
 }(function( $ ) {
 
 $.widget( "ui.autocomplete", {
-	version: "1.11.2",
+	version: "1.11.3",
 	defaultElement: "<input>",
 	options: {
 		appendTo: null,

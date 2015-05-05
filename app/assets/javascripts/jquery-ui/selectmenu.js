@@ -4,10 +4,10 @@
 //= require jquery-ui/menu
 
 /*!
- * jQuery UI Selectmenu 1.11.2
+ * jQuery UI Selectmenu 1.11.3
  * http://jqueryui.com
  *
- * Copyright 2014 jQuery Foundation and other contributors
+ * Copyright jQuery Foundation and other contributors
  * Released under the MIT license.
  * http://jquery.org/license
  *
@@ -32,7 +32,7 @@
 }(function( $ ) {
 
 return $.widget( "ui.selectmenu", {
-	version: "1.11.2",
+	version: "1.11.3",
 	defaultElement: "<select>",
 	options: {
 		appendTo: null,
@@ -72,8 +72,7 @@ return $.widget( "ui.selectmenu", {
 	},
 
 	_drawButton: function() {
-		var that = this,
-			tabindex = this.element.attr( "tabindex" );
+		var that = this;
 
 		// Associate existing label with the new button
 		this.label = $( "label[for='" + this.ids.element + "']" ).attr( "for", this.ids.button );
@@ -90,7 +89,7 @@ return $.widget( "ui.selectmenu", {
 		// Create button
 		this.button = $( "<span>", {
 			"class": "ui-selectmenu-button ui-widget ui-state-default ui-corner-all",
-			tabindex: tabindex || this.options.disabled ? -1 : 0,
+			tabindex: this.options.disabled ? -1 : 0,
 			id: this.ids.button,
 			role: "combobox",
 			"aria-expanded": "false",
@@ -600,7 +599,7 @@ return $.widget( "ui.selectmenu", {
 			data.push({
 				element: option,
 				index: index,
-				value: option.attr( "value" ),
+				value: option.val(),
 				label: option.text(),
 				optgroup: optgroup.attr( "label" ) || "",
 				disabled: optgroup.prop( "disabled" ) || option.prop( "disabled" )
