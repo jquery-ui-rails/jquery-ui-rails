@@ -4,7 +4,7 @@
 //= require jquery-ui/menu
 
 /*!
- * jQuery UI Selectmenu 1.11.3
+ * jQuery UI Selectmenu 1.11.4
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -32,7 +32,7 @@
 }(function( $ ) {
 
 return $.widget( "ui.selectmenu", {
-	version: "1.11.3",
+	version: "1.11.4",
 	defaultElement: "<select>",
 	options: {
 		appendTo: null,
