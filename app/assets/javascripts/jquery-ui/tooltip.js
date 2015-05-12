@@ -3,10 +3,10 @@
 //= require jquery-ui/position
 
 /*!
- * jQuery UI Tooltip 1.11.2
+ * jQuery UI Tooltip 1.11.3
  * http://jqueryui.com
  *
- * Copyright 2014 jQuery Foundation and other contributors
+ * Copyright jQuery Foundation and other contributors
  * Released under the MIT license.
  * http://jquery.org/license
  *
@@ -30,7 +30,7 @@
 }(function( $ ) {
 
 return $.widget( "ui.tooltip", {
-	version: "1.11.2",
+	version: "1.11.3",
 	options: {
 		content: function() {
 			// support: IE<9, Opera in jQuery <1.7
