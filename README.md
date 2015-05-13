@@ -274,6 +274,18 @@ rails server
 
 Now point your browser at [http://localhost:3000/](http://localhost:3000/).
 
+### Releasing
+
+Be sure that `VERSIONS.md`, `History.md` and `lib/jquery/ui/rails/version.rb`
+are up-to-date. Then build and push like so:
+
+```bash
+rake build
+gem push pkg/jquery-ui-rails-X.Y.Z.gem
+git tag vX.Y.Z
+git push --tags
+```
+
 ## Limitations
 
 *   Only the base theme (Smoothness) is included. Once it becomes possible to
