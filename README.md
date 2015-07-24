@@ -12,10 +12,6 @@ interface](http://jqueryui.com/download) again.
 See [VERSIONS.md](VERSIONS.md) to see which versions of jquery-ui-rails bundle
 which versions of jQuery UI.
 
-Also check out the
-[jquery-ui-sass-rails](https://github.com/jhilden/jquery-ui-sass-rails) gem,
-which allows you to override theme variables with Sass.
-
 Warning: This gem is incompatible with the `jquery-rails` gem before version
 3.0.0! Strange things will happen if you use an earlier `jquery-rails`
 version. Run `bundle list` to ensure that you either aren't using
