@@ -212,9 +212,12 @@ $.extend(Datepicker.prototype, {
 			keypress(this._doKeyPress).keyup(this._doKeyUp);
 		this._autoSize(inst);
 		$.data(target, "datepicker", inst);
-		//If disabled option is true, disable the datepicker once it has been attached to the input (see ticket #5665)
+		// If disabled option is true, disable the datepicker once it has been attached to the input (see ticket #5665)
+    // Else if readonly option is true, set to read only the datepicker
 		if( inst.settings.disabled ) {
 			this._disableDatepicker( target );
+		} else if( inst.settings.readonly ) {
+      this._readonlyDatepicker( target );
 		}
 	},
 
@@ -468,6 +471,19 @@ $.extend(Datepicker.prototype, {
 			}
 		}
 		return false;
+	},
+
+	/* Read only the date picker.
+	 * @param  target	element - the target input field
+	 */
+	_readonlyDatepicker: function(target) {
+		var nodeName, $target = $(target)
+
+		if (!$target.hasClass(this.markerClassName)) {
+			return;
+		}
+
+    target.readOnly = true;
 	},
 
 	/* Retrieve the instance data for the target control.
