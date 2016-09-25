@@ -21,7 +21,7 @@ def source_file_for_dependency_entry(caller, dep_entry)
 
   p = Pathname.new caller
   parent_path = p.parent
-  parent_path.join(dep_entry).to_s
+  parent_path.join(dep_entry + '.js').to_s
 end
 
 # return a Hash of dependency info, whose keys are jquery-ui
@@ -35,16 +35,22 @@ def map_dependencies
 
     matchdata = file.match(/define\(.*\[[\S\s]+\]\, factory \);/m)
 
+    # fallback for core.js, which doesn't refer to factory
     matchdata ||= file.match(/define\(.*\[[\S\s]+\](\, factory )?.*\);/m)
 
+    # skip if there's no dependencies
     next if matchdata.nil?
 
+    # dirty string, with define([], factory) wrapping, comments and newlines
     deps_str = matchdata[0]
 
+    # remove define([], factory) wrap
     deps = deps_str.match(/\[[\s\S]*\]/)[0]
 
+    # remove lines with comments
     deps = deps.gsub(/\/\/.+\s/, "")
 
+    # remove all non-path symbols, leaving only commas, dots and shashes
     deps = deps.gsub(/[\r\n\t\"\[\]\s]/, "")
 
     deps_paths = deps.split(',')
@@ -52,8 +58,6 @@ def map_dependencies
     # None of jquery.ui files should depend on jquery.js,
     # so we remove 'jquery' from the list of dependencies for all files
     deps_paths.reject! {|d| d == "jquery" }
-
-    deps_paths.map! {|d| d + '.js' }
 
     deps_paths.map! {|d| source_file_for_dependency_entry path, d }
 
