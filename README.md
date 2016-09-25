@@ -42,11 +42,11 @@ Also add the jQuery UI CSS to your application.css:
 ```
 
 ### Warning:
-Due to directory structure changes between jQuery-UI 1.10, 1.11, and 1.12,
-if you use version lower than 6.0, you will have to use a different naming
+Due to directory structure changes between jQuery UI 1.10, 1.11, and 1.12,
+if you use version is lower than 6.0, you will have to use a different naming
 for the files to require, please check following links for more information:
-[For 5.0 users](https://github.com/joliss/jquery-ui-rails/blob/v5.0.5/README.md)
-[For 4.2 users](https://github.com/joliss/jquery-ui-rails/blob/v4.2.1/README.md)
+[for 5.0 users](https://github.com/joliss/jquery-ui-rails/blob/v5.0.5/README.md),
+[for 4.2 users](https://github.com/joliss/jquery-ui-rails/blob/v4.2.1/README.md).
 
 All images required by jQuery UI are automatically served through the asset
 pipeline, so you are good to go! For example, this code will add a
@@ -73,7 +73,7 @@ application.js:
 ```
 
 In your application.css, require the corresponding CSS module (notice
-no `widgets/` path here:
+no `widgets/` subdirectory here):
 
 ```css
 /*
