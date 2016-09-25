@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    jquery-ui-rails (5.0.5)
+    jquery-ui-rails (6.0.0)
       railties (>= 3.2.16)
 
 GEM
@@ -102,3 +102,6 @@ DEPENDENCIES
   rails (~> 4.0.0.beta1)
   sqlite3
   uglifier (>= 1.0.3)
+
+BUNDLED WITH
+   1.12.1

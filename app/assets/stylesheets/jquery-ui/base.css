@@ -1,5 +1,5 @@
 /*!
- * jQuery UI CSS Framework 1.11.4
+ * jQuery UI CSS Framework 1.12.1
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -14,6 +14,8 @@
  *= require jquery-ui/accordion
  *= require jquery-ui/autocomplete
  *= require jquery-ui/button
+ *= require jquery-ui/checkboxradio
+ *= require jquery-ui/controlgroup
  *= require jquery-ui/datepicker
  *= require jquery-ui/dialog
  *= require jquery-ui/draggable

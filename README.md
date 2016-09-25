@@ -41,9 +41,12 @@ Also add the jQuery UI CSS to your application.css:
  */
 ```
 
-Warning: If you are using a version below 5.0, you will have to use a different naming
-for the files to require, see https://github.com/joliss/jquery-ui-rails/blob/v4.2.1/README.md
-for more information.
+### Warning:
+Due to directory structure changes between jQuery-UI 1.10, 1.11, and 1.12,
+if you use version lower than 6.0, you will have to use a different naming
+for the files to require, please check following links for more information:
+[For 5.0 users](https://github.com/joliss/jquery-ui-rails/blob/v5.0.5/README.md)
+[For 4.2 users](https://github.com/joliss/jquery-ui-rails/blob/v4.2.1/README.md)
 
 All images required by jQuery UI are automatically served through the asset
 pipeline, so you are good to go! For example, this code will add a
@@ -66,10 +69,11 @@ For example, if you only need the datepicker module, add this to your
 application.js:
 
 ```javascript
-//= require jquery-ui/datepicker
+//= require jquery-ui/widgets/datepicker
 ```
 
-In your application.css, require the corresponding CSS module:
+In your application.css, require the corresponding CSS module (notice
+no `widgets/` path here:
 
 ```css
 /*
@@ -84,7 +88,6 @@ In your application.css, require the corresponding CSS module:
 ```javascript
 //= require jquery-ui/core
 //= require jquery-ui/widget
-//= require jquery-ui/mouse
 //= require jquery-ui/position
 ```
 
@@ -94,31 +97,32 @@ other JavaScript modules as needed.
 ### Interactions
 
 ```javascript
-//= require jquery-ui/draggable
-//= require jquery-ui/droppable
-//= require jquery-ui/resizable
-//= require jquery-ui/selectable
-//= require jquery-ui/sortable
+//= require jquery-ui/widgets/mouse
+//= require jquery-ui/widgets/draggable
+//= require jquery-ui/widgets/droppable
+//= require jquery-ui/widgets/resizable
+//= require jquery-ui/widgets/selectable
+//= require jquery-ui/widgets/sortable
 ```
 
-For all but `jquery-ui/droppable`, remember to `require` their matching CSS
+For all but `jquery-ui/mouse` and `jquery-ui/droppable`, remember to `require` their matching CSS
 files in your application.css as well.
 
 ### Widgets
 
 ```javascript
-//= require jquery-ui/accordion
-//= require jquery-ui/autocomplete
-//= require jquery-ui/button
-//= require jquery-ui/datepicker
-//= require jquery-ui/dialog
-//= require jquery-ui/menu
-//= require jquery-ui/progressbar
-//= require jquery-ui/selectmenu
-//= require jquery-ui/slider
-//= require jquery-ui/spinner
-//= require jquery-ui/tabs
-//= require jquery-ui/tooltip
+//= require jquery-ui/widgets/accordion
+//= require jquery-ui/widgets/autocomplete
+//= require jquery-ui/widgets/button
+//= require jquery-ui/widgets/datepicker
+//= require jquery-ui/widgets/dialog
+//= require jquery-ui/widgets/menu
+//= require jquery-ui/widgets/progressbar
+//= require jquery-ui/widgets/selectmenu
+//= require jquery-ui/widgets/slider
+//= require jquery-ui/widgets/spinner
+//= require jquery-ui/widgets/tabs
+//= require jquery-ui/widgets/tooltip
 ```
 
 For all of these, remember to `require` their matching CSS files in your
@@ -132,8 +136,8 @@ Datepicker has optional i18n modules for non-US locales, named
 for example:
 
 ```javascript
-//= require jquery-ui/datepicker
-//= require jquery-ui/datepicker-pt-BR
+//= require jquery-ui/widgets/datepicker
+//= require jquery-ui/i18n/datepicker-pt-BR
 ```
 
 Note that you still need to include the main datepicker module. It is not
@@ -144,6 +148,11 @@ reasons](https://github.com/joliss/jquery-ui-rails/issues/9#issuecomment-6524987
 
 ```javascript
 //= require jquery-ui/effect.all
+```
+
+OR
+
+```javascript
 //= require jquery-ui/effect
 //= require jquery-ui/effect-blind
 //= require jquery-ui/effect-bounce
