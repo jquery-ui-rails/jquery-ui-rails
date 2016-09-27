@@ -33,24 +33,16 @@ def map_dependencies
     basename = File.basename path
     file = File.read path
 
-    matchdata = file.match(/define\(.*\[[\S\s]+\]\, factory \);/m)
+    matchdata = file.match(/define\(\s*\[\s*([\"\.\/\,\w\s-\:]+)\]/m)
 
-    # fallback for core.js, which doesn't refer to factory
-    matchdata ||= file.match(/define\(.*\[[\S\s]+\](\, factory )?.*\);/m)
-
-    # skip if there's no dependencies
     next if matchdata.nil?
 
-    # dirty string, with define([], factory) wrapping, comments and newlines
-    deps_str = matchdata[0]
-
-    # remove define([], factory) wrap
-    deps = deps_str.match(/\[[\s\S]*\]/)[0]
+    deps = matchdata[1]
 
     # remove lines with comments
     deps = deps.gsub(/\/\/.+\s/, "")
 
-    # remove all non-path symbols, leaving only commas, dots and shashes
+    # remove all non-path symbols
     deps = deps.gsub(/[\r\n\t\"\[\]\s]/, "")
 
     deps_paths = deps.split(',')
