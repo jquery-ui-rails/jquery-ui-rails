@@ -17,8 +17,6 @@ require 'bundler/gem_tasks'
 # The only exception is "jquery", which doesn't follow the
 # same naming conventions so it's a special case.
 def source_file_for_dependency_entry(caller, dep_entry)
-  return "jquery.js" if dep_entry == 'jquery'
-
   p = Pathname.new caller
   parent_path = p.parent
   parent_path.join(dep_entry + '.js').to_s
@@ -46,6 +44,8 @@ def map_dependencies
     deps = deps.gsub(/[\r\n\t\"\[\]\s]/, "")
 
     deps_paths = deps.split(',')
+
+    deps_paths.map!(&method(:remove_js_extension))
 
     # None of jquery.ui files should depend on jquery.js,
     # so we remove 'jquery' from the list of dependencies for all files
@@ -150,21 +150,21 @@ task :javascripts => :submodule do
 
   File.open("#{target_ui_dir}/effect.all.js", "w") do |out|
     Dir.glob("jquery-ui/ui/effects/*.js").sort.each do |path|
-      clean_path = path.gsub('/ui', '')
+      clean_path = remove_js_extension(path).gsub('/ui', '')
       out.write("//= require #{clean_path}\n")
     end
   end
   File.open("#{target_dir}/jquery-ui.js", "w") do |out|
     Dir.glob("jquery-ui/ui/*.js").sort.each do |path|
-      clean_path = path.gsub('/ui', '')
+      clean_path = remove_js_extension(path).gsub('/ui', '')
       out.write("//= require #{clean_path}\n")
     end
     Dir.glob("jquery-ui/ui/effects/*.js").sort.each do |path|
-      clean_path = path.gsub('/ui', '')
+      clean_path = remove_js_extension(path).gsub('/ui', '')
       out.write("//= require #{clean_path}\n")
     end
     Dir.glob("jquery-ui/ui/widgets/*.js").sort.each do |path|
-      clean_path = path.gsub('/ui', '')
+      clean_path = remove_js_extension(path).gsub('/ui', '')
       out.write("//= require #{clean_path}\n")
     end
   end
