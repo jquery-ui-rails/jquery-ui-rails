@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "railties", ">= 3.2.16"
 
-  s.add_development_dependency "json", "~> 1.7"
+  s.add_development_dependency "json", "~> 2.0.2"
 
   s.files        = `git ls-files`.split("\n").reject { |f| f =~ /^testapp|^jquery-ui/ }
   s.executables  = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }

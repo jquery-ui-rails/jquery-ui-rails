@@ -1,8 +1,8 @@
 module Jquery
   module Ui
     module Rails
-      VERSION = "5.0.5"
-      JQUERY_UI_VERSION = "1.11.4"
+      VERSION = "6.0.0"
+      JQUERY_UI_VERSION = "1.12.1"
     end
   end
 end

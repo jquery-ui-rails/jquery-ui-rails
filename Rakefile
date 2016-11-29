@@ -2,12 +2,6 @@ Encoding.default_external = "UTF-8" if defined?(Encoding)
 require 'json'
 require 'bundler/gem_tasks'
 
-# returns the source filename for a given JSON build file
-# (e.g., "ui.core.jquery.json" returns "core.js")
-def source_file_for_build_file(build_file)
-  "#{build_file.sub('ui.', '').sub('.jquery.json', '')}.js"
-end
-
 # returns the source filename for a named file in the 'dependencies'
 # array of a JSON build file
 # (e.g., if the JSON build file contains
@@ -22,10 +16,10 @@ end
 #
 # The only exception is "jquery", which doesn't follow the
 # same naming conventions so it's a special case.
-def source_file_for_dependency_entry(dep_entry)
-  return "jquery.js" if dep_entry == 'jquery'
-
-  "#{dep_entry.sub 'ui.', ''}.js"
+def source_file_for_dependency_entry(caller, dep_entry)
+  p = Pathname.new caller
+  parent_path = p.parent
+  parent_path.join(dep_entry + '.js').to_s
 end
 
 # return a Hash of dependency info, whose keys are jquery-ui
@@ -33,19 +27,33 @@ end
 # they depend on
 def map_dependencies
   dependencies = {}
-  Dir.glob("jquery-ui/*.jquery.json").each do |build_file|
-    build_info = JSON.parse(File.read build_file)
-    source_file_name = source_file_for_build_file(File.basename(build_file))
+  Dir.glob("jquery-ui/ui/**/*.js").each do |path|
+    basename = File.basename path
+    file = File.read path
 
-    deps = build_info['dependencies'].keys
+    matchdata = file.match(/define\(\s*\[\s*([\"\.\/\,\w\s-\:]+)\]/m)
+
+    next if matchdata.nil?
+
+    deps = matchdata[1]
+
+    # remove lines with comments
+    deps = deps.gsub(/\/\/.+\s/, "")
+
+    # remove all non-path symbols
+    deps = deps.gsub(/[\r\n\t\"\[\]\s]/, "")
+
+    deps_paths = deps.split(',')
+
+    deps_paths.map!(&method(:remove_js_extension))
 
     # None of jquery.ui files should depend on jquery.js,
     # so we remove 'jquery' from the list of dependencies for all files
-    deps.reject! {|d| d == "jquery" }
+    deps_paths.reject! {|d| d == "jquery" }
 
-    deps.map! {|d| source_file_for_dependency_entry d }
+    deps_paths.map! {|d| source_file_for_dependency_entry path, d }
 
-    dependencies[source_file_name] = deps
+    dependencies[basename] = deps_paths
   end
   dependencies
 end
@@ -70,7 +78,7 @@ def get_js_dependencies(basename)
   end
   # Make sure we do not package assets with broken dependencies
   dependencies.each do |dep|
-    unless File.exist?("jquery-ui/ui/#{dep}")
+    unless File.exist?("#{dep}")
       fail "#{basename}: missing #{dep}"
     end
   end
@@ -107,13 +115,18 @@ task :javascripts => :submodule do
   target_dir = "app/assets/javascripts"
   target_ui_dir = "#{target_dir}/jquery-ui"
   mkdir_p target_ui_dir
+  mkdir_p target_ui_dir + '/effects'
+  mkdir_p target_ui_dir + '/widgets'
+  mkdir_p target_ui_dir + '/i18n'
 
-  Dir.glob("jquery-ui/ui/*.js").each do |path|
+  Dir.glob("jquery-ui/ui/**/*.js").each do |path|
     basename = File.basename(path)
+    clean_path = path.gsub('/ui', '')
     dep_modules = get_js_dependencies(basename).map(&method(:remove_js_extension))
-    File.open("#{target_ui_dir}/#{basename}", "w") do |out|
+    File.open("#{target_dir}/#{clean_path}", "w") do |out|
       dep_modules.each do |mod|
-        out.write("//= require jquery-ui/#{mod}\n")
+        mod.gsub!('/ui', '')
+        out.write("//= require #{mod}\n")
       end
       out.write("\n") unless dep_modules.empty?
       source_code = File.read(path)
@@ -127,7 +140,7 @@ task :javascripts => :submodule do
   # https://github.com/joliss/jquery-ui-rails/issues/9
   Dir.glob("jquery-ui/ui/i18n/*.js").each do |path|
     basename = File.basename(path)
-    File.open("#{target_ui_dir}/#{basename}", "w") do |out|
+    File.open("#{target_ui_dir}/i18n/#{basename}", "w") do |out|
       source_code = File.read(path)
       source_code.gsub!('@VERSION', version)
       protect_copyright_notice(source_code)
@@ -136,15 +149,23 @@ task :javascripts => :submodule do
   end
 
   File.open("#{target_ui_dir}/effect.all.js", "w") do |out|
-    Dir.glob("jquery-ui/ui/effect*.js").sort.each do |path|
-      asset_name = remove_js_extension(File.basename(path))
-      out.write("//= require jquery-ui/#{asset_name}\n")
+    Dir.glob("jquery-ui/ui/effects/*.js").sort.each do |path|
+      clean_path = remove_js_extension(path).gsub('/ui', '')
+      out.write("//= require #{clean_path}\n")
     end
   end
   File.open("#{target_dir}/jquery-ui.js", "w") do |out|
     Dir.glob("jquery-ui/ui/*.js").sort.each do |path|
-      asset_name = remove_js_extension(File.basename(path))
-      out.write("//= require jquery-ui/#{asset_name}\n")
+      clean_path = remove_js_extension(path).gsub('/ui', '')
+      out.write("//= require #{clean_path}\n")
+    end
+    Dir.glob("jquery-ui/ui/effects/*.js").sort.each do |path|
+      clean_path = remove_js_extension(path).gsub('/ui', '')
+      out.write("//= require #{clean_path}\n")
+    end
+    Dir.glob("jquery-ui/ui/widgets/*.js").sort.each do |path|
+      clean_path = remove_js_extension(path).gsub('/ui', '')
+      out.write("//= require #{clean_path}\n")
     end
   end
 end
