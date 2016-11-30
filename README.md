@@ -153,22 +153,22 @@ reasons](https://github.com/joliss/jquery-ui-rails/issues/9#issuecomment-6524987
 OR
 
 ```javascript
-//= require jquery-ui/effect
-//= require jquery-ui/effect-blind
-//= require jquery-ui/effect-bounce
-//= require jquery-ui/effect-clip
-//= require jquery-ui/effect-drop
-//= require jquery-ui/effect-explode
-//= require jquery-ui/effect-fade
-//= require jquery-ui/effect-fold
-//= require jquery-ui/effect-highlight
-//= require jquery-ui/effect-puff
-//= require jquery-ui/effect-pulsate
-//= require jquery-ui/effect-scale
-//= require jquery-ui/effect-shake
-//= require jquery-ui/effect-size
-//= require jquery-ui/effect-slide
-//= require jquery-ui/effect-transfer
+//= require jquery-ui/effects/effect
+//= require jquery-ui/effects/effect-blind
+//= require jquery-ui/effects/effect-bounce
+//= require jquery-ui/effects/effect-clip
+//= require jquery-ui/effects/effect-drop
+//= require jquery-ui/effects/effect-explode
+//= require jquery-ui/effects/effect-fade
+//= require jquery-ui/effects/effect-fold
+//= require jquery-ui/effects/effect-highlight
+//= require jquery-ui/effects/effect-puff
+//= require jquery-ui/effects/effect-pulsate
+//= require jquery-ui/effects/effect-scale
+//= require jquery-ui/effects/effect-shake
+//= require jquery-ui/effects/effect-size
+//= require jquery-ui/effects/effect-slide
+//= require jquery-ui/effects/effect-transfer
 ```
 
 ## Stylesheet Assets
@@ -190,10 +190,10 @@ pulled in as dependencies.
 
 ```css
 /*
- *= require jquery-ui/draggable
- *= require jquery-ui/resizable
- *= require jquery-ui/selectable
- *= require jquery-ui/sortable
+ *= require jquery-ui/widgets/draggable
+ *= require jquery-ui/widgets/resizable
+ *= require jquery-ui/widgets/selectable
+ *= require jquery-ui/widgets/sortable
  */
 ```
 
