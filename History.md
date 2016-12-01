@@ -1,5 +1,7 @@
 # master
 
+# 6.0.1
+
 * Fix "define is not defined" issue in `core.js`
 
 # 6.0.0
