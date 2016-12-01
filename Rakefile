@@ -128,6 +128,9 @@ task :javascripts => :submodule do
         mod.gsub!('/ui', '')
         out.write("//= require #{mod}\n")
       end
+      # core.js is deprecated and uses define function which is usually unavailable
+      # so we need only dependency loading there with no file contents
+      next if clean_path == 'jquery-ui/core.js'
       out.write("\n") unless dep_modules.empty?
       source_code = File.read(path)
       source_code.gsub!('@VERSION', version)
