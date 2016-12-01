@@ -140,7 +140,7 @@ task :javascripts => :submodule do
   end
 
   # process the i18n files separately for performance, since they will not have dependencies
-  # https://github.com/joliss/jquery-ui-rails/issues/9
+  # https://github.com/jquery-ui-rails/jquery-ui-rails/issues/9
   Dir.glob("jquery-ui/ui/i18n/*.js").each do |path|
     basename = File.basename(path)
     File.open("#{target_ui_dir}/i18n/#{basename}", "w") do |out|

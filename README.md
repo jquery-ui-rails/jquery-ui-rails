@@ -1,7 +1,7 @@
 # jquery-ui-rails
 
-[![Build Status](https://secure.travis-ci.org/joliss/jquery-ui-rails.png?branch=master)](http://travis-ci.org/joliss/jquery-ui-rails)
-[![Dependency Status](https://gemnasium.com/joliss/jquery-ui-rails.png)](https://gemnasium.com/joliss/jquery-ui-rails)
+[![Build Status](https://travis-ci.org/jquery-ui-rails/jquery-ui-rails.svg?branch=master)](https://travis-ci.org/jquery-ui-rails/jquery-ui-rails)
+[![Dependency Status](https://gemnasium.com/jquery-ui-rails/jquery-ui-rails.svg)](https://gemnasium.com/jquery-ui-rails/jquery-ui-rails)
 
 This gem packages the jQuery UI assets (JavaScripts, stylesheets, and
 images) for the Rails [asset
@@ -45,8 +45,8 @@ Also add the jQuery UI CSS to your application.css:
 Due to directory structure changes between jQuery UI 1.10, 1.11, and 1.12,
 if you use version is lower than 6.0, you will have to use a different naming
 for the files to require, please check following links for more information:
-[for 5.0 users](https://github.com/joliss/jquery-ui-rails/blob/v5.0.5/README.md),
-[for 4.2 users](https://github.com/joliss/jquery-ui-rails/blob/v4.2.1/README.md).
+[for 5.0 users](https://github.com/jquery-ui-rails/jquery-ui-rails/blob/v5.0.5/README.md),
+[for 4.2 users](https://github.com/jquery-ui-rails/jquery-ui-rails/blob/v4.2.1/README.md).
 
 All images required by jQuery UI are automatically served through the asset
 pipeline, so you are good to go! For example, this code will add a
@@ -132,7 +132,7 @@ application.css as well.
 
 Datepicker has optional i18n modules for non-US locales, named
 `jquery-ui/datepicker-xx[-YY]`
-([list](https://github.com/joliss/jquery-ui-rails/tree/master/app/assets/javascripts)),
+([list](https://github.com/jquery-ui-rails/jquery-ui-rails/tree/master/app/assets/javascripts)),
 for example:
 
 ```javascript
@@ -142,7 +142,7 @@ for example:
 
 Note that you still need to include the main datepicker module. It is not
 required automatically [for performance
-reasons](https://github.com/joliss/jquery-ui-rails/issues/9#issuecomment-6524987).
+reasons](https://github.com/jquery-ui-rails/jquery-ui-rails/issues/9#issuecomment-6524987).
 
 ### Effects
 
@@ -231,7 +231,7 @@ The `jquery-ui-rails` gem should work in Ruby 1.8.7 apps. To run the rake
 tasks, you need Ruby 1.9 however.
 
 ```bash
-git clone git://github.com/joliss/jquery-ui-rails.git
+git clone git://github.com/jquery-ui-rails/jquery-ui-rails.git
 cd jquery-ui-rails
 git submodule update --init
 bundle install
