@@ -153,7 +153,7 @@ reasons](https://github.com/jquery-ui-rails/jquery-ui-rails/issues/9#issuecommen
 OR
 
 ```javascript
-//= require jquery-ui/effects/effect
+//= require jquery-ui/effect
 //= require jquery-ui/effects/effect-blind
 //= require jquery-ui/effects/effect-bounce
 //= require jquery-ui/effects/effect-clip
