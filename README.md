@@ -190,10 +190,10 @@ pulled in as dependencies.
 
 ```css
 /*
- *= require jquery-ui/widgets/draggable
- *= require jquery-ui/widgets/resizable
- *= require jquery-ui/widgets/selectable
- *= require jquery-ui/widgets/sortable
+ *= require jquery-ui/draggable
+ *= require jquery-ui/resizable
+ *= require jquery-ui/selectable
+ *= require jquery-ui/sortable
  */
 ```
 
