@@ -15,6 +15,7 @@
 # 5.0.4
 
 * Update to jQuery UI 1.11.3
+* The widget files moved. Change e.g. `require jquery-ui/sortable` to `require jquery-ui/widgets/sortable`
 
 # 5.0.3
 
