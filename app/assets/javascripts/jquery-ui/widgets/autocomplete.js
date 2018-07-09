@@ -323,7 +323,7 @@ $.widget( "ui.autocomplete", {
 			"aria-live": "assertive",
 			"aria-relevant": "additions"
 		} )
-			.appendTo( this.document[ 0 ].body );
+			.appendTo( this._appendTo() );
 
 		this._addClass( this.liveRegion, null, "ui-helper-hidden-accessible" );
 
