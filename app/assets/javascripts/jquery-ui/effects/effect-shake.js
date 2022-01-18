@@ -2,7 +2,7 @@
 //= require jquery-ui/effect
 
 /*!
- * jQuery UI Effects Shake 1.12.1
+ * jQuery UI Effects Shake 1.13.0
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -17,6 +17,8 @@
 //>>demos: http://jqueryui.com/effect/
 
 ( function( factory ) {
+	"use strict";
+
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -30,7 +32,8 @@
 		// Browser globals
 		factory( jQuery );
 	}
-}( function( $ ) {
+} )( function( $ ) {
+"use strict";
 
 return $.effects.define( "shake", function( options, done ) {
 
@@ -74,4 +77,4 @@ return $.effects.define( "shake", function( options, done ) {
 	$.effects.unshift( element, queuelen, anims + 1 );
 } );
 
-} ) );
+} );

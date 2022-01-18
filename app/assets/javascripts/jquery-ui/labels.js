@@ -1,8 +1,7 @@
 //= require jquery-ui/version
-//= require jquery-ui/escape-selector
 
 /*!
- * jQuery UI Labels 1.12.1
+ * jQuery UI Labels 1.13.0
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -16,19 +15,26 @@
 //>>docs: http://api.jqueryui.com/labels/
 
 ( function( factory ) {
+	"use strict";
+
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
-		define( [ "jquery", "./version", "./escape-selector" ], factory );
+		define( [ "jquery", "./version" ], factory );
 	} else {
 
 		// Browser globals
 		factory( jQuery );
 	}
-} ( function( $ ) {
+} )( function( $ ) {
+"use strict";
 
 return $.fn.labels = function() {
 	var ancestor, selector, id, labels, ancestors;
+
+	if ( !this.length ) {
+		return this.pushStack( [] );
+	}
 
 	// Check control.labels first
 	if ( this[ 0 ].labels && this[ 0 ].labels.length ) {
@@ -52,7 +58,7 @@ return $.fn.labels = function() {
 		ancestors = ancestor.add( ancestor.length ? ancestor.siblings() : this.siblings() );
 
 		// Create a selector for the label based on the id
-		selector = "label[for='" + $.ui.escapeSelector( id ) + "']";
+		selector = "label[for='" + $.escapeSelector( id ) + "']";
 
 		labels = labels.add( ancestors.find( selector ).addBack( selector ) );
 
@@ -62,4 +68,4 @@ return $.fn.labels = function() {
 	return this.pushStack( labels );
 };
 
-} ) );
+} );
