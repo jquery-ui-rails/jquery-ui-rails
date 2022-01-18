@@ -5,7 +5,7 @@
 //= require jquery-ui/ie
 //= require jquery-ui/keycode
 //= require jquery-ui/labels
-//= require jquery-ui/jquery-1-7
+//= require jquery-ui/jquery-patch
 //= require jquery-ui/plugin
 //= require jquery-ui/safe-active-element
 //= require jquery-ui/safe-blur

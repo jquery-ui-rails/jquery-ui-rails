@@ -2,12 +2,12 @@
 //= require jquery-ui/data
 //= require jquery-ui/disable-selection
 //= require jquery-ui/effect
-//= require jquery-ui/escape-selector
 //= require jquery-ui/focusable
 //= require jquery-ui/form-reset-mixin
 //= require jquery-ui/form
 //= require jquery-ui/ie
-//= require jquery-ui/jquery-1-7
+//= require jquery-ui/jquery-patch
+//= require jquery-ui/jquery-var-for-color
 //= require jquery-ui/keycode
 //= require jquery-ui/labels
 //= require jquery-ui/plugin
@@ -54,3 +54,4 @@
 //= require jquery-ui/widgets/spinner
 //= require jquery-ui/widgets/tabs
 //= require jquery-ui/widgets/tooltip
+//= require jquery-ui/vendor/jquery-color/jquery.color

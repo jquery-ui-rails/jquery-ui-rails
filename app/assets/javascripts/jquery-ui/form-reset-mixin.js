@@ -2,7 +2,7 @@
 //= require jquery-ui/version
 
 /*!
- * jQuery UI Form Reset Mixin 1.12.1
+ * jQuery UI Form Reset Mixin 1.13.0
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -16,6 +16,8 @@
 //>>docs: http://api.jqueryui.com/form-reset-mixin/
 
 ( function( factory ) {
+	"use strict";
+
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -29,7 +31,8 @@
 		// Browser globals
 		factory( jQuery );
 	}
-}( function( $ ) {
+} )( function( $ ) {
+"use strict";
 
 return $.ui.formResetMixin = {
 	_formResetHandler: function() {
@@ -45,7 +48,7 @@ return $.ui.formResetMixin = {
 	},
 
 	_bindFormResetHandler: function() {
-		this.form = this.element.form();
+		this.form = this.element._form();
 		if ( !this.form.length ) {
 			return;
 		}
@@ -77,4 +80,4 @@ return $.ui.formResetMixin = {
 	}
 };
 
-} ) );
+} );

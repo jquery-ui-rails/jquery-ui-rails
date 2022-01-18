@@ -31,7 +31,7 @@ def map_dependencies
     basename = File.basename path
     file = File.read path
 
-    matchdata = file.match(/define\(\s*\[\s*([\"\.\/\,\w\s-\:]+)\]/m)
+    matchdata = file.match(/define\(\s*\[\s*([\"\.\/\,\w\s\-\:]+)\]/m)
 
     next if matchdata.nil?
 
@@ -118,6 +118,7 @@ task :javascripts => :submodule do
   mkdir_p target_ui_dir + '/effects'
   mkdir_p target_ui_dir + '/widgets'
   mkdir_p target_ui_dir + '/i18n'
+  mkdir_p target_ui_dir + '/vendor/jquery-color'
 
   Dir.glob("jquery-ui/ui/**/*.js").each do |path|
     basename = File.basename(path)
@@ -167,6 +168,10 @@ task :javascripts => :submodule do
       out.write("//= require #{clean_path}\n")
     end
     Dir.glob("jquery-ui/ui/widgets/*.js").sort.each do |path|
+      clean_path = remove_js_extension(path).gsub('/ui', '')
+      out.write("//= require #{clean_path}\n")
+    end
+    Dir.glob("jquery-ui/ui/vendor/jquery-color/*.js").sort.each do |path|
       clean_path = remove_js_extension(path).gsub('/ui', '')
       out.write("//= require #{clean_path}\n")
     end

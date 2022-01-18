@@ -1,5 +1,9 @@
 # master
 
+# 6.0.2
+
+* Update to jQuery UI 1.13.0
+
 # 6.0.1
 
 * Fix "define is not defined" issue in `core.js`

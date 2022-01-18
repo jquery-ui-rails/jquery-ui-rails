@@ -2,7 +2,7 @@
 //= require jquery-ui/effect
 
 /*!
- * jQuery UI Effects Size 1.12.1
+ * jQuery UI Effects Size 1.13.0
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -17,6 +17,8 @@
 //>>demos: http://jqueryui.com/effect/
 
 ( function( factory ) {
+	"use strict";
+
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -30,7 +32,8 @@
 		// Browser globals
 		factory( jQuery );
 	}
-}( function( $ ) {
+} )( function( $ ) {
+"use strict";
 
 return $.effects.define( "size", function( options, done ) {
 
@@ -108,6 +111,8 @@ return $.effects.define( "size", function( options, done ) {
 		to.top = ( original.outerHeight - to.outerHeight ) * baseline.y + pos.top;
 		to.left = ( original.outerWidth - to.outerWidth ) * baseline.x + pos.left;
 	}
+	delete from.outerHeight;
+	delete from.outerWidth;
 	element.css( from );
 
 	// Animate the children if desired
@@ -191,4 +196,4 @@ return $.effects.define( "size", function( options, done ) {
 
 } );
 
-} ) );
+} );
