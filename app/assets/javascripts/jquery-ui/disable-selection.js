@@ -1,7 +1,7 @@
 //= require jquery-ui/version
 
 /*!
- * jQuery UI Disable Selection 1.13.0
+ * jQuery UI Disable Selection 1.13.1
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors

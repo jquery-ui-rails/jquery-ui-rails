@@ -3,7 +3,7 @@
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Mouse 1.13.0
+ * jQuery UI Mouse 1.13.1
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -42,7 +42,7 @@ $( document ).on( "mouseup", function() {
 } );
 
 return $.widget( "ui.mouse", {
-	version: "1.13.0",
+	version: "1.13.1",
 	options: {
 		cancel: "input, textarea, button, select, option",
 		distance: 1,

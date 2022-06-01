@@ -2,7 +2,7 @@
 //= require jquery-ui/focusable
 
 /*!
- * jQuery UI Tabbable 1.13.0
+ * jQuery UI Tabbable 1.13.1
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors

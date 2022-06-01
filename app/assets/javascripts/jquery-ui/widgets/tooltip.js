@@ -5,7 +5,7 @@
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Tooltip 1.13.0
+ * jQuery UI Tooltip 1.13.1
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -45,7 +45,7 @@
 "use strict";
 
 $.widget( "ui.tooltip", {
-	version: "1.13.0",
+	version: "1.13.1",
 	options: {
 		classes: {
 			"ui-tooltip": "ui-corner-all ui-widget-shadow"
@@ -358,7 +358,10 @@ $.widget( "ui.tooltip", {
 		// tooltips will handle this in destroy.
 		if ( target[ 0 ] !== this.element[ 0 ] ) {
 			events.remove = function() {
-				this._removeTooltip( this._find( target ).tooltip );
+				var targetElement = this._find( target );
+				if ( targetElement ) {
+					this._removeTooltip( targetElement.tooltip );
+				}
 			};
 		}
 

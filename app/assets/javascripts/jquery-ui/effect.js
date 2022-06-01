@@ -3,7 +3,7 @@
 //= require jquery-ui/version
 
 /*!
- * jQuery UI Effects 1.13.0
+ * jQuery UI Effects 1.13.1
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -406,7 +406,7 @@ if ( $.uiBackCompat !== false ) {
 }
 
 $.extend( $.effects, {
-	version: "1.13.0",
+	version: "1.13.1",
 
 	define: function( name, mode, effect ) {
 		if ( !effect ) {

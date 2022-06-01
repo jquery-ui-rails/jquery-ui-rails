@@ -13,7 +13,7 @@
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Dialog 1.13.0
+ * jQuery UI Dialog 1.13.1
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -61,7 +61,7 @@
 "use strict";
 
 $.widget( "ui.dialog", {
-	version: "1.13.0",
+	version: "1.13.1",
 	options: {
 		appendTo: "body",
 		autoOpen: true,

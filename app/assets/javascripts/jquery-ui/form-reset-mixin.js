@@ -2,7 +2,7 @@
 //= require jquery-ui/version
 
 /*!
- * jQuery UI Form Reset Mixin 1.13.0
+ * jQuery UI Form Reset Mixin 1.13.1
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
