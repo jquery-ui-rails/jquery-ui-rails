@@ -1,0 +1,15 @@
+//= require jquery-ui-patch-1131/data
+//= require jquery-ui-patch-1131/disable-selection
+//= require jquery-ui-patch-1131/focusable
+//= require jquery-ui-patch-1131/form
+//= require jquery-ui-patch-1131/ie
+//= require jquery-ui-patch-1131/keycode
+//= require jquery-ui-patch-1131/labels
+//= require jquery-ui-patch-1131/jquery-patch
+//= require jquery-ui-patch-1131/plugin
+//= require jquery-ui-patch-1131/safe-active-element
+//= require jquery-ui-patch-1131/safe-blur
+//= require jquery-ui-patch-1131/scroll-parent
+//= require jquery-ui-patch-1131/tabbable
+//= require jquery-ui-patch-1131/unique-id
+//= require jquery-ui-patch-1131/version

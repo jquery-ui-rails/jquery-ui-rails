@@ -31,7 +31,7 @@ def map_dependencies
     basename = File.basename path
     file = File.read path
 
-    matchdata = file.match(/define\(\s*\[\s*([\"\.\/\,\w\s-\:]+)\]/m)
+    matchdata = file.match(/define\(\s*\[\s*([-\"\.\/\,\w\s\:]+)\]/m)
 
     next if matchdata.nil?
 
@@ -106,6 +106,8 @@ end
 desc "Remove the app directory"
 task :clean do
   rm_rf 'app'
+  mkdir_p 'app/assets/javascripts/jquery-ui/vendor'
+  cp_r './jquery-ui/ui/vendor', './app/assets/javascripts/jquery-ui'
 end
 
 desc "Generate the JavaScript assets"
@@ -117,6 +119,7 @@ task :javascripts => :submodule do
   mkdir_p target_ui_dir
   mkdir_p target_ui_dir + '/effects'
   mkdir_p target_ui_dir + '/widgets'
+  mkdir_p target_ui_dir + '/vendor'
   mkdir_p target_ui_dir + '/i18n'
 
   Dir.glob("jquery-ui/ui/**/*.js").each do |path|
@@ -253,6 +256,10 @@ end
 desc "Clean and then generate everything (default)"
 task :assets => [:clean, :javascripts, :stylesheets, :images, :version]
 
-task :build => :assets
+# The build is disabled since we've changed the gem name.
+# Files were manually updated to be in the correct folder,
+# Just so that we could release the version.
+# See more: https://github.com/Constructor-io/jquery-ui-rails/pull/1
+# task :build => :assets
 
 task :default => :assets

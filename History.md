@@ -1,5 +1,15 @@
 # master
 
+# 7.0.0
+
+* Gem name changed due to conflicts with `jquery-ui`'s `1.12.1` version.
+* **BREAKING CHANGE**: Require path changed.
+  * Change `//= require jquery-ui` to `//= require jquery-ui-patch-1131`
+
+# 6.0.2
+
+* Update to jQuery UI 1.13.1
+
 # 6.0.1
 
 * Fix "define is not defined" issue in `core.js`

@@ -1,0 +1,15 @@
+//= require jquery-ui-patch-1131/effects/effect-blind
+//= require jquery-ui-patch-1131/effects/effect-bounce
+//= require jquery-ui-patch-1131/effects/effect-clip
+//= require jquery-ui-patch-1131/effects/effect-drop
+//= require jquery-ui-patch-1131/effects/effect-explode
+//= require jquery-ui-patch-1131/effects/effect-fade
+//= require jquery-ui-patch-1131/effects/effect-fold
+//= require jquery-ui-patch-1131/effects/effect-highlight
+//= require jquery-ui-patch-1131/effects/effect-puff
+//= require jquery-ui-patch-1131/effects/effect-pulsate
+//= require jquery-ui-patch-1131/effects/effect-scale
+//= require jquery-ui-patch-1131/effects/effect-shake
+//= require jquery-ui-patch-1131/effects/effect-size
+//= require jquery-ui-patch-1131/effects/effect-slide
+//= require jquery-ui-patch-1131/effects/effect-transfer
