@@ -1,7 +1,10 @@
-# jquery-ui-rails
+# ⚠️ Important information ⚠️
 
-[![Build Status](https://travis-ci.org/jquery-ui-rails/jquery-ui-rails.svg?branch=master)](https://travis-ci.org/jquery-ui-rails/jquery-ui-rails)
-[![Dependency Status](https://gemnasium.com/jquery-ui-rails/jquery-ui-rails.svg)](https://gemnasium.com/jquery-ui-rails/jquery-ui-rails)
+This fork of the gem was renamed to `jquery-ui-rails-patch-1131` due to dependency conflicts.
+
+This fork has updated the `jquery-ui` version to `1.13.1`.
+
+# jquery-ui-rails
 
 This gem packages the jQuery UI assets (JavaScripts, stylesheets, and
 images) for the Rails [asset
@@ -22,7 +25,7 @@ version. Run `bundle list` to ensure that you either aren't using
 In your Gemfile, add:
 
 ```ruby
-gem 'jquery-ui-rails'
+gem 'jquery-ui-rails-patch-1131'
 ```
 
 ## Require Everything
@@ -30,14 +33,14 @@ gem 'jquery-ui-rails'
 To require all jQuery UI modules, add the following to your application.js:
 
 ```javascript
-//= require jquery-ui
+//= require jquery-ui-patch-1131
 ```
 
 Also add the jQuery UI CSS to your application.css:
 
 ```css
 /*
- *= require jquery-ui
+ *= require jquery-ui-patch-1131
  */
 ```
 
@@ -69,7 +72,7 @@ For example, if you only need the datepicker module, add this to your
 application.js:
 
 ```javascript
-//= require jquery-ui/widgets/datepicker
+//= require jquery-ui-patch-1131/widgets/datepicker
 ```
 
 In your application.css, require the corresponding CSS module (notice
@@ -77,7 +80,7 @@ no `widgets/` subdirectory here):
 
 ```css
 /*
- *= require jquery-ui/datepicker
+ *= require jquery-ui-patch-1131/datepicker
  */
 ```
 
@@ -86,9 +89,9 @@ no `widgets/` subdirectory here):
 ### UI Core
 
 ```javascript
-//= require jquery-ui/core
-//= require jquery-ui/widget
-//= require jquery-ui/position
+//= require jquery-ui-patch-1131/core
+//= require jquery-ui-patch-1131/widget
+//= require jquery-ui-patch-1131/position
 ```
 
 You usually do not need to require these directly, as they are pulled in by the
@@ -97,32 +100,32 @@ other JavaScript modules as needed.
 ### Interactions
 
 ```javascript
-//= require jquery-ui/widgets/mouse
-//= require jquery-ui/widgets/draggable
-//= require jquery-ui/widgets/droppable
-//= require jquery-ui/widgets/resizable
-//= require jquery-ui/widgets/selectable
-//= require jquery-ui/widgets/sortable
+//= require jquery-ui-patch-1131/widgets/mouse
+//= require jquery-ui-patch-1131/widgets/draggable
+//= require jquery-ui-patch-1131/widgets/droppable
+//= require jquery-ui-patch-1131/widgets/resizable
+//= require jquery-ui-patch-1131/widgets/selectable
+//= require jquery-ui-patch-1131/widgets/sortable
 ```
 
-For all but `jquery-ui/mouse` and `jquery-ui/droppable`, remember to `require` their matching CSS
+For all but `jquery-ui-patch-1131/mouse` and `jquery-ui-patch-1131/droppable`, remember to `require` their matching CSS
 files in your application.css as well.
 
 ### Widgets
 
 ```javascript
-//= require jquery-ui/widgets/accordion
-//= require jquery-ui/widgets/autocomplete
-//= require jquery-ui/widgets/button
-//= require jquery-ui/widgets/datepicker
-//= require jquery-ui/widgets/dialog
-//= require jquery-ui/widgets/menu
-//= require jquery-ui/widgets/progressbar
-//= require jquery-ui/widgets/selectmenu
-//= require jquery-ui/widgets/slider
-//= require jquery-ui/widgets/spinner
-//= require jquery-ui/widgets/tabs
-//= require jquery-ui/widgets/tooltip
+//= require jquery-ui-patch-1131/widgets/accordion
+//= require jquery-ui-patch-1131/widgets/autocomplete
+//= require jquery-ui-patch-1131/widgets/button
+//= require jquery-ui-patch-1131/widgets/datepicker
+//= require jquery-ui-patch-1131/widgets/dialog
+//= require jquery-ui-patch-1131/widgets/menu
+//= require jquery-ui-patch-1131/widgets/progressbar
+//= require jquery-ui-patch-1131/widgets/selectmenu
+//= require jquery-ui-patch-1131/widgets/slider
+//= require jquery-ui-patch-1131/widgets/spinner
+//= require jquery-ui-patch-1131/widgets/tabs
+//= require jquery-ui-patch-1131/widgets/tooltip
 ```
 
 For all of these, remember to `require` their matching CSS files in your
@@ -131,13 +134,13 @@ application.css as well.
 #### I18n
 
 Datepicker has optional i18n modules for non-US locales, named
-`jquery-ui/datepicker-xx[-YY]`
+`jquery-ui-patch-1131/datepicker-xx[-YY]`
 ([list](https://github.com/jquery-ui-rails/jquery-ui-rails/tree/master/app/assets/javascripts)),
 for example:
 
 ```javascript
-//= require jquery-ui/widgets/datepicker
-//= require jquery-ui/i18n/datepicker-pt-BR
+//= require jquery-ui-patch-1131/widgets/datepicker
+//= require jquery-ui-patch-1131/i18n/datepicker-pt-BR
 ```
 
 Note that you still need to include the main datepicker module. It is not
@@ -147,28 +150,28 @@ reasons](https://github.com/jquery-ui-rails/jquery-ui-rails/issues/9#issuecommen
 ### Effects
 
 ```javascript
-//= require jquery-ui/effect.all
+//= require jquery-ui-patch-1131/effect.all
 ```
 
 OR
 
 ```javascript
-//= require jquery-ui/effect
-//= require jquery-ui/effects/effect-blind
-//= require jquery-ui/effects/effect-bounce
-//= require jquery-ui/effects/effect-clip
-//= require jquery-ui/effects/effect-drop
-//= require jquery-ui/effects/effect-explode
-//= require jquery-ui/effects/effect-fade
-//= require jquery-ui/effects/effect-fold
-//= require jquery-ui/effects/effect-highlight
-//= require jquery-ui/effects/effect-puff
-//= require jquery-ui/effects/effect-pulsate
-//= require jquery-ui/effects/effect-scale
-//= require jquery-ui/effects/effect-shake
-//= require jquery-ui/effects/effect-size
-//= require jquery-ui/effects/effect-slide
-//= require jquery-ui/effects/effect-transfer
+//= require jquery-ui-patch-1131/effect
+//= require jquery-ui-patch-1131/effects/effect-blind
+//= require jquery-ui-patch-1131/effects/effect-bounce
+//= require jquery-ui-patch-1131/effects/effect-clip
+//= require jquery-ui-patch-1131/effects/effect-drop
+//= require jquery-ui-patch-1131/effects/effect-explode
+//= require jquery-ui-patch-1131/effects/effect-fade
+//= require jquery-ui-patch-1131/effects/effect-fold
+//= require jquery-ui-patch-1131/effects/effect-highlight
+//= require jquery-ui-patch-1131/effects/effect-puff
+//= require jquery-ui-patch-1131/effects/effect-pulsate
+//= require jquery-ui-patch-1131/effects/effect-scale
+//= require jquery-ui-patch-1131/effects/effect-shake
+//= require jquery-ui-patch-1131/effects/effect-size
+//= require jquery-ui-patch-1131/effects/effect-slide
+//= require jquery-ui-patch-1131/effects/effect-transfer
 ```
 
 ## Stylesheet Assets
@@ -177,8 +180,8 @@ OR
 
 ```css
 /*
- *= require jquery-ui/core
- *= require jquery-ui/theme
+ *= require jquery-ui-patch-1131/core
+ *= require jquery-ui-patch-1131/theme
  */
 ```
 
@@ -190,10 +193,10 @@ pulled in as dependencies.
 
 ```css
 /*
- *= require jquery-ui/draggable
- *= require jquery-ui/resizable
- *= require jquery-ui/selectable
- *= require jquery-ui/sortable
+ *= require jquery-ui-patch-1131/draggable
+ *= require jquery-ui-patch-1131/resizable
+ *= require jquery-ui-patch-1131/selectable
+ *= require jquery-ui-patch-1131/sortable
  */
 ```
 
@@ -201,18 +204,18 @@ pulled in as dependencies.
 
 ```css
 /*
- *= require jquery-ui/accordion
- *= require jquery-ui/autocomplete
- *= require jquery-ui/button
- *= require jquery-ui/datepicker
- *= require jquery-ui/dialog
- *= require jquery-ui/menu
- *= require jquery-ui/progressbar
- *= require jquery-ui/selectmenu
- *= require jquery-ui/slider
- *= require jquery-ui/spinner
- *= require jquery-ui/tabs
- *= require jquery-ui/tooltip
+ *= require jquery-ui-patch-1131/accordion
+ *= require jquery-ui-patch-1131/autocomplete
+ *= require jquery-ui-patch-1131/button
+ *= require jquery-ui-patch-1131/datepicker
+ *= require jquery-ui-patch-1131/dialog
+ *= require jquery-ui-patch-1131/menu
+ *= require jquery-ui-patch-1131/progressbar
+ *= require jquery-ui-patch-1131/selectmenu
+ *= require jquery-ui-patch-1131/slider
+ *= require jquery-ui-patch-1131/spinner
+ *= require jquery-ui-patch-1131/tabs
+ *= require jquery-ui-patch-1131/tooltip
  */
 ```
 
