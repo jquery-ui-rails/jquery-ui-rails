@@ -1,5 +1,9 @@
 # master
 
+# 7.0.1
+
+* Updated gemspec
+
 # 7.0.0
 
 * Gem name changed due to conflicts with `jquery-ui`'s `1.12.1` version.

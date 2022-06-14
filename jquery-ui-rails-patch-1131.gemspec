@@ -4,8 +4,8 @@ require File.expand_path('../lib/jquery/ui/rails/version', __FILE__)
 Gem::Specification.new do |s|
   s.name        = "jquery-ui-rails-patch-1131"
   s.version     = Jquery::Ui::Rails::VERSION
-  s.authors     = ["Pedro Bini @ Constructor.io"]
-  s.email       = ["pedro.bini@constructor.io"]
+  s.authors     = ["Pedro Bini", "Zubin Tiku", "Dan McCormick"]
+  s.email     = ["pedro.bini@constructor.io", "zubin@constructor.io", "dan@constructor.io"]
   s.homepage    = "https://github.com/Constructor-io/jquery-ui-rails"
   s.summary     = "jQuery UI packaged for the Rails asset pipeline, updated for 1.13.1"
   s.description = "jQuery UI's JavaScript, CSS, and image files packaged for the Rails 3.1+ asset pipeline. Supports jquery-ui , updated for 1.13.1"
