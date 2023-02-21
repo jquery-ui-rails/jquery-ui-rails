@@ -3,7 +3,7 @@
 //= require jquery-ui/effects/effect-scale
 
 /*!
- * jQuery UI Effects Puff 1.12.1
+ * jQuery UI Effects Puff 1.13.0
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -18,6 +18,8 @@
 //>>demos: http://jqueryui.com/effect/
 
 ( function( factory ) {
+	"use strict";
+
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -32,7 +34,8 @@
 		// Browser globals
 		factory( jQuery );
 	}
-}( function( $ ) {
+} )( function( $ ) {
+"use strict";
 
 return $.effects.define( "puff", "hide", function( options, done ) {
 	var newOptions = $.extend( true, {}, options, {
@@ -43,4 +46,4 @@ return $.effects.define( "puff", "hide", function( options, done ) {
 	$.effects.effect.scale.call( this, newOptions, done );
 } );
 
-} ) );
+} );
