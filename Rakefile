@@ -203,7 +203,7 @@ task :stylesheets => :submodule do
         dependencies.each do |dependency|
           dependency = dependency.sub(/\.js$/, '')
           dependent_stylesheet = "#{dependency}.css"
-          extra_dependencies << dependency if File.exists?("#{css_dir}/#{dependent_stylesheet}")
+          extra_dependencies << dependency if File.exist?("#{css_dir}/#{dependent_stylesheet}")
         end
         extra_dependencies << 'theme'
       end
