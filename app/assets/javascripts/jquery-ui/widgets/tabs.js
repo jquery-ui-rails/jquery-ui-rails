@@ -5,7 +5,7 @@
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Tabs 1.13.0
+ * jQuery UI Tabs 1.13.2
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -45,7 +45,7 @@
 "use strict";
 
 $.widget( "ui.tabs", {
-	version: "1.13.0",
+	version: "1.13.2",
 	delay: 300,
 	options: {
 		active: null,

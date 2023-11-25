@@ -3,7 +3,7 @@
 //= require jquery-ui/effects/effect-scale
 
 /*!
- * jQuery UI Effects Puff 1.13.0
+ * jQuery UI Effects Puff 1.13.2
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
