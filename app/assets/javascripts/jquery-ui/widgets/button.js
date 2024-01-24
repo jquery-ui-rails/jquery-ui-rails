@@ -4,7 +4,7 @@
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Button 1.13.0
+ * jQuery UI Button 1.13.2
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -47,7 +47,7 @@
 "use strict";
 
 $.widget( "ui.button", {
-	version: "1.13.0",
+	version: "1.13.2",
 	defaultElement: "<button>",
 	options: {
 		classes: {

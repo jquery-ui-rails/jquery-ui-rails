@@ -3,7 +3,7 @@
 //= require jquery-ui/effects/effect-size
 
 /*!
- * jQuery UI Effects Scale 1.13.0
+ * jQuery UI Effects Scale 1.13.2
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
