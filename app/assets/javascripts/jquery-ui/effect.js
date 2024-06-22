@@ -3,12 +3,12 @@
 //= require jquery-ui/version
 
 /*!
- * jQuery UI Effects 1.13.0
- * http://jqueryui.com
+ * jQuery UI Effects 1.13.3
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  */
 
 //>>label: Effects Core
@@ -16,8 +16,8 @@
 /* eslint-disable max-len */
 //>>description: Extends the internal jQuery effects. Includes morphing and easing. Required by all other effects.
 /* eslint-enable max-len */
-//>>docs: http://api.jqueryui.com/category/effects-core/
-//>>demos: http://jqueryui.com/effect/
+//>>docs: https://api.jqueryui.com/category/effects-core/
+//>>demos: https://jqueryui.com/effect/
 
 ( function( factory ) {
 	"use strict";
@@ -406,7 +406,7 @@ if ( $.uiBackCompat !== false ) {
 }
 
 $.extend( $.effects, {
-	version: "1.13.0",
+	version: "1.13.3",
 
 	define: function( name, mode, effect ) {
 		if ( !effect ) {
@@ -529,7 +529,7 @@ $.extend( $.effects, {
 
 		// Lock in margins first to account for form elements, which
 		// will change margin if you explicitly set height
-		// see: http://jsfiddle.net/JZSMt/3/ https://bugs.webkit.org/show_bug.cgi?id=107380
+		// see: https://jsfiddle.net/JZSMt/3/ https://bugs.webkit.org/show_bug.cgi?id=107380
 		// Support: Safari
 		element.css( {
 			marginTop: element.css( "marginTop" ),
@@ -923,7 +923,7 @@ $.fx.step.clip = function( fx ) {
 
 ( function() {
 
-// Based on easing equations from Robert Penner (http://www.robertpenner.com/easing)
+// Based on easing equations from Robert Penner (http://robertpenner.com/easing)
 
 var baseEasings = {};
 

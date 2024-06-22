@@ -8,19 +8,19 @@
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Draggable 1.13.0
- * http://jqueryui.com
+ * jQuery UI Draggable 1.13.3
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  */
 
 //>>label: Draggable
 //>>group: Interactions
 //>>description: Enables dragging functionality for any element.
-//>>docs: http://api.jqueryui.com/draggable/
-//>>demos: http://jqueryui.com/draggable/
+//>>docs: https://api.jqueryui.com/draggable/
+//>>demos: https://jqueryui.com/draggable/
 //>>css.structure: ../../themes/base/draggable.css
 
 ( function( factory ) {
@@ -49,7 +49,7 @@
 "use strict";
 
 $.widget( "ui.draggable", $.ui.mouse, {
-	version: "1.13.0",
+	version: "1.13.3",
 	widgetEventPrefix: "drag",
 	options: {
 		addClasses: true,
@@ -395,7 +395,7 @@ $.widget( "ui.draggable", $.ui.mouse, {
 				o.appendTo ) );
 		}
 
-		// Http://bugs.jqueryui.com/ticket/9446
+		// https://bugs.jqueryui.com/ticket/9446
 		// a helper function can return the original element
 		// which wouldn't have been set to relative in _create
 		if ( helperIsFunction && helper[ 0 ] === this.element[ 0 ] ) {

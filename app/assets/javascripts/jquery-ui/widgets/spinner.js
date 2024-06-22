@@ -5,19 +5,19 @@
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Spinner 1.13.0
- * http://jqueryui.com
+ * jQuery UI Spinner 1.13.3
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  */
 
 //>>label: Spinner
 //>>group: Widgets
 //>>description: Displays buttons to easily input numbers via the keyboard or mouse.
-//>>docs: http://api.jqueryui.com/spinner/
-//>>demos: http://jqueryui.com/spinner/
+//>>docs: https://api.jqueryui.com/spinner/
+//>>demos: https://jqueryui.com/spinner/
 //>>css.structure: ../../themes/base/core.css
 //>>css.structure: ../../themes/base/spinner.css
 //>>css.theme: ../../themes/base/theme.css
@@ -56,7 +56,7 @@ function spinnerModifier( fn ) {
 }
 
 $.widget( "ui.spinner", {
-	version: "1.13.0",
+	version: "1.13.3",
 	defaultElement: "<input>",
 	widgetEventPrefix: "spin",
 	options: {

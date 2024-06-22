@@ -1,19 +1,19 @@
 //= require jquery-ui/version
 
 /*!
- * jQuery UI Widget 1.13.0
- * http://jqueryui.com
+ * jQuery UI Widget 1.13.3
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  */
 
 //>>label: Widget
 //>>group: Core
 //>>description: Provides a factory for creating stateful widgets with a common API.
-//>>docs: http://api.jqueryui.com/jQuery.widget/
-//>>demos: http://jqueryui.com/widget/
+//>>docs: https://api.jqueryui.com/jQuery.widget/
+//>>demos: https://jqueryui.com/widget/
 
 ( function( factory ) {
 	"use strict";
@@ -79,7 +79,7 @@ $.widget = function( name, base, prototype ) {
 	constructor = $[ namespace ][ name ] = function( options, element ) {
 
 		// Allow instantiation without "new" keyword
-		if ( !this._createWidget ) {
+		if ( !this || !this._createWidget ) {
 			return new constructor( options, element );
 		}
 
@@ -501,6 +501,8 @@ $.Widget.prototype = {
 		}, options );
 
 		function bindRemoveEvent() {
+			var nodesToBind = [];
+
 			options.element.each( function( _, element ) {
 				var isTracked = $.map( that.classesElementLookup, function( elements ) {
 					return elements;
@@ -510,10 +512,12 @@ $.Widget.prototype = {
 					} );
 
 				if ( !isTracked ) {
-					that._on( $( element ), {
-						remove: "_untrackClassesElement"
-					} );
+					nodesToBind.push( element );
 				}
+			} );
+
+			that._on( $( nodesToBind ), {
+				remove: "_untrackClassesElement"
 			} );
 		}
 

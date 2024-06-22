@@ -6,19 +6,19 @@
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Autocomplete 1.13.0
- * http://jqueryui.com
+ * jQuery UI Autocomplete 1.13.3
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  */
 
 //>>label: Autocomplete
 //>>group: Widgets
 //>>description: Lists suggested words as the user is typing.
-//>>docs: http://api.jqueryui.com/autocomplete/
-//>>demos: http://jqueryui.com/autocomplete/
+//>>docs: https://api.jqueryui.com/autocomplete/
+//>>demos: https://jqueryui.com/autocomplete/
 //>>css.structure: ../../themes/base/core.css
 //>>css.structure: ../../themes/base/autocomplete.css
 //>>css.theme: ../../themes/base/theme.css
@@ -47,7 +47,7 @@
 "use strict";
 
 $.widget( "ui.autocomplete", {
-	version: "1.13.0",
+	version: "1.13.3",
 	defaultElement: "<input>",
 	options: {
 		appendTo: null,
@@ -73,6 +73,7 @@ $.widget( "ui.autocomplete", {
 
 	requestIndex: 0,
 	pending: 0,
+	liveRegionTimer: null,
 
 	_create: function() {
 
@@ -274,8 +275,10 @@ $.widget( "ui.autocomplete", {
 				// Announce the value in the liveRegion
 				label = ui.item.attr( "aria-label" ) || item.value;
 				if ( label && String.prototype.trim.call( label ).length ) {
-					this.liveRegion.children().hide();
-					$( "<div>" ).text( label ).appendTo( this.liveRegion );
+					clearTimeout( this.liveRegionTimer );
+					this.liveRegionTimer = this._delay( function() {
+						this.liveRegion.html( $( "<div>" ).text( label ) );
+					}, 100 );
 				}
 			},
 			menuselect: function( event, ui ) {
@@ -670,8 +673,10 @@ $.widget( "ui.autocomplete", $.ui.autocomplete, {
 		} else {
 			message = this.options.messages.noResults;
 		}
-		this.liveRegion.children().hide();
-		$( "<div>" ).text( message ).appendTo( this.liveRegion );
+		clearTimeout( this.liveRegionTimer );
+		this.liveRegionTimer = this._delay( function() {
+			this.liveRegion.html( $( "<div>" ).text( message ) );
+		}, 100 );
 	}
 } );
 

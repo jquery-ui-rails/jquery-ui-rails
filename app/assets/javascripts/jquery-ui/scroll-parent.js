@@ -1,18 +1,18 @@
 //= require jquery-ui/version
 
 /*!
- * jQuery UI Scroll Parent 1.13.0
- * http://jqueryui.com
+ * jQuery UI Scroll Parent 1.13.3
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  */
 
 //>>label: scrollParent
 //>>group: Core
 //>>description: Get the closest ancestor element that is scrollable.
-//>>docs: http://api.jqueryui.com/scrollParent/
+//>>docs: https://api.jqueryui.com/scrollParent/
 
 ( function( factory ) {
 	"use strict";

@@ -1,18 +1,18 @@
 //= require jquery-ui/version
 
 /*!
- * jQuery UI Focusable 1.13.0
- * http://jqueryui.com
+ * jQuery UI Focusable 1.13.3
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  */
 
 //>>label: :focusable Selector
 //>>group: Core
 //>>description: Selects elements which can be focused.
-//>>docs: http://api.jqueryui.com/focusable-selector/
+//>>docs: https://api.jqueryui.com/focusable-selector/
 
 ( function( factory ) {
 	"use strict";
