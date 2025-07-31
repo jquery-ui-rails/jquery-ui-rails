@@ -1,12 +1,12 @@
 /*!
- * jQuery UI Slider 1.13.0
- * http://jqueryui.com
+ * jQuery UI Slider 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/slider/#theming
+ * https://api.jqueryui.com/slider/#theming
  */
 /*
  *= require jquery-ui/theme
@@ -21,7 +21,6 @@
 	width: 1.2em;
 	height: 1.2em;
 	cursor: pointer;
-	-ms-touch-action: none;
 	touch-action: none;
 }
 .ui-slider .ui-slider-range {
@@ -31,12 +30,6 @@
 	display: block;
 	border: 0;
 	background-position: 0 0;
-}
-
-/* support: IE8 - See #6727 */
-.ui-slider.ui-state-disabled .ui-slider-handle,
-.ui-slider.ui-state-disabled .ui-slider-range {
-	filter: inherit;
 }
 
 .ui-slider-horizontal {

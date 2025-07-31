@@ -1,12 +1,12 @@
 /*!
- * jQuery UI Menu 1.13.0
- * http://jqueryui.com
+ * jQuery UI Menu 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/menu/#theming
+ * https://api.jqueryui.com/menu/#theming
  */
 /*
  *= require jquery-ui/theme
@@ -24,8 +24,6 @@
 .ui-menu .ui-menu-item {
 	margin: 0;
 	cursor: pointer;
-	/* support: IE10, see #8844 */
-	list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
 }
 .ui-menu .ui-menu-item-wrapper {
 	position: relative;

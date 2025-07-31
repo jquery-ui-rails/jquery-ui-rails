@@ -1,12 +1,12 @@
 /*!
- * jQuery UI Button 1.13.0
- * http://jqueryui.com
+ * jQuery UI Button 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/button/#theming
+ * https://api.jqueryui.com/button/#theming
  */
 /*
  *= require jquery-ui/theme
@@ -21,12 +21,7 @@
 	vertical-align: middle;
 	text-align: center;
 	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
 	user-select: none;
-
-	/* Support: IE <= 11 */
-	overflow: visible;
 }
 
 .ui-button,
@@ -77,7 +72,7 @@ input.ui-button.ui-icon-notext .ui-icon {
 }
 
 /* workarounds */
-/* Support: Firefox 5 - 40 */
+/* Support: Firefox 5 - 125+ */
 input.ui-button::-moz-focus-inner,
 button.ui-button::-moz-focus-inner {
 	border: 0;

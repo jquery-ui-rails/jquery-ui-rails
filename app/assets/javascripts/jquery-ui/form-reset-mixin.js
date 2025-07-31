@@ -1,19 +1,18 @@
-//= require jquery-ui/form
 //= require jquery-ui/version
 
 /*!
- * jQuery UI Form Reset Mixin 1.13.0
- * http://jqueryui.com
+ * jQuery UI Form Reset Mixin 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  */
 
 //>>label: Form Reset Mixin
 //>>group: Core
 //>>description: Refresh input widgets when their form is reset
-//>>docs: http://api.jqueryui.com/form-reset-mixin/
+//>>docs: https://api.jqueryui.com/form-reset-mixin/
 
 ( function( factory ) {
 	"use strict";
@@ -23,7 +22,6 @@
 		// AMD. Register as an anonymous module.
 		define( [
 			"jquery",
-			"./form",
 			"./version"
 		], factory );
 	} else {
@@ -48,7 +46,7 @@ return $.ui.formResetMixin = {
 	},
 
 	_bindFormResetHandler: function() {
-		this.form = this.element._form();
+		this.form = $( this.element.prop( "form" ) );
 		if ( !this.form.length ) {
 			return;
 		}

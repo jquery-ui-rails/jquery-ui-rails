@@ -3,12 +3,12 @@
 //= require jquery-ui/version
 
 /*!
- * jQuery UI Effects 1.13.0
- * http://jqueryui.com
+ * jQuery UI Effects 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  */
 
 //>>label: Effects Core
@@ -16,8 +16,8 @@
 /* eslint-disable max-len */
 //>>description: Extends the internal jQuery effects. Includes morphing and easing. Required by all other effects.
 /* eslint-enable max-len */
-//>>docs: http://api.jqueryui.com/category/effects-core/
-//>>demos: http://jqueryui.com/effect/
+//>>docs: https://api.jqueryui.com/category/effects-core/
+//>>demos: https://jqueryui.com/effect/
 
 ( function( factory ) {
 	"use strict";
@@ -85,26 +85,14 @@ function camelCase( string ) {
 
 function getElementStyles( elem ) {
 	var key, len,
-		style = elem.ownerDocument.defaultView ?
-			elem.ownerDocument.defaultView.getComputedStyle( elem, null ) :
-			elem.currentStyle,
+		style = elem.ownerDocument.defaultView.getComputedStyle( elem ),
 		styles = {};
 
-	if ( style && style.length && style[ 0 ] && style[ style[ 0 ] ] ) {
-		len = style.length;
-		while ( len-- ) {
-			key = style[ len ];
-			if ( typeof style[ key ] === "string" ) {
-				styles[ camelCase( key ) ] = style[ key ];
-			}
-		}
-
-	// Support: Opera, IE <9
-	} else {
-		for ( key in style ) {
-			if ( typeof style[ key ] === "string" ) {
-				styles[ key ] = style[ key ];
-			}
+	len = style.length;
+	while ( len-- ) {
+		key = style[ len ];
+		if ( typeof style[ key ] === "string" ) {
+			styles[ camelCase( key ) ] = style[ key ];
 		}
 	}
 
@@ -127,15 +115,6 @@ function styleDifference( oldStyle, newStyle ) {
 	}
 
 	return diff;
-}
-
-// Support: jQuery <1.8
-if ( !$.fn.addBack ) {
-	$.fn.addBack = function( selector ) {
-		return this.add( selector == null ?
-			this.prevObject : this.prevObject.filter( selector )
-		);
-	};
 }
 
 $.effects.animateClass = function( value, duration, easing, callback ) {
@@ -277,7 +256,7 @@ if ( $.expr && $.expr.pseudos && $.expr.pseudos.animated ) {
 	} )( $.expr.pseudos.animated );
 }
 
-if ( $.uiBackCompat !== false ) {
+if ( $.uiBackCompat === true ) {
 	$.extend( $.effects, {
 
 		// Saves a set of properties in a data storage
@@ -406,7 +385,7 @@ if ( $.uiBackCompat !== false ) {
 }
 
 $.extend( $.effects, {
-	version: "1.13.0",
+	version: "1.14.1",
 
 	define: function( name, mode, effect ) {
 		if ( !effect ) {
@@ -529,7 +508,7 @@ $.extend( $.effects, {
 
 		// Lock in margins first to account for form elements, which
 		// will change margin if you explicitly set height
-		// see: http://jsfiddle.net/JZSMt/3/ https://bugs.webkit.org/show_bug.cgi?id=107380
+		// see: https://jsfiddle.net/JZSMt/3/ https://bugs.webkit.org/show_bug.cgi?id=107380
 		// Support: Safari
 		element.css( {
 			marginTop: element.css( "marginTop" ),
@@ -763,7 +742,7 @@ $.fn.extend( {
 			// as toggle can be either show or hide depending on element state
 			args.mode = modes.shift();
 
-			if ( $.uiBackCompat !== false && !defaultMode ) {
+			if ( $.uiBackCompat === true && !defaultMode ) {
 				if ( elem.is( ":hidden" ) ? mode === "hide" : mode === "show" ) {
 
 					// Call the core method to track "olddisplay" properly
@@ -923,7 +902,7 @@ $.fx.step.clip = function( fx ) {
 
 ( function() {
 
-// Based on easing equations from Robert Penner (http://www.robertpenner.com/easing)
+// Based on easing equations from Robert Penner (http://robertpenner.com/easing)
 
 var baseEasings = {};
 

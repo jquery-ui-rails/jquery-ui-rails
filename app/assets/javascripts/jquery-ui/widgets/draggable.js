@@ -1,26 +1,24 @@
 //= require jquery-ui/widgets/mouse
 //= require jquery-ui/data
 //= require jquery-ui/plugin
-//= require jquery-ui/safe-active-element
-//= require jquery-ui/safe-blur
 //= require jquery-ui/scroll-parent
 //= require jquery-ui/version
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Draggable 1.13.0
- * http://jqueryui.com
+ * jQuery UI Draggable 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  */
 
 //>>label: Draggable
 //>>group: Interactions
 //>>description: Enables dragging functionality for any element.
-//>>docs: http://api.jqueryui.com/draggable/
-//>>demos: http://jqueryui.com/draggable/
+//>>docs: https://api.jqueryui.com/draggable/
+//>>demos: https://jqueryui.com/draggable/
 //>>css.structure: ../../themes/base/draggable.css
 
 ( function( factory ) {
@@ -34,8 +32,6 @@
 			"./mouse",
 			"../data",
 			"../plugin",
-			"../safe-active-element",
-			"../safe-blur",
 			"../scroll-parent",
 			"../version",
 			"../widget"
@@ -49,7 +45,7 @@
 "use strict";
 
 $.widget( "ui.draggable", $.ui.mouse, {
-	version: "1.13.0",
+	version: "1.14.1",
 	widgetEventPrefix: "drag",
 	options: {
 		addClasses: true,
@@ -156,7 +152,7 @@ $.widget( "ui.draggable", $.ui.mouse, {
 	},
 
 	_blurActiveElement: function( event ) {
-		var activeElement = $.ui.safeActiveElement( this.document[ 0 ] ),
+		var activeElement = this.document[ 0 ].activeElement,
 			target = $( event.target );
 
 		// Don't blur if the event occurred on an element that is within
@@ -167,7 +163,7 @@ $.widget( "ui.draggable", $.ui.mouse, {
 		}
 
 		// Blur any element that currently has focus, see #4261
-		$.ui.safeBlur( activeElement );
+		$( activeElement ).trigger( "blur" );
 	},
 
 	_mouseStart: function( event ) {
@@ -395,7 +391,7 @@ $.widget( "ui.draggable", $.ui.mouse, {
 				o.appendTo ) );
 		}
 
-		// Http://bugs.jqueryui.com/ticket/9446
+		// https://bugs.jqueryui.com/ticket/9446
 		// a helper function can return the original element
 		// which wouldn't have been set to relative in _create
 		if ( helperIsFunction && helper[ 0 ] === this.element[ 0 ] ) {

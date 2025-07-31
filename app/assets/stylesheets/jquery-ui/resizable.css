@@ -1,10 +1,10 @@
 /*!
- * jQuery UI Resizable 1.13.0
- * http://jqueryui.com
+ * jQuery UI Resizable 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  */
 /*
  *= require jquery-ui/theme
@@ -16,7 +16,6 @@
 	position: absolute;
 	font-size: 0.1px;
 	display: block;
-	-ms-touch-action: none;
 	touch-action: none;
 }
 .ui-resizable-disabled .ui-resizable-handle,

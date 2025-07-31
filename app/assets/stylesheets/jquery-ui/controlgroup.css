@@ -1,12 +1,12 @@
 /*!
- * jQuery UI Controlgroup 1.13.0
- * http://jqueryui.com
+ * jQuery UI Controlgroup 1.14.1
+ * https://jqueryui.com
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * http://api.jqueryui.com/controlgroup/#theming
+ * https://api.jqueryui.com/controlgroup/#theming
  */
 /*
  *= require jquery-ui/theme
@@ -57,9 +57,6 @@
 
 /* Spinner specific style fixes */
 .ui-controlgroup-vertical .ui-spinner-input {
-
-	/* Support: IE8 only, Android < 4.4 only */
-	width: 75%;
 	width: calc( 100% - 2.4em );
 }
 .ui-controlgroup-vertical .ui-spinner .ui-spinner-up {
