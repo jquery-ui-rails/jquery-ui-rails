@@ -1,7 +1,7 @@
 //= require jquery-ui/version
 
 /*!
- * jQuery UI Focusable 1.14.1
+ * jQuery UI Focusable 1.14.2
  * https://jqueryui.com
  *
  * Copyright OpenJS Foundation and other contributors

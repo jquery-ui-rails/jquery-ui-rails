@@ -3,7 +3,7 @@
 //= require jquery-ui/version
 
 /*!
- * jQuery UI Effects 1.14.1
+ * jQuery UI Effects 1.14.2
  * https://jqueryui.com
  *
  * Copyright OpenJS Foundation and other contributors
@@ -13,9 +13,7 @@
 
 //>>label: Effects Core
 //>>group: Effects
-/* eslint-disable max-len */
 //>>description: Extends the internal jQuery effects. Includes morphing and easing. Required by all other effects.
-/* eslint-enable max-len */
 //>>docs: https://api.jqueryui.com/category/effects-core/
 //>>demos: https://jqueryui.com/effect/
 
@@ -324,7 +322,7 @@ if ( $.uiBackCompat === true ) {
 			try {
 				// eslint-disable-next-line no-unused-expressions
 				active.id;
-			} catch ( e ) {
+			} catch ( _e ) {
 				active = document.body;
 			}
 
@@ -385,7 +383,7 @@ if ( $.uiBackCompat === true ) {
 }
 
 $.extend( $.effects, {
-	version: "1.14.1",
+	version: "1.14.2",
 
 	define: function( name, mode, effect ) {
 		if ( !effect ) {

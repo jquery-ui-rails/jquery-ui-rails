@@ -3,7 +3,7 @@
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Selectable 1.14.1
+ * jQuery UI Selectable 1.14.2
  * https://jqueryui.com
  *
  * Copyright OpenJS Foundation and other contributors
@@ -39,7 +39,7 @@
 "use strict";
 
 return $.widget( "ui.selectable", $.ui.mouse, {
-	version: "1.14.1",
+	version: "1.14.2",
 	options: {
 		appendTo: "body",
 		autoRefresh: true,

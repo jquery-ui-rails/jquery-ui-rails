@@ -4,7 +4,7 @@
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Accordion 1.14.1
+ * jQuery UI Accordion 1.14.2
  * https://jqueryui.com
  *
  * Copyright OpenJS Foundation and other contributors
@@ -14,9 +14,7 @@
 
 //>>label: Accordion
 //>>group: Widgets
-/* eslint-disable max-len */
 //>>description: Displays collapsible content panels for presenting information in a limited amount of space.
-/* eslint-enable max-len */
 //>>docs: https://api.jqueryui.com/accordion/
 //>>demos: https://jqueryui.com/accordion/
 //>>css.structure: ../../themes/base/core.css
@@ -45,7 +43,7 @@
 "use strict";
 
 return $.widget( "ui.accordion", {
-	version: "1.14.1",
+	version: "1.14.2",
 	options: {
 		active: 0,
 		animate: {},
