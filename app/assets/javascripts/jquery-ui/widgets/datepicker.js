@@ -1,9 +1,9 @@
 //= require jquery-ui/version
 //= require jquery-ui/keycode
 
-/* eslint-disable max-len, camelcase */
+/* eslint-disable max-len */
 /*!
- * jQuery UI Datepicker 1.14.1
+ * jQuery UI Datepicker 1.14.2
  * https://jqueryui.com
  *
  * Copyright OpenJS Foundation and other contributors
@@ -39,7 +39,7 @@
 } )( function( $ ) {
 "use strict";
 
-$.extend( $.ui, { datepicker: { version: "1.14.1" } } );
+$.extend( $.ui, { datepicker: { version: "1.14.2" } } );
 
 var datepicker_instActive;
 
@@ -538,7 +538,7 @@ $.extend( Datepicker.prototype, {
 	_getInst: function( target ) {
 		try {
 			return $.data( target, "datepicker" );
-		} catch ( err ) {
+		} catch ( _err ) {
 			throw "Missing instance data for this datepicker";
 		}
 	},
@@ -771,7 +771,7 @@ $.extend( Datepicker.prototype, {
 					$.datepicker._updateAlternate( inst );
 					$.datepicker._updateDatepicker( inst );
 				}
-			} catch ( err ) {
+			} catch ( _err ) {
 			}
 		}
 		return true;
@@ -1543,7 +1543,7 @@ $.extend( Datepicker.prototype, {
 
 		try {
 			date = this.parseDate( dateFormat, dates, settings ) || defaultDate;
-		} catch ( event ) {
+		} catch ( _err ) {
 			dates = ( noDefault ? "" : dates );
 		}
 		inst.selectedDay = date.getDate();
@@ -1572,7 +1572,7 @@ $.extend( Datepicker.prototype, {
 				try {
 					return $.datepicker.parseDate( $.datepicker._get( inst, "dateFormat" ),
 						offset, $.datepicker._getFormatConfig( inst ) );
-				} catch ( e ) {
+				} catch ( _e ) {
 
 					// Ignore
 				}
@@ -2233,7 +2233,7 @@ $.fn.datepicker = function( options ) {
 $.datepicker = new Datepicker(); // singleton instance
 $.datepicker.initialized = false;
 $.datepicker.uuid = new Date().getTime();
-$.datepicker.version = "1.14.1";
+$.datepicker.version = "1.14.2";
 
 return $.datepicker;
 

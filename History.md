@@ -1,5 +1,9 @@
 # master
 
+# 8.0.1
+
+* Update to jQuery UI 1.14.2
+
 # 8.0.0
 
 * Update to jQuery UI 1.14.1

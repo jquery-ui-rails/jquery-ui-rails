@@ -5,7 +5,7 @@
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Resizable 1.14.1
+ * jQuery UI Resizable 1.14.2
  * https://jqueryui.com
  *
  * Copyright OpenJS Foundation and other contributors
@@ -45,7 +45,7 @@
 "use strict";
 
 $.widget( "ui.resizable", $.ui.mouse, {
-	version: "1.14.1",
+	version: "1.14.2",
 	widgetEventPrefix: "resize",
 	options: {
 		alsoResize: false,
@@ -110,7 +110,7 @@ $.widget( "ui.resizable", $.ui.mouse, {
 			el[ scroll ] = 1;
 			has = ( el[ scroll ] > 0 );
 			el[ scroll ] = 0;
-		} catch ( e ) {
+		} catch ( _e ) {
 
 			// `el` might be a string, then setting `scroll` will throw
 			// an error in strict mode; ignore it.

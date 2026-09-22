@@ -4,7 +4,7 @@
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Spinner 1.14.1
+ * jQuery UI Spinner 1.14.2
  * https://jqueryui.com
  *
  * Copyright OpenJS Foundation and other contributors
@@ -54,7 +54,7 @@ function spinnerModifier( fn ) {
 }
 
 $.widget( "ui.spinner", {
-	version: "1.14.1",
+	version: "1.14.2",
 	defaultElement: "<input>",
 	widgetEventPrefix: "spin",
 	options: {
@@ -141,9 +141,10 @@ $.widget( "ui.spinner", {
 				this._trigger( "change", event );
 			}
 		},
-		mousewheel: function( event, delta ) {
+		wheel: function( event ) {
 			var activeElement = this.document[ 0 ].activeElement;
 			var isActive = this.element[ 0 ] === activeElement;
+			var delta = event.deltaY || event.originalEvent && event.originalEvent.deltaY;
 
 			if ( !isActive || !delta ) {
 				return;
@@ -153,7 +154,7 @@ $.widget( "ui.spinner", {
 				return false;
 			}
 
-			this._spin( ( delta > 0 ? 1 : -1 ) * this.options.step, event );
+			this._spin( ( delta > 0 ? -1 : 1 ) * this.options.step, event );
 			clearTimeout( this.mousewheelTimer );
 			this.mousewheelTimer = this._delay( function() {
 				if ( this.spinning ) {
@@ -162,6 +163,27 @@ $.widget( "ui.spinner", {
 			}, 100 );
 			event.preventDefault();
 		},
+
+		// DEPRECATED
+		// Kept for backwards compatibility. Please use the modern `wheel`
+		// event. The `delta` parameter is provided by the jQuery Mousewheel
+		// plugin if one is loaded.
+		mousewheel: function( event, delta ) {
+			if ( !event.isTrigger ) {
+
+				// If this is not a trigger call, the `wheel` handler will
+				// fire as well, let's not duplicate it.
+				return;
+			}
+
+			var wheelEvent = $.Event( event );
+			wheelEvent.type = "wheel";
+			if ( delta ) {
+				wheelEvent.deltaY = -delta;
+			}
+			return this._events.wheel.call( this, wheelEvent );
+		},
+
 		"mousedown .ui-spinner-button": function( event ) {
 			var previous;
 

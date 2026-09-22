@@ -4,7 +4,7 @@
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Slider 1.14.1
+ * jQuery UI Slider 1.14.2
  * https://jqueryui.com
  *
  * Copyright OpenJS Foundation and other contributors
@@ -43,7 +43,7 @@
 "use strict";
 
 return $.widget( "ui.slider", $.ui.mouse, {
-	version: "1.14.1",
+	version: "1.14.2",
 	widgetEventPrefix: "slide",
 
 	options: {

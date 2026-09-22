@@ -2,7 +2,7 @@
 //= require jquery-ui/effect
 
 /*!
- * jQuery UI Effects Blind 1.14.1
+ * jQuery UI Effects Blind 1.14.2
  * https://jqueryui.com
  *
  * Copyright OpenJS Foundation and other contributors

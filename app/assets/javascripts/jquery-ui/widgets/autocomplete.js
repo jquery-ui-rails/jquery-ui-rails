@@ -5,7 +5,7 @@
 //= require jquery-ui/widget
 
 /*!
- * jQuery UI Autocomplete 1.14.1
+ * jQuery UI Autocomplete 1.14.2
  * https://jqueryui.com
  *
  * Copyright OpenJS Foundation and other contributors
@@ -45,7 +45,7 @@
 "use strict";
 
 $.widget( "ui.autocomplete", {
-	version: "1.14.1",
+	version: "1.14.2",
 	defaultElement: "<input>",
 	options: {
 		appendTo: null,
